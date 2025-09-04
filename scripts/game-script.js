@@ -164,27 +164,35 @@ categoryButtons.forEach((button) => {
 
 /**
  * *** FUNÇÃO CORRIGIDA ***
- * Inicia um temporizador robusto que é resiliente a diferenças de relógio (clock skew).
- * Ele se auto-corrige a cada segundo para garantir precisão.
+ * Inicia um temporizador com uma contagem regressiva visual fluida.
  */
 function startTimer(startTime) {
+	// 1. Limpa qualquer timer antigo para evitar sobreposição
 	clearInterval(questionTimer);
 
+	// 2. Calcula o tempo inicial restante de forma precisa com base no servidor
+	const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
+	let timeLeft = 10 - elapsedSeconds;
+
+	// Garante que o tempo esteja dentro dos limites (0-10)
+	if (timeLeft < 0) timeLeft = 0;
+	if (timeLeft > 10) timeLeft = 10;
+
+	// 3. Exibe o tempo inicial imediatamente na tela
+	timerDisplay.textContent = timeLeft;
+
+	// 4. Inicia um novo intervalo para simplesmente decrementar a cada segundo
 	questionTimer = setInterval(() => {
-		// Recalcula a cada segundo para se manter sincronizado
-		const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
-		let timeLeft = 10 - elapsedSeconds;
+		timeLeft--; // Apenas decrementa a variável local
 
-		// Garante que o tempo exibido nunca seja negativo ou acima de 10
-		if (timeLeft < 0) timeLeft = 0;
-		if (timeLeft > 10) timeLeft = 10;
-
-		timerDisplay.textContent = timeLeft;
+		if (timeLeft >= 0) {
+			timerDisplay.textContent = timeLeft; // Atualiza a tela
+		}
 
 		if (timeLeft <= 0) {
-			clearInterval(questionTimer);
+			clearInterval(questionTimer); // Para o timer ao chegar em 0
 		}
-	}, 500); // Executa a cada meio segundo para uma resposta visual mais rápida
+	}, 1000); // Executa exatamente a cada 1 segundo
 }
 
 function showQuestionContent(questionIndex) {
