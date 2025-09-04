@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Esconde todas as telas por padrão */
+.screen {
+    display: none;
+    background-color: black;
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+/* Mostra APENAS a tela que estiver ativa */
+.screen.active {
+    display: block;
+}
+
+/* Estilos para botões e inputs */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+input[type="text"], input[type="password"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.answer-button {
+    width: 100%;
+    background-color: #f8f9fa;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+.answer-button:hover {
+    background-color: #e2e6ea;
+}
+
+.answer-button.correct {
+    background-color: #28a745;
+    color: white;
+}
+
+.answer-button.incorrect {
+    background-color: #dc3545;
+    color: white;
+}

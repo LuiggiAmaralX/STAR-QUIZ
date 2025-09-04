@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login-screen" class="screen active">
+        <h1>Bem-vindo ao Quiz</h1>
+        <p>Faça o login para continuar:</p>
+        <input type="text" id="username-input" placeholder="Usuário">
+        <input type="password" id="password-input" placeholder="Senha">
+        <button id="login-button">Entrar</button>
+    </div>
+
+    <script>
+        const loginButton = document.getElementById('login-button');
+        const usernameInput = document.getElementById('username-input');
+        const passwordInput = document.getElementById('password-input');
+
+        // Dados dos usuários para verificação
+        const users = {
+            "teste": { "password": "123" },
+            "teste2": { "password": "321" }
+        };
+
+        loginButton.addEventListener('click', () => {
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+
+            // Verifica se o usuário existe e se a senha está correta
+            if (users[username] && users[username].password === password) {
+                // Salva o nickname no armazenamento do navegador
+                localStorage.setItem('playerNickname', username);
+                
+                // Redireciona para a página de lobby
+                window.location.href = 'lobby.html';
+            } else {
+                alert('Usuário ou senha inválidos!');
+            }
+        });
+    </script>
+</body>
+</html>
