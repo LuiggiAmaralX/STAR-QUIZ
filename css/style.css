@@ -1,0 +1,254 @@
+/* --- GERAL E VARIÁVEIS DE COR --- */
+:root {
+    --dark-blue-bg: #0d1b2a;
+    --medium-blue-card: #1b263b;
+    --light-blue-text: #e0e1dd;
+    --accent-blue-button: #415a77;
+    --accent-blue-hover: #778da9;
+    --correct-green: #2a9d8f;
+    --incorrect-red: #e76f51;
+    --font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(160deg, #020c16 0%, #0d1b2a 100%);
+    color: var(--light-blue-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+h1, h2, h3 {
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+p {
+    color: #b0b8c4;
+    line-height: 1.6;
+}
+
+/* --- ESTRUTURA DAS TELAS --- */
+.screen {
+    display: none;
+    background-color: var(--medium-blue-card);
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.screen.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* --- BOTÕES E INPUTS --- */
+button {
+    background-color: var(--accent-blue-button);
+    color: #FFFFFF;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 10px 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    max-width: 300px;
+}
+
+button:hover {
+    background-color: var(--accent-blue-hover);
+    transform: translateY(-2px);
+}
+
+input[type="text"], input[type="password"] {
+    width: calc(100% - 24px);
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #415a77;
+    border-radius: 8px;
+    background-color: var(--dark-blue-bg);
+    color: var(--light-blue-text);
+    font-size: 16px;
+    font-family: var(--font-family);
+}
+
+input[type="text"]::placeholder, input[type="password"]::placeholder {
+    color: #778da9;
+}
+
+/* --- ESTILOS ESPECÍFICOS DO JOGO --- */
+
+/* Botões de Categoria e Resposta */
+.category-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#answer-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.category-button, .answer-button {
+    width: 100%;
+    background-color: #2b3a52;
+    border: 1px solid #415a77;
+    color: var(--light-blue-text);
+    text-align: left;
+    padding: 15px;
+    border-radius: 12px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.category-button:hover, .answer-button:hover {
+    background-color: var(--accent-blue-button);
+    border-color: var(--accent-blue-hover);
+}
+
+/* Feedback de Resposta */
+.answer-button.correct {
+    background-color: var(--correct-green);
+    color: white;
+    border-color: var(--correct-green);
+}
+
+.answer-button.incorrect {
+    background-color: var(--incorrect-red);
+    color: white;
+    border-color: var(--incorrect-red);
+}
+
+/* --- LOBBY E PLACAR --- */
+#lobby-nickname, #lobby-room-code {
+    color: #FFFFFF;
+    font-weight: bold;
+    background-color: var(--accent-blue-button);
+    padding: 2px 8px;
+    border-radius: 5px;
+}
+
+#players-list, #leaderboard-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    text-align: left;
+}
+
+#players-list li, #leaderboard-list li {
+    background-color: #2b3a52;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+/* Cole este código no final de style.css */
+
+/* --- TELA DE CONFRONTO (VERSUS) --- */
+#versus-screen {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.player-card {
+    background-color: var(--medium-blue-card);
+    width: 45%;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--accent-blue-button);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.player-card .player-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+    word-break: break-all; /* Garante que nomes longos não quebrem o layout */
+}
+
+.vs-separator {
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--accent-blue-hover);
+    transform: scale(0);
+}
+
+/* Animações da tela de Confronto */
+#versus-screen.active .vs-separator {
+    animation: zoomIn 0.5s ease-out 0.5s forwards;
+}
+
+#versus-screen.active .player-card.left {
+    animation: slideInFromLeft 0.7s ease-out forwards;
+}
+
+#versus-screen.active .player-card.right {
+    animation: slideInFromRight 0.7s ease-out forwards;
+}
+
+
+@keyframes zoomIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+@keyframes slideInFromLeft {
+    from { transform: translateX(-150%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideInFromRight {
+    from { transform: translateX(150%); }
+    to { transform: translateX(0); }
+}
+
+/* --- ESTILOS DO RODAPÉ E TIMER DO QUIZ --- */
+#quiz-footer {
+    display: flex;
+    justify-content: space-between; /* Alinha os itens nas extremidades */
+    align-items: center;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid var(--accent-blue-button);
+}
+
+#timer {
+    font-size: 18px;
+    font-weight: 700;
+    background-color: var(--accent-blue-button);
+    color: #FFFFFF;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Deixa o elemento redondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
