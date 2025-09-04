@@ -25,6 +25,7 @@ const database = firebase.database();
 const allScreens = {
 	waiting: document.getElementById('waiting-lobby-screen'),
 	category: document.getElementById('category-screen'),
+	versus: document.getElementById('versus-screen'), // <-- ADICIONE ESTA LINHA
 	quiz: document.getElementById('quiz-screen'),
 	result: document.getElementById('result-screen'),
 };
@@ -150,8 +151,9 @@ categoryButtons.forEach((button) => {
 				Object.keys(roomData.players).forEach((nickname) => {
 					roomData.players[nickname].questionsAnswered = 0;
 				});
+				
 				roomRef.update({
-					status: 'playing',
+					status: 'versus',
 					questions: questionsToSend,
 					currentQuestionIndex: 0,
 					questionStartTime: firebase.database.ServerValue.TIMESTAMP,
@@ -312,59 +314,103 @@ function syncPlayersList() {
 				activeTimerStartTime = -1;
 				showScreen(allScreens.waiting);
 				break;
+				
 			case 'selecting_category':
 				if (localIsHost) showScreen(allScreens.category);
 				else showScreen(allScreens.waiting);
 				break;
-			case 'playing':
-				if (!gameInProgress) {
-					gameInProgress = true;
-					roomQuestions = roomData.questions;
+
+			// --- NOVO ESTADO 'VERSUS' ADICIONADO AQUI ---
+			case 'versus':
+				const playerNames = Object.keys(players);
+				const vsPlayer1 = document.querySelector('#vs-player1 .player-name');
+				const vsPlayer2 = document.querySelector('#vs-player2 .player-name');
+
+				// Popula os nomes na tela de confronto
+				vsPlayer1.textContent = playerNames[0] || 'Jogador 1';
+				vsPlayer2.textContent = playerNames[1] || 'Jogador 2';
+
+				showScreen(allScreens.versus);
+
+				// APENAS O HOST executa o temporizador para avançar para o jogo
+				if (localIsHost) {
+					setTimeout(() => {
+						// Após 4 segundos, o Host atualiza o estado para 'playing'
+						database.ref('rooms/' + currentRoomId).update({
+							status: 'playing',
+							currentQuestionIndex: 0,
+							questionStartTime: firebase.database.ServerValue.TIMESTAMP,
+						});
+					}, 4000); // 4 segundos de duração para a tela de confronto
 				}
-
-				const remoteQuestionIndex = roomData.currentQuestionIndex;
-				const remoteStartTime = roomData.questionStartTime;
-
-				if (
-					remoteQuestionIndex !== activeTimerQuestionIndex ||
-					remoteStartTime !== activeTimerStartTime
-				) {
-					startTimer(remoteStartTime);
-					activeTimerQuestionIndex = remoteQuestionIndex;
-					activeTimerStartTime = remoteStartTime;
-					showQuestionContent(remoteQuestionIndex);
-
-					if (localIsHost) {
-						setTimeout(() => {
-							database.ref('rooms/' + currentRoomId).once('value', (snap) => {
-								const currentData = snap.val();
-								if (
-									currentData &&
-									currentData.status === 'playing' &&
-									currentData.currentQuestionIndex === remoteQuestionIndex
-								) {
-									advanceToNextQuestion();
-								}
-							});
-						}, 10500);
+				break;
+			
+				// Cole este novo bloco no lugar do antigo
+				case 'playing':
+					if (!gameInProgress) {
+						gameInProgress = true;
+						roomQuestions = roomData.questions;
 					}
-				}
 
-				const myPlayerData = players ? players[playerNickname] : null;
-				if (myPlayerData) {
-					playerScoreDisplay.textContent = `Pontuação: ${myPlayerData.score || 0}`;
-					showScreen(allScreens.quiz);
+					const remoteQuestionIndex = roomData.currentQuestionIndex;
 
-					const questionsAnswered = myPlayerData.questionsAnswered || 0;
+					// Este bloco agora roda APENAS UMA VEZ quando uma nova pergunta é detectada
+					if (remoteQuestionIndex !== activeTimerQuestionIndex) {
+						activeTimerQuestionIndex = remoteQuestionIndex; // Atualiza o controle imediatamente
 
+						showQuestionContent(remoteQuestionIndex);
+						showScreen(allScreens.quiz);
+
+						// --- NOVO TIMER VISUAL (resolve o bug dos 12s) ---
+						clearInterval(questionTimer); // Limpa qualquer timer antigo
+						let timeLeft = 10;
+						timerDisplay.textContent = timeLeft;
+
+						questionTimer = setInterval(() => {
+							timeLeft--;
+							timerDisplay.textContent = Math.max(0, timeLeft); // Garante que o timer não fique negativo
+							if (timeLeft <= 0) {
+								clearInterval(questionTimer);
+							}
+						}, 1000);
+
+						// --- NOVA LÓGICA DE AVANÇO (resolve a sincronização) ---
+						// Apenas o host define quando a próxima pergunta virá
+						if (localIsHost) {
+							setTimeout(() => {
+								// Verificação de segurança: só avança se o jogo ainda estiver nesta pergunta
+								database.ref('rooms/' + currentRoomId).once('value', (snap) => {
+									const currentData = snap.val();
+									if (
+										currentData &&
+										currentData.status === 'playing' &&
+										currentData.currentQuestionIndex === remoteQuestionIndex
+									) {
+										advanceToNextQuestion();
+									}
+								});
+							}, 10500); // 10s para responder + 0.5s de margem de segurança
+						}
+					}
+
+					// --- ATUALIZAÇÕES GERAIS (fora do bloco principal) ---
+					// Atualiza a pontuação do jogador local
+					const myPlayerData = players ? players[playerNickname] : null;
+					if (myPlayerData) {
+						playerScoreDisplay.textContent = `Pontuação: ${myPlayerData.score || 0}`;
+					}
+
+					// Mostra "Aguardando..." para quem já respondeu
+					const questionsAnswered = myPlayerData ? myPlayerData.questionsAnswered || 0 : 0;
 					if (questionsAnswered > remoteQuestionIndex) {
 						questionText.textContent = 'Aguardando a próxima pergunta...';
 						answerButtonsContainer.innerHTML = '';
 					}
-				}
-				break;
+					break;
+				
 			case 'finished':
 				gameInProgress = false;
+				clearInterval(questionTimer); // Garante que o timer pare
 				activeTimerQuestionIndex = -1;
 				activeTimerStartTime = -1;
 				showScreen(allScreens.result);
