@@ -25,7 +25,7 @@ const database = firebase.database();
 const allScreens = {
 	waiting: document.getElementById('waiting-lobby-screen'),
 	category: document.getElementById('category-screen'),
-	versus: document.getElementById('versus-screen'), // <-- ADICIONE ESTA LINHA
+	versus: document.getElementById('versus-screen'),
 	quiz: document.getElementById('quiz-screen'),
 	result: document.getElementById('result-screen'),
 };
@@ -36,79 +36,17 @@ const questionText = document.getElementById('question-text');
 const answerButtonsContainer = document.getElementById('answer-buttons');
 const playerScoreDisplay = document.getElementById('player-score');
 const restartButton = document.getElementById('restart-button');
-const categoryButtons = document.querySelectorAll('.category-button');
 const leaderboardList = document.getElementById('leaderboard-list');
 const timerDisplay = document.getElementById('timer');
+const categoryCards = document.querySelectorAll('.category-card');
 
 let roomQuestions = [];
 let localIsHost = false;
 let gameInProgress = false;
 let questionTimer = null;
 let activeTimerQuestionIndex = -1;
-let activeTimerStartTime = -1;
 
-const questions = {
-	tecnologia: [
-		{
-			question: 'Qual empresa criou o sistema operacional Android?',
-			answers: [
-				{ text: 'Apple', correct: false },
-				{ text: 'Microsoft', correct: false },
-				{ text: 'Google', correct: true },
-				{ text: 'Samsung', correct: false },
-			],
-		},
-		{
-			question: 'Qual linguagem de programação é a base para a web?',
-			answers: [
-				{ text: 'Python', correct: false },
-				{ text: 'Java', correct: false },
-				{ text: 'JavaScript', correct: true },
-				{ text: 'C++', correct: false },
-			],
-		},
-	],
-	filmes: [
-		{
-			question: "Qual filme tem a famosa frase 'Luke, eu sou seu pai'?",
-			answers: [
-				{ text: 'Star Wars: O Império Contra-Ataca', correct: true },
-				{ text: 'Star Wars: Uma Nova Esperança', correct: false },
-				{ text: 'Vingadores: Ultimato', correct: false },
-				{ text: 'Matrix', correct: false },
-			],
-		},
-		{
-			question: "Quem dirigiu o filme 'Pulp Fiction'?",
-			answers: [
-				{ text: 'Martin Scorsese', correct: false },
-				{ text: 'Steven Spielberg', correct: false },
-				{ text: 'Quentin Tarantino', correct: true },
-				{ text: 'Christopher Nolan', correct: false },
-			],
-		},
-	],
-	esportes: [
-		{
-			question: "Em qual esporte a expressão 'strike' é usada?",
-			answers: [
-				{ text: 'Basquete', correct: false },
-				{ text: 'Beisebol', correct: true },
-				{ text: 'Futebol', correct: false },
-				{ text: 'Tênis', correct: false },
-			],
-		},
-		{
-			question: 'Quantos jogadores um time de vôlei de quadra tem em jogo?',
-			answers: [
-				{ text: '4', correct: false },
-				{ text: '5', correct: false },
-				{ text: '6', correct: true },
-				{ text: '7', correct: false },
-			],
-		},
-	],
-};
+// O objeto de perguntas local foi REMOVIDO. Agora as perguntas vêm do Firebase.
 
 // --- FUNÇÕES DO JOGO ---
 function resetRoom(roomId) {
@@ -139,74 +77,99 @@ startGameButton.addEventListener('click', () => {
 	database.ref('rooms/' + currentRoomId).update({ status: 'selecting_category' });
 });
 
-categoryButtons.forEach((button) => {
-	button.addEventListener('click', () => {
-		const selectedCategory = button.dataset.category;
-		const questionsToSend = questions[selectedCategory];
-
-		const roomRef = database.ref('rooms/' + currentRoomId);
-		roomRef.once('value', (snapshot) => {
-			const roomData = snapshot.val();
-			if (roomData && roomData.players) {
-				Object.keys(roomData.players).forEach((nickname) => {
-					roomData.players[nickname].questionsAnswered = 0;
-				});
-				
-				roomRef.update({
-					status: 'versus',
-					questions: questionsToSend,
-					currentQuestionIndex: 0,
-					questionStartTime: firebase.database.ServerValue.TIMESTAMP,
-					players: roomData.players,
-				});
-			}
-		});
-	});
-});
 
 /**
- * *** FUNÇÃO CORRIGIDA ***
- * Inicia um temporizador com uma contagem regressiva visual fluida.
+ * NOVA LÓGICA PARA SELECIONAR CATEGORIA E BUSCAR PERGUNTAS
  */
-function startTimer(startTime) {
-	// 1. Limpa qualquer timer antigo para evitar sobreposição
-	clearInterval(questionTimer);
+categoryCards.forEach((card) => {
+    card.addEventListener('click', async () => {
+        if (!localIsHost) return; // Apenas o host pode selecionar
 
-	// 2. Calcula o tempo inicial restante de forma precisa com base no servidor
-	const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
-	let timeLeft = 10 - elapsedSeconds;
+        // Mostra visualmente que a categoria foi selecionada
+        categoryCards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
 
-	// Garante que o tempo esteja dentro dos limites (0-10)
-	if (timeLeft < 0) timeLeft = 0;
-	if (timeLeft > 10) timeLeft = 10;
+        const selectedCategory = card.dataset.category;
+        // A partida terá 2 perguntas, como no código original. Mude o valor abaixo se precisar.
+        const questionsPerMatch = 2; 
 
-	// 3. Exibe o tempo inicial imediatamente na tela
-	timerDisplay.textContent = timeLeft;
+        try {
+            // 1. Ler o total de perguntas da categoria no Firebase
+            const totalRef = database.ref(`categories/categories/${selectedCategory}/totalQuestions`);
+            const totalSnapshot = await totalRef.once('value');
+            const totalQuestions = totalSnapshot.val();
 
-	// 4. Inicia um novo intervalo para simplesmente decrementar a cada segundo
-	questionTimer = setInterval(() => {
-		timeLeft--; // Apenas decrementa a variável local
+            if (!totalQuestions) {
+                alert(`Categoria "${selectedCategory}" não encontrada no banco de dados.`);
+                return;
+            }
 
-		if (timeLeft >= 0) {
-			timerDisplay.textContent = timeLeft; // Atualiza a tela
-		}
+            // 2. Sortear N números aleatórios e únicos
+            const randomIds = new Set();
+            while (randomIds.size < questionsPerMatch && randomIds.size < totalQuestions) {
+                const randomId = Math.floor(Math.random() * totalQuestions) + 1;
+                randomIds.add(`q${randomId}`);
+            }
 
-		if (timeLeft <= 0) {
-			clearInterval(questionTimer); // Para o timer ao chegar em 0
-		}
-	}, 1000); // Executa exatamente a cada 1 segundo
-}
+            // 3. Buscar no Firebase apenas as perguntas sorteadas
+            const questionPromises = Array.from(randomIds).map(id => {
+                return database.ref(`categories/categories/${selectedCategory}/questions/${id}`).once('value');
+            });
+            const questionSnapshots = await Promise.all(questionPromises);
+            const questionsToSend = questionSnapshots.map(snap => snap.val()).filter(q => q); // Filtra nulos caso uma pergunta não exista
 
+            if (questionsToSend.length < questionsPerMatch) {
+                alert('Não foi possível carregar o número necessário de perguntas. Tente novamente.');
+                return;
+            }
+            
+            // 4. Iniciar a partida com as perguntas buscadas
+            const roomRef = database.ref('rooms/' + currentRoomId);
+            const roomSnapshot = await roomRef.once('value');
+            const roomData = roomSnapshot.val();
+            
+            if (roomData && roomData.players) {
+                Object.keys(roomData.players).forEach((nickname) => {
+                    roomData.players[nickname].questionsAnswered = 0;
+                });
+                
+                roomRef.update({
+                    status: 'versus',
+                    questions: questionsToSend,
+                    currentQuestionIndex: 0,
+                    questionStartTime: firebase.database.ServerValue.TIMESTAMP,
+                    players: roomData.players,
+                });
+            }
+        } catch (error) {
+            console.error("Erro ao buscar perguntas:", error);
+            alert("Ocorreu um erro ao carregar as perguntas da categoria. Verifique o console.");
+        }
+    });
+});
+
+
+/**
+ * FUNÇÃO ATUALIZADA para lidar com o novo formato de perguntas.
+ * Agora usa 'options' e 'answer' em vez de 'answers'.
+ */
 function showQuestionContent(questionIndex) {
 	const currentQuestion = roomQuestions[questionIndex];
 	if (currentQuestion) {
-		questionText.textContent = currentQuestion.question;
+		questionText.textContent = currentQuestion.text;
 		answerButtonsContainer.innerHTML = '';
-		currentQuestion.answers.forEach((answer) => {
+
+		// Itera sobre as opções da pergunta
+		currentQuestion.options.forEach((optionText, index) => {
 			const button = document.createElement('button');
-			button.textContent = answer.text;
+			button.textContent = optionText;
 			button.classList.add('answer-button');
-			if (answer.correct) button.dataset.correct = true;
+
+			// Verifica se o índice desta opção é o da resposta correta
+			if (index === currentQuestion.answer) {
+				button.dataset.correct = true;
+			}
+
 			button.addEventListener('click', selectAnswer);
 			answerButtonsContainer.appendChild(button);
 		});
@@ -252,8 +215,15 @@ function selectAnswer(e) {
 }
 
 restartButton.addEventListener('click', () => {
-	resetRoom(currentRoomId);
+    if(localIsHost) {
+	    resetRoom(currentRoomId);
+    }
 });
+
+document.getElementById('back-to-lobby-btn').addEventListener('click', () => {
+    window.location.href = 'lobby.html';
+});
+
 
 function handleHostUI(players) {
 	localIsHost = players && players[playerNickname] && players[playerNickname].isHost;
@@ -277,7 +247,9 @@ function syncLeaderboard() {
 			const playersArray = Object.values(players).sort((a, b) => b.score - a.score);
 			playersArray.forEach((player) => {
 				const li = document.createElement('li');
-				li.textContent = `${player.nickname}: ${player.score} pontos`;
+                // Adiciona um ícone de troféu para o primeiro lugar
+                const icon = player === playersArray[0] ? '<i class="fas fa-trophy winner-icon"></i>' : '';
+				li.innerHTML = `${icon} ${player.nickname}: <strong>${player.score}</strong> pontos`;
 				leaderboardList.appendChild(li);
 			});
 		}
@@ -299,133 +271,111 @@ function syncPlayersList() {
 		const players = roomData.players;
 		playersList.innerHTML = '';
 		
-		// Atualizar contador de jogadores na navbar
 		const playersCount = players ? Object.keys(players).length : 0;
-		const navbarPlayersCount = document.getElementById('navbar-players-count');
-		const navbarRoomCode = document.getElementById('navbar-room-code');
-		
-		if (navbarPlayersCount) {
-			navbarPlayersCount.textContent = playersCount;
-		}
-		if (navbarRoomCode) {
-			navbarRoomCode.textContent = currentRoomId;
-		}
+		document.getElementById('navbar-players-count').textContent = playersCount;
+		document.getElementById('navbar-room-code').textContent = currentRoomId;
 		
 		if (players) {
-			Object.keys(players).forEach((nickname) => {
+			Object.values(players).forEach((player) => {
 				const li = document.createElement('li');
-				li.textContent = nickname;
+                const hostIcon = player.isHost ? '<i class="fas fa-crown host-icon"></i>' : '';
+				li.innerHTML = `${hostIcon} ${player.nickname}`;
 				playersList.appendChild(li);
 			});
 			handleHostUI(players);
 		}
 
+		// --- LÓGICA DE TRANSIÇÃO DE TELAS (STATE MACHINE) ---
 		switch (roomData.status) {
 			case 'waiting':
 				gameInProgress = false;
 				activeTimerQuestionIndex = -1;
-				activeTimerStartTime = -1;
+				clearInterval(questionTimer);
 				showScreen(allScreens.waiting);
 				break;
 				
 			case 'selecting_category':
 				if (localIsHost) showScreen(allScreens.category);
-				else showScreen(allScreens.waiting);
+				else {
+                    waitMessage.textContent = 'Aguardando o host escolher uma categoria...';
+                    showScreen(allScreens.waiting);
+                }
 				break;
 
-			// --- NOVO ESTADO 'VERSUS' ADICIONADO AQUI ---
 			case 'versus':
-				const playerNames = Object.keys(players);
-				const vsPlayer1 = document.querySelector('#vs-player1 .player-name');
-				const vsPlayer2 = document.querySelector('#vs-player2 .player-name');
-
-				// Popula os nomes na tela de confronto
-				vsPlayer1.textContent = playerNames[0] || 'Jogador 1';
-				vsPlayer2.textContent = playerNames[1] || 'Jogador 2';
+				const playerNames = Object.keys(players || {});
+				document.querySelector('#vs-player1 .player-name').textContent = playerNames[0] || 'Jogador 1';
+				document.querySelector('#vs-player2 .player-name').textContent = playerNames[1] || 'Jogador 2';
 
 				showScreen(allScreens.versus);
 
-				// APENAS O HOST executa o temporizador para avançar para o jogo
 				if (localIsHost) {
 					setTimeout(() => {
-						// Após 4 segundos, o Host atualiza o estado para 'playing'
 						database.ref('rooms/' + currentRoomId).update({
 							status: 'playing',
 							currentQuestionIndex: 0,
 							questionStartTime: firebase.database.ServerValue.TIMESTAMP,
 						});
-					}, 4000); // 4 segundos de duração para a tela de confronto
+					}, 4000);
 				}
 				break;
 			
-				// Cole este novo bloco no lugar do antigo
-				case 'playing':
-					if (!gameInProgress) {
-						gameInProgress = true;
-						roomQuestions = roomData.questions;
-					}
+            case 'playing':
+                if (!gameInProgress) {
+                    gameInProgress = true;
+                    roomQuestions = roomData.questions;
+                }
+                const remoteQuestionIndex = roomData.currentQuestionIndex;
 
-					const remoteQuestionIndex = roomData.currentQuestionIndex;
+                if (remoteQuestionIndex !== activeTimerQuestionIndex) {
+                    activeTimerQuestionIndex = remoteQuestionIndex;
+                    
+                    document.getElementById('current-question-number').textContent = remoteQuestionIndex + 1;
+                    document.getElementById('total-questions').textContent = roomQuestions.length;
 
-					// Este bloco agora roda APENAS UMA VEZ quando uma nova pergunta é detectada
-					if (remoteQuestionIndex !== activeTimerQuestionIndex) {
-						activeTimerQuestionIndex = remoteQuestionIndex; // Atualiza o controle imediatamente
+                    showQuestionContent(remoteQuestionIndex);
+                    showScreen(allScreens.quiz);
 
-						showQuestionContent(remoteQuestionIndex);
-						showScreen(allScreens.quiz);
+                    clearInterval(questionTimer);
+                    let timeLeft = 10;
+                    timerDisplay.textContent = timeLeft;
 
-						// --- NOVO TIMER VISUAL (resolve o bug dos 12s) ---
-						clearInterval(questionTimer); // Limpa qualquer timer antigo
-						let timeLeft = 10;
-						timerDisplay.textContent = timeLeft;
+                    questionTimer = setInterval(() => {
+                        timeLeft--;
+                        timerDisplay.textContent = Math.max(0, timeLeft);
+                        if (timeLeft <= 0) {
+                            clearInterval(questionTimer);
+                        }
+                    }, 1000);
 
-						questionTimer = setInterval(() => {
-							timeLeft--;
-							timerDisplay.textContent = Math.max(0, timeLeft); // Garante que o timer não fique negativo
-							if (timeLeft <= 0) {
-								clearInterval(questionTimer);
-							}
-						}, 1000);
+                    if (localIsHost) {
+                        setTimeout(() => {
+                            database.ref('rooms/' + currentRoomId).once('value', (snap) => {
+                                const currentData = snap.val();
+                                if (currentData && currentData.status === 'playing' && currentData.currentQuestionIndex === remoteQuestionIndex) {
+                                    advanceToNextQuestion();
+                                }
+                            });
+                        }, 10500);
+                    }
+                }
 
-						// --- NOVA LÓGICA DE AVANÇO (resolve a sincronização) ---
-						// Apenas o host define quando a próxima pergunta virá
-						if (localIsHost) {
-							setTimeout(() => {
-								// Verificação de segurança: só avança se o jogo ainda estiver nesta pergunta
-								database.ref('rooms/' + currentRoomId).once('value', (snap) => {
-									const currentData = snap.val();
-									if (
-										currentData &&
-										currentData.status === 'playing' &&
-										currentData.currentQuestionIndex === remoteQuestionIndex
-									) {
-										advanceToNextQuestion();
-									}
-								});
-							}, 10500); // 10s para responder + 0.5s de margem de segurança
-						}
-					}
+                const myPlayerData = players ? players[playerNickname] : null;
+                if (myPlayerData) {
+                    playerScoreDisplay.textContent = myPlayerData.score || 0;
+                }
 
-					// --- ATUALIZAÇÕES GERAIS (fora do bloco principal) ---
-					// Atualiza a pontuação do jogador local
-					const myPlayerData = players ? players[playerNickname] : null;
-					if (myPlayerData) {
-						playerScoreDisplay.textContent = `Pontuação: ${myPlayerData.score || 0}`;
-					}
-
-					// Mostra "Aguardando..." para quem já respondeu
-					const questionsAnswered = myPlayerData ? myPlayerData.questionsAnswered || 0 : 0;
-					if (questionsAnswered > remoteQuestionIndex) {
-						questionText.textContent = 'Aguardando a próxima pergunta...';
-						answerButtonsContainer.innerHTML = '';
-					}
-					break;
+                const questionsAnswered = myPlayerData ? myPlayerData.questionsAnswered || 0 : 0;
+                if (questionsAnswered > remoteQuestionIndex) {
+                    questionText.textContent = 'Aguardando a próxima pergunta...';
+                    answerButtonsContainer.innerHTML = '';
+                }
+                break;
 				
 			case 'finished':
 				gameInProgress = false;
-				clearInterval(questionTimer); // Garante que o timer pare
+				clearInterval(questionTimer);
 				activeTimerQuestionIndex = -1;
-				activeTimerStartTime = -1;
 				showScreen(allScreens.result);
 				syncLeaderboard();
 				break;
@@ -435,40 +385,3 @@ function syncPlayersList() {
 
 // --- INICIALIZAÇÃO DO JOGO ---
 syncPlayersList();
-
-// Atualizar os event listeners para os novos cards
-const categoryCards = document.querySelectorAll('.category-card');
-
-categoryCards.forEach((card) => {
-    card.addEventListener('click', () => {
-        // Remove seleção de outros cards
-        categoryCards.forEach(c => c.classList.remove('selected'));
-        
-        // Adiciona seleção ao card clicado
-        card.classList.add('selected');
-        
-        // Pequeno delay para mostrar a seleção antes de prosseguir
-        setTimeout(() => {
-            const selectedCategory = card.dataset.category;
-            const questionsToSend = questions[selectedCategory];
-
-            const roomRef = database.ref('rooms/' + currentRoomId);
-            roomRef.once('value', (snapshot) => {
-                const roomData = snapshot.val();
-                if (roomData && roomData.players) {
-                    Object.keys(roomData.players).forEach((nickname) => {
-                        roomData.players[nickname].questionsAnswered = 0;
-                    });
-                    
-                    roomRef.update({
-                        status: 'versus',
-                        questions: questionsToSend,
-                        currentQuestionIndex: 0,
-                        questionStartTime: firebase.database.ServerValue.TIMESTAMP,
-                        players: roomData.players,
-                    });
-                }
-            });
-        }, 300);
-    });
-});

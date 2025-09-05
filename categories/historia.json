@@ -1,0 +1,27 @@
+{
+  "historia": {
+    "totalQuestions": 20,
+    "questions": {
+      "q1": { "text": "Em que ano começou a Primeira Guerra Mundial?", "options": ["1912", "1914", "1916", "1918"], "answer": 1 },
+      "q2": { "text": "Quem foi o primeiro presidente do Brasil?", "options": ["Dom Pedro I", "Getúlio Vargas", "Prudente de Morais", "Deodoro da Fonseca"], "answer": 3 },
+      "q3": { "text": "A queda do Muro de Berlim, em 1989, simbolizou o fim de qual período histórico?", "options": ["Segunda Guerra Mundial", "Guerra Fria", "Revolução Industrial", "Idade Média"], "answer": 1 },
+      "q4": { "text": "Qual civilização antiga construiu a cidade de Machu Picchu?", "options": ["Astecas", "Maias", "Incas", "Egípcios"], "answer": 2 },
+      "q5": { "text": "Quem foi a famosa rainha do Egito que se aliou a Júlio César e Marco Antônio?", "options": ["Nefertiti", "Hatshepsut", "Cleópatra", "Arsinoe"], "answer": 2 },
+      "q6": { "text": "Em que ano o homem pisou na Lua pela primeira vez?", "options": ["1965", "1969", "1971", "1973"], "answer": 1 },
+      "q7": { "text": "A 'Revolução Francesa' começou em qual século?", "options": ["Século XVI", "Século XVII", "Século XVIII", "Século XIX"], "answer": 2 },
+      "q8": { "text": "Qual navegador português é creditado por liderar a primeira expedição a circum-navegar a Terra?", "options": ["Vasco da Gama", "Pedro Álvares Cabral", "Cristóvão Colombo", "Fernão de Magalhães"], "answer": 3 },
+      "q9": { "text": "Quem escreveu o 'Manifesto Comunista' junto com Karl Marx?", "options": ["Vladimir Lenin", "Leon Trotsky", "Friedrich Engels", "Mikhail Bakunin"], "answer": 2 },
+      "q10": { "text": "Qual guerra foi travada entre o Norte e o Sul dos Estados Unidos no século XIX?", "options": ["Guerra da Independência", "Guerra Civil Americana", "Guerra Mexicano-Americana", "Guerra de 1812"], "answer": 1 },
+      "q11": { "text": "Quem foi o líder da Reforma Protestante na Alemanha?", "options": ["João Calvino", "Henrique VIII", "Martinho Lutero", "Ulrico Zwinglio"], "answer": 2 },
+      "q12": { "text": "Em que ano o navio Titanic afundou?", "options": ["1905", "1909", "1912", "1915"], "answer": 2 },
+      "q13": { "text": "Qual império foi governado por Alexandre, o Grande?", "options": ["Império Romano", "Império Persa", "Império Egípcio", "Império Macedônico"], "answer": 3 },
+      "q14": { "text": "A Lei Áurea, que aboliu a escravidão no Brasil, foi assinada em que ano?", "options": ["1822", "1850", "1888", "1889"], "answer": 2 },
+      "q15": { "text": "Quem foi Joana d'Arc?", "options": ["Uma rainha da Inglaterra", "Uma pintora renascentista", "Uma heroína de guerra francesa", "Uma escritora medieval"], "answer": 2 },
+      "q16": { "text": "Qual evento marcou o início da Idade Média?", "options": ["A queda do Império Romano do Ocidente", "A descoberta da América", "A invenção da prensa", "A Revolução Francesa"], "answer": 0 },
+      "q17": { "text": "Quem foi o inventor da prensa de tipos móveis, revolucionando a comunicação?", "options": ["Leonardo da Vinci", "Galileu Galilei", "Johannes Gutenberg", "Isaac Newton"], "answer": 2 },
+      "q18": { "text": "Qual foi o principal motivo da entrada dos Estados Unidos na Segunda Guerra Mundial?", "options": ["A invasão da Polônia", "O ataque a Pearl Harbor", "A Batalha da Grã-Bretanha", "O Holocausto"], "answer": 1 },
+      "q19": { "text": "O 'Apartheid' foi um regime de segregação racial em qual país?", "options": ["Índia", "Brasil", "Estados Unidos", "África do Sul"], "answer": 3 },
+      "q20": { "text": "Quem proferiu a famosa frase 'Eu tenho um sonho'?", "options": ["Nelson Mandela", "Malcolm X", "Martin Luther King Jr.", "Mahatma Gandhi"], "answer": 2 }
+    }
+  }
+}

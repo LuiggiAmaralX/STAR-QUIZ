@@ -1,0 +1,15 @@
+{
+  "rooms": {
+    "exemplo-sala": {
+      "status": "waiting",
+      "host": "test_host",
+      "players": {
+        "test_host": {
+          "nickname": "test_host",
+          "score": 0,
+          "isHost": true
+        }
+      }
+    }
+  }
+}

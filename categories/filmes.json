@@ -1,0 +1,27 @@
+{
+  "filmes": {
+    "totalQuestions": 20,
+    "questions": {
+      "q1": { "text": "Quem dirigiu o filme 'Titanic' de 1997?", "options": ["Steven Spielberg", "George Lucas", "James Cameron", "Christopher Nolan"], "answer": 2 },
+      "q2": { "text": "Qual filme apresenta a famosa frase 'Que a Força esteja com você'?", "options": ["O Senhor dos Anéis", "Star Wars", "Harry Potter", "Matrix"], "answer": 1 },
+      "q3": { "text": "Qual ator interpretou o Coringa no filme 'O Cavaleiro das Trevas'?", "options": ["Jack Nicholson", "Jared Leto", "Joaquin Phoenix", "Heath Ledger"], "answer": 3 },
+      "q4": { "text": "Qual destes filmes da Pixar foi o primeiro a ser lançado?", "options": ["Procurando Nemo", "Monstros S.A.", "Toy Story", "Carros"], "answer": 2 },
+      "q5": { "text": "Em 'O Senhor dos Anéis', qual é o nome do anel que Frodo deve destruir?", "options": ["O Anel do Poder", "O Um Anel", "Anel de Sauron", "O Anel de Fogo"], "answer": 1 },
+      "q6": { "text": "Qual filme ganhou o Oscar de Melhor Filme no ano 2020?", "options": ["1917", "Coringa", "Parasita", "Era uma Vez em... Hollywood"], "answer": 2 },
+      "q7": { "text": "Qual é o nome do leão protagonista em 'O Rei Leão'?", "options": ["Mufasa", "Scar", "Simba", "Timão"], "answer": 2 },
+      "q8": { "text": "Qual atriz interpreta a personagem Katniss Everdeen na saga 'Jogos Vorazes'?", "options": ["Emma Watson", "Jennifer Lawrence", "Kristen Stewart", "Scarlett Johansson"], "answer": 1 },
+      "q9": { "text": "Qual o nome do navio pirata do Capitão Jack Sparrow?", "options": ["O Vingança da Rainha Ana", "O Holandês Voador", "O Pérola Negra", "O Interceptor"], "answer": 2 },
+      "q10": { "text": "Qual destes filmes NÃO foi dirigido por Quentin Tarantino?", "options": ["Pulp Fiction", "Kill Bill", "Forrest Gump", "Cães de Aluguel"], "answer": 2 },
+      "q11": { "text": "No filme 'De Volta para o Futuro', qual a marca do carro que é a máquina do tempo?", "options": ["Ford", "Chevrolet", "Ferrari", "DeLorean"], "answer": 3 },
+      "q12": { "text": "Qual personagem da Marvel foi o primeiro a aparecer no Universo Cinematográfico Marvel (MCU)?", "options": ["Capitão América", "Hulk", "Homem de Ferro", "Thor"], "answer": 2 },
+      "q13": { "text": "Qual o nome da inteligência artificial no filme '2001: Uma Odisseia no Espaço'?", "options": ["J.A.R.V.I.S.", "HAL 9000", "Skynet", "GLaDOS"], "answer": 1 },
+      "q14": { "text": "Qual o nome do bruxo que é o principal antagonista na saga 'Harry Potter'?", "options": ["Dumbledore", "Snape", "Voldemort", "Grindelwald"], "answer": 2 },
+      "q15": { "text": "Qual ator interpreta Neo na trilogia 'Matrix'?", "options": ["Laurence Fishburne", "Hugo Weaving", "Keanu Reeves", "Tom Cruise"], "answer": 2 },
+      "q16": { "text": "Em 'Jurassic Park', o DNA de dinossauro é extraído de qual inseto preservado em âmbar?", "options": ["Abelha", "Formiga", "Mosquito", "Libélula"], "answer": 2 },
+      "q17": { "text": "Qual o nome do robô que se apaixona por EVE no filme da Pixar?", "options": ["R2-D2", "WALL-E", "BB-8", "Johnny 5"], "answer": 1 },
+      "q18": { "text": "Qual cidade é protegida pelo Batman?", "options": ["Metropolis", "Central City", "Star City", "Gotham City"], "answer": 3 },
+      "q19": { "text": "Qual o nome do tigre que acompanha Pi no filme 'As Aventuras de Pi'?", "options": ["Shere Khan", "Rajah", "Richard Parker", "Aslan"], "answer": 2 },
+      "q20": { "text": "Qual é a primeira regra do Clube da Luta?", "options": ["Você não comenta sobre o Clube da Luta", "Você não fala sobre o Clube da Luta", "As duas primeiras opções estão corretas", "Sempre traga um amigo"], "answer": 2 }
+    }
+  }
+}

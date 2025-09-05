@@ -1,0 +1,27 @@
+{
+  "geografia": {
+    "totalQuestions": 20,
+    "questions": {
+      "q1": { "text": "Qual é o maior continente do mundo em área territorial?", "options": ["África", "Europa", "Ásia", "América do Norte"], "answer": 2 },
+      "q2": { "text": "Qual é o rio mais longo do mundo?", "options": ["Rio Nilo", "Rio Amazonas", "Rio Yangtze", "Rio Mississippi"], "answer": 0 },
+      "q3": { "text": "Qual a capital da Austrália?", "options": ["Sydney", "Melbourne", "Camberra", "Perth"], "answer": 2 },
+      "q4": { "text": "Em que país estão localizadas as Pirâmides de Gizé?", "options": ["Sudão", "Líbia", "Egito", "Marrocos"], "answer": 2 },
+      "q5": { "text": "Qual o maior oceano do mundo?", "options": ["Atlântico", "Índico", "Ártico", "Pacífico"], "answer": 3 },
+      "q6": { "text": "Qual o nome da cordilheira que atravessa a costa oeste da América do Sul?", "options": ["Montanhas Rochosas", "Alpes", "Himalaia", "Cordilheira dos Andes"], "answer": 3 },
+      "q7": { "text": "Qual é o país mais populoso do mundo?", "options": ["China", "Estados Unidos", "Índia", "Indonésia"], "answer": 2 },
+      "q8": { "text": "Qual destes países não faz fronteira com o Brasil?", "options": ["Colômbia", "Chile", "Argentina", "Uruguai"], "answer": 1 },
+      "q9": { "text": "O Monte Everest, a montanha mais alta do mundo, fica em qual cordilheira?", "options": ["Andes", "Himalaia", "Alpes", "Rochosas"], "answer": 1 },
+      "q10": { "text": "Qual é o maior deserto quente do mundo?", "options": ["Deserto do Atacama", "Deserto de Gobi", "Deserto do Saara", "Deserto da Arábia"], "answer": 2 },
+      "q11": { "text": "Qual canal liga o Mar Mediterrâneo ao Mar Vermelho?", "options": ["Canal do Panamá", "Canal de Suez", "Canal da Mancha", "Estreito de Gibraltar"], "answer": 1 },
+      "q12": { "text": "Qual a capital do Japão?", "options": ["Quioto", "Osaka", "Tóquio", "Hiroshima"], "answer": 2 },
+      "q13": { "text": "Qual o único país que é também um continente?", "options": ["Groenlândia", "Austrália", "Antártida", "Índia"], "answer": 1 },
+      "q14": { "text": "As Cataratas do Iguaçu estão localizadas na fronteira entre quais dois países?", "options": ["Brasil e Paraguai", "Brasil e Argentina", "Argentina e Paraguai", "Brasil e Uruguai"], "answer": 1 },
+      "q15": { "text": "Qual é o menor país do mundo?", "options": ["Mônaco", "Nauru", "San Marino", "Vaticano"], "answer": 3 },
+      "q16": { "text": "Qual o nome do movimento de rotação da Terra em torno de si mesma?", "options": ["Translação", "Precessão", "Nutação", "Rotação"], "answer": 3 },
+      "q17": { "text": "Em que continente está localizado o Deserto de Gobi?", "options": ["África", "Ásia", "América do Sul", "Oceania"], "answer": 1 },
+      "q18": { "text": "Qual o rio que passa pela cidade de Londres?", "options": ["Sena", "Danúbio", "Tâmisa", "Reno"], "answer": 2 },
+      "q19": { "text": "A cidade de Machu Picchu está localizada em qual país?", "options": ["Bolívia", "Equador", "Colômbia", "Peru"], "answer": 3 },
+      "q20": { "text": "Qual o ponto mais baixo de terra firme no planeta?", "options": ["Vale da Morte", "Depressão de Afar", "Mar Morto", "Lago Baikal"], "answer": 2 }
+    }
+  }
+}

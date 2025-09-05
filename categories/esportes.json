@@ -1,0 +1,27 @@
+{
+  "esportes": {
+    "totalQuestions": 20,
+    "questions": {
+      "q1": { "text": "Qual país venceu a primeira Copa do Mundo de Futebol em 1930?", "options": ["Brasil", "Argentina", "Itália", "Uruguai"], "answer": 3 },
+      "q2": { "text": "Quantos anéis compõem a bandeira olímpica?", "options": ["4", "5", "6", "7"], "answer": 1 },
+      "q3": { "text": "Qual jogador de basquete é conhecido como 'Air Jordan'?", "options": ["LeBron James", "Kobe Bryant", "Michael Jordan", "Stephen Curry"], "answer": 2 },
+      "q4": { "text": "Em que esporte se utiliza um 'taco' e uma 'bolinha'?", "options": ["Tênis", "Golfe", "Vôlei", "Natação"], "answer": 1 },
+      "q5": { "text": "Qual o nome do famoso nadador americano que ganhou 23 medalhas de ouro olímpicas?", "options": ["Mark Spitz", "Ryan Lochte", "César Cielo", "Michael Phelps"], "answer": 3 },
+      "q6": { "text": "Qual país sediou as Olimpíadas de 2016?", "options": ["China", "Inglaterra", "Japão", "Brasil"], "answer": 3 },
+      "q7": { "text": "Quem é o maior artilheiro da história da Seleção Brasileira de Futebol Masculino?", "options": ["Pelé", "Ronaldo", "Neymar", "Romário"], "answer": 2 },
+      "q8": { "text": "No voleibol, quantos jogadores de cada time estão em quadra durante uma partida?", "options": ["5", "6", "7", "11"], "answer": 1 },
+      "q9": { "text": "Qual é o nome da principal liga de futebol americano dos EUA?", "options": ["NBA", "MLB", "NHL", "NFL"], "answer": 3 },
+      "q10": { "text": "Qual piloto de Fórmula 1 detém o recorde de mais títulos mundiais (empatado com Michael Schumacher)?", "options": ["Ayrton Senna", "Lewis Hamilton", "Sebastian Vettel", "Alain Prost"], "answer": 1 },
+      "q11": { "text": "O 'Grand Slam' no tênis é composto por quantos torneios?", "options": ["3", "4", "5", "6"], "answer": 1 },
+      "q12": { "text": "Qual lutador de boxe era conhecido por 'flutuar como uma borboleta e picar como uma abelha'?", "options": ["Mike Tyson", "Rocky Marciano", "Muhammad Ali", "George Foreman"], "answer": 2 },
+      "q13": { "text": "Qual o nome do skatista mais famoso de todos os tempos, conhecido por criar a manobra '900'?", "options": ["Bob Burnquist", "Nyjah Huston", "Tony Hawk", "Rayssa Leal"], "answer": 2 },
+      "q14": { "text": "Em que país o esporte 'sumô' se originou?", "options": ["China", "Coreia do Sul", "Japão", "Tailândia"], "answer": 2 },
+      "q15": { "text": "Qual é o evento de ciclismo mais famoso do mundo?", "options": ["Giro d'Italia", "Vuelta a España", "Tour de France", "Paris-Roubaix"], "answer": 2 },
+      "q16": { "text": "Qual atleta jamaicano é considerado o homem mais rápido do mundo?", "options": ["Asafa Powell", "Yohan Blake", "Usain Bolt", "Carl Lewis"], "answer": 2 },
+      "q17": { "text": "No beisebol, o que é um 'home run'?", "options": ["Eliminar um jogador", "Uma corrida completa ao redor das bases", "Pegar a bola no ar", "Um arremesso perfeito"], "answer": 1 },
+      "q18": { "text": "O esporte 'críquete' é mais popular em qual destes países?", "options": ["Estados Unidos", "Rússia", "Índia", "Canadá"], "answer": 2 },
+      "q19": { "text": "Qual a cor da faixa que representa o nível mais alto no Judô?", "options": ["Preta", "Branca", "Vermelha", "Coral"], "answer": 2 },
+      "q20": { "text": "O 'Super Bowl' é a final de qual campeonato?", "options": ["Basquete (NBA)", "Hóquei no Gelo (NHL)", "Beisebol (MLB)", "Futebol Americano (NFL)"], "answer": 3 }
+    }
+  }
+}

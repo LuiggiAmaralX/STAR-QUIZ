@@ -1,0 +1,27 @@
+{
+  "tecnologia": {
+    "totalQuestions": 20,
+    "questions": {
+      "q1": { "text": "O que significa a sigla 'CPU'?", "options": ["Unidade Central de Processamento", "Placa de Vídeo", "Memória RAM", "Fonte de Energia"], "answer": 0 },
+      "q2": { "text": "Qual empresa desenvolveu o sistema operacional Windows?", "options": ["Apple", "Google", "Microsoft", "Linux Foundation"], "answer": 2 },
+      "q3": { "text": "Qual dessas linguagens de programação é usada primariamente para estilizar páginas web?", "options": ["Python", "JavaScript", "HTML", "CSS"], "answer": 3 },
+      "q4": { "text": "Quem é considerado o fundador da Amazon?", "options": ["Bill Gates", "Jeff Bezos", "Elon Musk", "Mark Zuckerberg"], "answer": 1 },
+      "q5": { "text": "Qual o nome da assistente virtual desenvolvida pela Apple?", "options": ["Alexa", "Siri", "Cortana", "Google Assistente"], "answer": 1 },
+      "q6": { "text": "O que é 'HTML'?", "options": ["Uma linguagem de programação", "Um banco de dados", "Uma linguagem de marcação", "Um sistema operacional"], "answer": 2 },
+      "q7": { "text": "Qual rede social foi criada por Mark Zuckerberg?", "options": ["Twitter", "Instagram", "Facebook", "LinkedIn"], "answer": 2 },
+      "q8": { "text": "Qual componente do computador é responsável por armazenar dados permanentemente?", "options": ["Memória RAM", "Processador", "SSD ou HD", "Placa-mãe"], "answer": 2 },
+      "q9": { "text": "O que é 'phishing'?", "options": ["Um tipo de vírus de computador", "Uma técnica de fraude online para roubar informações", "Um software de edição de fotos", "Uma rede sem fio"], "answer": 1 },
+      "q10": { "text": "Qual empresa é famosa por suas placas de vídeo 'GeForce'?", "options": ["Intel", "AMD", "NVIDIA", "Qualcomm"], "answer": 2 },
+      "q11": { "text": "O que o termo 'URL' significa?", "options": ["Localizador Uniforme de Recursos", "Linguagem de Realidade Unificada", "Link de Recurso Universal", "Nenhuma das anteriores"], "answer": 0 },
+      "q12": { "text": "Qual foi o primeiro console de videogame da Sony?", "options": ["PlayStation 2", "PlayStation", "PSP", "PS Vita"], "answer": 1 },
+      "q13": { "text": "O que é 'software de código aberto' (open source)?", "options": ["Software que é gratuito", "Software cujo código-fonte pode ser modificado e distribuído", "Software que só roda em Linux", "Software de segurança"], "answer": 1 },
+      "q14": { "text": "Qual navegador de internet é desenvolvido pelo Google?", "options": ["Firefox", "Safari", "Edge", "Chrome"], "answer": 3 },
+      "q15": { "text": "A 'Lei de Moore' está relacionada a qual componente de hardware?", "options": ["Baterias", "Telas", "Processadores", "Discos Rígidos"], "answer": 2 },
+      "q16": { "text": "O que é a 'nuvem' em computação?", "options": ["O sistema operacional do futuro", "Um conjunto de servidores na internet para armazenar dados e rodar aplicações", "Uma nova forma de conectar mouses sem fio", "Um padrão de Wi-Fi"], "answer": 1 },
+      "q17": { "text": "Qual empresa fabrica os processadores 'Ryzen'?", "options": ["NVIDIA", "Intel", "AMD", "Apple"], "answer": 2 },
+      "q18": { "text": "Qual o limite de caracteres para um tweet no Twitter/X em 2023?", "options": ["140", "280", "1000", "4000 para assinantes"], "answer": 3 },
+      "q19": { "text": "Qual o nome do primeiro satélite artificial lançado ao espaço?", "options": ["Explorer 1", "Sputnik 1", "Vostok 1", "Apollo 11"], "answer": 1 },
+      "q20": { "text": "O que significa 'Wi-Fi'?", "options": ["Wireless Fidelity", "Wired Fidelity", "Wireless Firewall", "Nenhum dos anteriores"], "answer": 0 }
+    }
+  }
+}

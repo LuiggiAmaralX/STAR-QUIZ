@@ -1,0 +1,129 @@
+{
+  "categories": {
+    "tecnologia": {
+      "totalQuestions": 20,
+      "questions": {
+        "q1": { "text": "O que significa a sigla 'CPU'?", "options": ["Unidade Central de Processamento", "Placa de Vídeo", "Memória RAM", "Fonte de Energia"], "answer": 0 },
+        "q2": { "text": "Qual empresa desenvolveu o sistema operacional Windows?", "options": ["Apple", "Google", "Microsoft", "Linux Foundation"], "answer": 2 },
+        "q3": { "text": "Qual dessas linguagens de programação é usada primariamente para estilizar páginas web?", "options": ["Python", "JavaScript", "HTML", "CSS"], "answer": 3 },
+        "q4": { "text": "Quem é considerado o fundador da Amazon?", "options": ["Bill Gates", "Jeff Bezos", "Elon Musk", "Mark Zuckerberg"], "answer": 1 },
+        "q5": { "text": "Qual o nome da assistente virtual desenvolvida pela Apple?", "options": ["Alexa", "Siri", "Cortana", "Google Assistente"], "answer": 1 },
+        "q6": { "text": "O que é 'HTML'?", "options": ["Uma linguagem de programação", "Um banco de dados", "Uma linguagem de marcação", "Um sistema operacional"], "answer": 2 },
+        "q7": { "text": "Qual rede social foi criada por Mark Zuckerberg?", "options": ["Twitter", "Instagram", "Facebook", "LinkedIn"], "answer": 2 },
+        "q8": { "text": "Qual componente do computador é responsável por armazenar dados permanentemente?", "options": ["Memória RAM", "Processador", "SSD ou HD", "Placa-mãe"], "answer": 2 },
+        "q9": { "text": "O que é 'phishing'?", "options": ["Um tipo de vírus de computador", "Uma técnica de fraude online para roubar informações", "Um software de edição de fotos", "Uma rede sem fio"], "answer": 1 },
+        "q10": { "text": "Qual empresa é famosa por suas placas de vídeo 'GeForce'?", "options": ["Intel", "AMD", "NVIDIA", "Qualcomm"], "answer": 2 },
+        "q11": { "text": "O que o termo 'URL' significa?", "options": ["Localizador Uniforme de Recursos", "Linguagem de Realidade Unificada", "Link de Recurso Universal", "Nenhuma das anteriores"], "answer": 0 },
+        "q12": { "text": "Qual foi o primeiro console de videogame da Sony?", "options": ["PlayStation 2", "PlayStation", "PSP", "PS Vita"], "answer": 1 },
+        "q13": { "text": "O que é 'software de código aberto' (open source)?", "options": ["Software que é gratuito", "Software cujo código-fonte pode ser modificado e distribuído", "Software que só roda em Linux", "Software de segurança"], "answer": 1 },
+        "q14": { "text": "Qual navegador de internet é desenvolvido pelo Google?", "options": ["Firefox", "Safari", "Edge", "Chrome"], "answer": 3 },
+        "q15": { "text": "A 'Lei de Moore' está relacionada a qual componente de hardware?", "options": ["Baterias", "Telas", "Processadores", "Discos Rígidos"], "answer": 2 },
+        "q16": { "text": "O que é a 'nuvem' em computação?", "options": ["O sistema operacional do futuro", "Um conjunto de servidores na internet para armazenar dados e rodar aplicações", "Uma nova forma de conectar mouses sem fio", "Um padrão de Wi-Fi"], "answer": 1 },
+        "q17": { "text": "Qual empresa fabrica os processadores 'Ryzen'?", "options": ["NVIDIA", "Intel", "AMD", "Apple"], "answer": 2 },
+        "q18": { "text": "Qual o limite de caracteres para um tweet no Twitter/X em 2023?", "options": ["140", "280", "1000", "4000 para assinantes"], "answer": 3 },
+        "q19": { "text": "Qual o nome do primeiro satélite artificial lançado ao espaço?", "options": ["Explorer 1", "Sputnik 1", "Vostok 1", "Apollo 11"], "answer": 1 },
+        "q20": { "text": "O que significa 'Wi-Fi'?", "options": ["Wireless Fidelity", "Wired Fidelity", "Wireless Firewall", "Nenhum dos anteriores"], "answer": 0 }
+      }
+    },
+    "filmes": {
+      "totalQuestions": 20,
+      "questions": {
+        "q1": { "text": "Quem dirigiu o filme 'Titanic' de 1997?", "options": ["Steven Spielberg", "George Lucas", "James Cameron", "Christopher Nolan"], "answer": 2 },
+        "q2": { "text": "Qual filme apresenta a famosa frase 'Que a Força esteja com você'?", "options": ["O Senhor dos Anéis", "Star Wars", "Harry Potter", "Matrix"], "answer": 1 },
+        "q3": { "text": "Qual ator interpretou o Coringa no filme 'O Cavaleiro das Trevas'?", "options": ["Jack Nicholson", "Jared Leto", "Joaquin Phoenix", "Heath Ledger"], "answer": 3 },
+        "q4": { "text": "Qual destes filmes da Pixar foi o primeiro a ser lançado?", "options": ["Procurando Nemo", "Monstros S.A.", "Toy Story", "Carros"], "answer": 2 },
+        "q5": { "text": "Em 'O Senhor dos Anéis', qual é o nome do anel que Frodo deve destruir?", "options": ["O Anel do Poder", "O Um Anel", "Anel de Sauron", "O Anel de Fogo"], "answer": 1 },
+        "q6": { "text": "Qual filme ganhou o Oscar de Melhor Filme no ano 2020?", "options": ["1917", "Coringa", "Parasita", "Era uma Vez em... Hollywood"], "answer": 2 },
+        "q7": { "text": "Qual é o nome do leão protagonista em 'O Rei Leão'?", "options": ["Mufasa", "Scar", "Simba", "Timão"], "answer": 2 },
+        "q8": { "text": "Qual atriz interpreta a personagem Katniss Everdeen na saga 'Jogos Vorazes'?", "options": ["Emma Watson", "Jennifer Lawrence", "Kristen Stewart", "Scarlett Johansson"], "answer": 1 },
+        "q9": { "text": "Qual o nome do navio pirata do Capitão Jack Sparrow?", "options": ["O Vingança da Rainha Ana", "O Holandês Voador", "O Pérola Negra", "O Interceptor"], "answer": 2 },
+        "q10": { "text": "Qual destes filmes NÃO foi dirigido por Quentin Tarantino?", "options": ["Pulp Fiction", "Kill Bill", "Forrest Gump", "Cães de Aluguel"], "answer": 2 },
+        "q11": { "text": "No filme 'De Volta para o Futuro', qual a marca do carro que é a máquina do tempo?", "options": ["Ford", "Chevrolet", "Ferrari", "DeLorean"], "answer": 3 },
+        "q12": { "text": "Qual personagem da Marvel foi o primeiro a aparecer no Universo Cinematográfico Marvel (MCU)?", "options": ["Capitão América", "Hulk", "Homem de Ferro", "Thor"], "answer": 2 },
+        "q13": { "text": "Qual o nome da inteligência artificial no filme '2001: Uma Odisseia no Espaço'?", "options": ["J.A.R.V.I.S.", "HAL 9000", "Skynet", "GLaDOS"], "answer": 1 },
+        "q14": { "text": "Qual o nome do bruxo que é o principal antagonista na saga 'Harry Potter'?", "options": ["Dumbledore", "Snape", "Voldemort", "Grindelwald"], "answer": 2 },
+        "q15": { "text": "Qual ator interpreta Neo na trilogia 'Matrix'?", "options": ["Laurence Fishburne", "Hugo Weaving", "Keanu Reeves", "Tom Cruise"], "answer": 2 },
+        "q16": { "text": "Em 'Jurassic Park', o DNA de dinossauro é extraído de qual inseto preservado em âmbar?", "options": ["Abelha", "Formiga", "Mosquito", "Libélula"], "answer": 2 },
+        "q17": { "text": "Qual o nome do robô que se apaixona por EVE no filme da Pixar?", "options": ["R2-D2", "WALL-E", "BB-8", "Johnny 5"], "answer": 1 },
+        "q18": { "text": "Qual cidade é protegida pelo Batman?", "options": ["Metropolis", "Central City", "Star City", "Gotham City"], "answer": 3 },
+        "q19": { "text": "Qual o nome do tigre que acompanha Pi no filme 'As Aventuras de Pi'?", "options": ["Shere Khan", "Rajah", "Richard Parker", "Aslan"], "answer": 2 },
+        "q20": { "text": "Qual é a primeira regra do Clube da Luta?", "options": ["Você não comenta sobre o Clube da Luta", "Você não fala sobre o Clube da Luta", "As duas primeiras opções estão corretas", "Sempre traga um amigo"], "answer": 2 }
+      }
+    },
+    "esportes": {
+      "totalQuestions": 20,
+      "questions": {
+        "q1": { "text": "Qual país venceu a primeira Copa do Mundo de Futebol em 1930?", "options": ["Brasil", "Argentina", "Itália", "Uruguai"], "answer": 3 },
+        "q2": { "text": "Quantos anéis compõem a bandeira olímpica?", "options": ["4", "5", "6", "7"], "answer": 1 },
+        "q3": { "text": "Qual jogador de basquete é conhecido como 'Air Jordan'?", "options": ["LeBron James", "Kobe Bryant", "Michael Jordan", "Stephen Curry"], "answer": 2 },
+        "q4": { "text": "Em que esporte se utiliza um 'taco' e uma 'bolinha'?", "options": ["Tênis", "Golfe", "Vôlei", "Natação"], "answer": 1 },
+        "q5": { "text": "Qual o nome do famoso nadador americano que ganhou 23 medalhas de ouro olímpicas?", "options": ["Mark Spitz", "Ryan Lochte", "César Cielo", "Michael Phelps"], "answer": 3 },
+        "q6": { "text": "Qual país sediou as Olimpíadas de 2016?", "options": ["China", "Inglaterra", "Japão", "Brasil"], "answer": 3 },
+        "q7": { "text": "Quem é o maior artilheiro da história da Seleção Brasileira de Futebol Masculino (segundo a FIFA)?", "options": ["Pelé", "Ronaldo", "Neymar", "Romário"], "answer": 2 },
+        "q8": { "text": "No voleibol, quantos jogadores de cada time estão em quadra durante uma partida?", "options": ["5", "6", "7", "11"], "answer": 1 },
+        "q9": { "text": "Qual é o nome da principal liga de futebol americano dos EUA?", "options": ["NBA", "MLB", "NHL", "NFL"], "answer": 3 },
+        "q10": { "text": "Qual piloto de Fórmula 1 detém o recorde de mais títulos mundiais (empatado com Michael Schumacher)?", "options": ["Ayrton Senna", "Lewis Hamilton", "Sebastian Vettel", "Alain Prost"], "answer": 1 },
+        "q11": { "text": "O 'Grand Slam' no tênis é composto por quantos torneios?", "options": ["3", "4", "5", "6"], "answer": 1 },
+        "q12": { "text": "Qual lutador de boxe era conhecido por 'flutuar como uma borboleta e picar como uma abelha'?", "options": ["Mike Tyson", "Rocky Marciano", "Muhammad Ali", "George Foreman"], "answer": 2 },
+        "q13": { "text": "Qual o nome do skatista mais famoso de todos os tempos, conhecido por criar a manobra '900'?", "options": ["Bob Burnquist", "Nyjah Huston", "Tony Hawk", "Rayssa Leal"], "answer": 2 },
+        "q14": { "text": "Em que país o esporte 'sumô' se originou?", "options": ["China", "Coreia do Sul", "Japão", "Tailândia"], "answer": 2 },
+        "q15": { "text": "Qual é o evento de ciclismo mais famoso do mundo?", "options": ["Giro d'Italia", "Vuelta a España", "Tour de France", "Paris-Roubaix"], "answer": 2 },
+        "q16": { "text": "Qual atleta jamaicano é considerado o homem mais rápido do mundo?", "options": ["Asafa Powell", "Yohan Blake", "Usain Bolt", "Carl Lewis"], "answer": 2 },
+        "q17": { "text": "No beisebol, o que é um 'home run'?", "options": ["Eliminar um jogador", "Uma corrida completa ao redor das bases", "Pegar a bola no ar", "Um arremesso perfeito"], "answer": 1 },
+        "q18": { "text": "O esporte 'críquete' é mais popular em qual destes países?", "options": ["Estados Unidos", "Rússia", "Índia", "Canadá"], "answer": 2 },
+        "q19": { "text": "Qual a cor da faixa que representa o nível mais alto para mestres no Judô?", "options": ["Preta", "Branca", "Vermelha", "Coral"], "answer": 2 },
+        "q20": { "text": "O 'Super Bowl' é a final de qual campeonato?", "options": ["Basquete (NBA)", "Hóquei no Gelo (NHL)", "Beisebol (MLB)", "Futebol Americano (NFL)"], "answer": 3 }
+      }
+    },
+    "geografia": {
+      "totalQuestions": 20,
+      "questions": {
+        "q1": { "text": "Qual é o maior continente do mundo em área territorial?", "options": ["África", "Europa", "Ásia", "América do Norte"], "answer": 2 },
+        "q2": { "text": "Qual é o rio mais longo do mundo, de acordo com medições recentes?", "options": ["Rio Nilo", "Rio Amazonas", "Rio Yangtze", "Rio Mississippi"], "answer": 1 },
+        "q3": { "text": "Qual a capital da Austrália?", "options": ["Sydney", "Melbourne", "Camberra", "Perth"], "answer": 2 },
+        "q4": { "text": "Em que país estão localizadas as Pirâmides de Gizé?", "options": ["Sudão", "Líbia", "Egito", "Marrocos"], "answer": 2 },
+        "q5": { "text": "Qual o maior oceano do mundo?", "options": ["Atlântico", "Índico", "Ártico", "Pacífico"], "answer": 3 },
+        "q6": { "text": "Qual o nome da cordilheira que atravessa a costa oeste da América do Sul?", "options": ["Montanhas Rochosas", "Alpes", "Himalaia", "Cordilheira dos Andes"], "answer": 3 },
+        "q7": { "text": "Qual é o país mais populoso do mundo (dados de 2023)?", "options": ["China", "Estados Unidos", "Índia", "Indonésia"], "answer": 2 },
+        "q8": { "text": "Qual destes países não faz fronteira com o Brasil?", "options": ["Colômbia", "Chile", "Argentina", "Uruguai"], "answer": 1 },
+        "q9": { "text": "O Monte Everest, a montanha mais alta do mundo, fica em qual cordilheira?", "options": ["Andes", "Himalaia", "Alpes", "Rochosas"], "answer": 1 },
+        "q10": { "text": "Qual é o maior deserto quente do mundo?", "options": ["Deserto do Atacama", "Deserto de Gobi", "Deserto do Saara", "Deserto da Arábia"], "answer": 2 },
+        "q11": { "text": "Qual canal liga o Mar Mediterrâneo ao Mar Vermelho?", "options": ["Canal do Panamá", "Canal de Suez", "Canal da Mancha", "Estreito de Gibraltar"], "answer": 1 },
+        "q12": { "text": "Qual a capital do Japão?", "options": ["Quioto", "Osaka", "Tóquio", "Hiroshima"], "answer": 2 },
+        "q13": { "text": "Qual o único país que é também um continente?", "options": ["Groenlândia", "Austrália", "Antártida", "Índia"], "answer": 1 },
+        "q14": { "text": "As Cataratas do Iguaçu estão localizadas na fronteira entre quais dois países?", "options": ["Brasil e Paraguai", "Brasil e Argentina", "Argentina e Paraguai", "Brasil e Uruguai"], "answer": 1 },
+        "q15": { "text": "Qual é o menor país do mundo?", "options": ["Mônaco", "Nauru", "San Marino", "Vaticano"], "answer": 3 },
+        "q16": { "text": "Qual o nome do movimento da Terra em torno de si mesma, responsável pelos dias e noites?", "options": ["Translação", "Precessão", "Nutação", "Rotação"], "answer": 3 },
+        "q17": { "text": "Em que continente está localizado o Deserto de Gobi?", "options": ["África", "Ásia", "América do Sul", "Oceania"], "answer": 1 },
+        "q18": { "text": "Qual o rio que passa pela cidade de Londres?", "options": ["Sena", "Danúbio", "Tâmisa", "Reno"], "answer": 2 },
+        "q19": { "text": "A cidade de Machu Picchu está localizada em qual país?", "options": ["Bolívia", "Equador", "Colômbia", "Peru"], "answer": 3 },
+        "q20": { "text": "Qual o ponto de terra firme com a menor altitude do planeta?", "options": ["Vale da Morte", "Depressão de Afar", "Mar Morto", "Lago Baikal"], "answer": 2 }
+      }
+    },
+    "historia": {
+      "totalQuestions": 20,
+      "questions": {
+        "q1": { "text": "Em que ano começou a Primeira Guerra Mundial?", "options": ["1912", "1914", "1916", "1918"], "answer": 1 },
+        "q2": { "text": "Quem foi o primeiro presidente do Brasil?", "options": ["Dom Pedro I", "Getúlio Vargas", "Prudente de Morais", "Deodoro da Fonseca"], "answer": 3 },
+        "q3": { "text": "A queda do Muro de Berlim, em 1989, simbolizou o fim de qual período histórico?", "options": ["Segunda Guerra Mundial", "Guerra Fria", "Revolução Industrial", "Idade Média"], "answer": 1 },
+        "q4": { "text": "Qual civilização antiga construiu a cidade de Machu Picchu?", "options": ["Astecas", "Maias", "Incas", "Egípcios"], "answer": 2 },
+        "q5": { "text": "Quem foi a famosa rainha do Egito que se aliou a Júlio César e Marco Antônio?", "options": ["Nefertiti", "Hatshepsut", "Cleópatra", "Arsinoe"], "answer": 2 },
+        "q6": { "text": "Em que ano o homem pisou na Lua pela primeira vez?", "options": ["1965", "1969", "1971", "1973"], "answer": 1 },
+        "q7": { "text": "A 'Revolução Francesa' começou em qual século?", "options": ["Século XVI", "Século XVII", "Século XVIII", "Século XIX"], "answer": 2 },
+        "q8": { "text": "Qual navegador português é creditado por liderar a primeira expedição a circum-navegar a Terra?", "options": ["Vasco da Gama", "Pedro Álvares Cabral", "Cristóvão Colombo", "Fernão de Magalhães"], "answer": 3 },
+        "q9": { "text": "Quem escreveu o 'Manifesto Comunista' junto com Karl Marx?", "options": ["Vladimir Lenin", "Leon Trotsky", "Friedrich Engels", "Mikhail Bakunin"], "answer": 2 },
+        "q10": { "text": "Qual guerra foi travada entre o Norte e o Sul dos Estados Unidos no século XIX?", "options": ["Guerra da Independência", "Guerra Civil Americana", "Guerra Mexicano-Americana", "Guerra de 1812"], "answer": 1 },
+        "q11": { "text": "Quem foi o líder da Reforma Protestante na Alemanha?", "options": ["João Calvino", "Henrique VIII", "Martinho Lutero", "Ulrico Zwinglio"], "answer": 2 },
+        "q12": { "text": "Em que ano o navio Titanic afundou?", "options": ["1905", "1909", "1912", "1915"], "answer": 2 },
+        "q13": { "text": "Qual império foi governado por Alexandre, o Grande?", "options": ["Império Romano", "Império Persa", "Império Egípcio", "Império Macedônico"], "answer": 3 },
+        "q14": { "text": "A Lei Áurea, que aboliu a escravidão no Brasil, foi assinada em que ano?", "options": ["1822", "1850", "1888", "1889"], "answer": 2 },
+        "q15": { "text": "Quem foi Joana d'Arc?", "options": ["Uma rainha da Inglaterra", "Uma pintora renascentista", "Uma heroína de guerra francesa", "Uma escritora medieval"], "answer": 2 },
+        "q16": { "text": "Qual evento marcou o início da Idade Média?", "options": ["A queda do Império Romano do Ocidente", "A descoberta da América", "A invenção da prensa", "A Revolução Francesa"], "answer": 0 },
+        "q17": { "text": "Quem foi o inventor da prensa de tipos móveis, revolucionando a comunicação?", "options": ["Leonardo da Vinci", "Galileu Galilei", "Johannes Gutenberg", "Isaac Newton"], "answer": 2 },
+        "q18": { "text": "Qual foi o principal motivo da entrada dos Estados Unidos na Segunda Guerra Mundial?", "options": ["A invasão da Polônia", "O ataque a Pearl Harbor", "A Batalha da Grã-Bretanha", "O Holocausto"], "answer": 1 },
+        "q19": { "text": "O 'Apartheid' foi um regime de segregação racial em qual país?", "options": ["Índia", "Brasil", "Estados Unidos", "África do Sul"], "answer": 3 },
+        "q20": { "text": "Quem proferiu a famosa frase 'Eu tenho um sonho'?", "options": ["Nelson Mandela", "Malcolm X", "Martin Luther King Jr.", "Mahatma Gandhi"], "answer": 2 }
+      }
+    }
+  }
+}
