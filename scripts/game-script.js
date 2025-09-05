@@ -298,6 +298,19 @@ function syncPlayersList() {
 
 		const players = roomData.players;
 		playersList.innerHTML = '';
+		
+		// Atualizar contador de jogadores na navbar
+		const playersCount = players ? Object.keys(players).length : 0;
+		const navbarPlayersCount = document.getElementById('navbar-players-count');
+		const navbarRoomCode = document.getElementById('navbar-room-code');
+		
+		if (navbarPlayersCount) {
+			navbarPlayersCount.textContent = playersCount;
+		}
+		if (navbarRoomCode) {
+			navbarRoomCode.textContent = currentRoomId;
+		}
+		
 		if (players) {
 			Object.keys(players).forEach((nickname) => {
 				const li = document.createElement('li');
