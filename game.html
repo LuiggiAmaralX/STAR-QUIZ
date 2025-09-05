@@ -1,62 +1,121 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz - Jogo</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Quiz Show - Jogo</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0TLhqXbMjJdZfaNFcWbVfK7v7XW6x/i/8g4f/q5Z0+6Zt1v1Y5z1p1b1Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <div id="waiting-lobby-screen" class="screen active">
+    <div id="waiting-lobby-screen" class="screen">
         <h2>Lobby da Sala</h2>
-        <p>Código: <span id="lobby-room-code"></span></p>
-        <p>Jogadores:</p>
-        <ul id="players-list"></ul>
-        <button id="start-game-button" style="display: none;">Começar Jogo</button>
+        <div class="room-code-display">
+            <p>Código da Sala:</p>
+            <span id="lobby-room-code" class="code-badge"></span>
+            <button class="copy-code-btn" title="Copiar código"><i class="fas fa-copy"></i></button>
+        </div>
+
+        <div class="players-section">
+            <h3>Jogadores na Sala:</h3>
+            <ul id="players-list">
+                </ul>
+        </div>
+        
+        <button id="start-game-button" class="main-button" style="display: none;">
+            <i class="fas fa-rocket"></i> Iniciar Quiz
+        </button>
         <p id="wait-message" style="display: block;">Aguardando o host iniciar o jogo...</p>
     </div>
 
     <div id="category-screen" class="screen">
-        <h2>Escolha uma categoria:</h2>
-        <div class="category-buttons">
-            <button class="category-button" data-category="tecnologia">Tecnologia</button>
-            <button class="category-button" data-category="filmes">Filmes</button>
-            <button class="category-button" data-category="esportes">Esportes</button>
-        </div>
-    </div>
+        <h2>Escolha uma Categoria</h2>
+        <p class="subtitle">ADSDAASSAD</p>
+        <div class="category-grid">
+            <div class="category-card" data-category="tecnologia" style="--card-color: #f97316;">
+                <h3 class="category-title">TECNOLOGIA</h3>
+            </div>
 
+            <div class="category-card" data-category="filmes" style="--card-color: #3b82f6;">
+                <h3 class="category-title">FILMES</h3>
+            </div>
+
+            <div class="category-card" data-category="esportes" style="--card-color: #facc15;">
+                <h3 class="category-title">ESPORTES</h3>
+            </div>
+
+            </div>
+    </div>
+    
     <div id="versus-screen" class="screen">
         <div class="player-card left" id="vs-player1">
+            <div class="avatar"></div>
             <span class="player-name"></span>
         </div>
-
-        <div class="vs-separator">VS</div>
-
+        <span class="vs-separator">VS</span>
         <div class="player-card right" id="vs-player2">
+            <div class="avatar"></div>
             <span class="player-name"></span>
         </div>
     </div>
 
-    <div id="quiz-screen" class="screen">
-        <div id="question-container">
-            <h3 id="question-text"></h3>
-            <div id="answer-buttons"></div>
+    <div id="quiz-screen" class="screen active">
+        <div class="quiz-top-info">
+            <div class="game-meta-info">
+                <span>Sala: <strong id="navbar-room-code">WAITING</strong></span>
+                <span>Jogadores: <strong id="navbar-players-count">0</strong></span>
+            </div>
+            <div id="timer-container">
+                <i class="fas fa-clock timer-icon"></i>
+                <span id="timer">30</span>
+            </div>
         </div>
-        <div id="quiz-footer">
-            <span id="player-score">Pontuação: 0</span>
-            <span id="timer">10</span>
+
+        <div class="quiz-main-content">
+            <div id="question-counter">
+                Pergunta <span id="current-question-number">1</span>/<span id="total-questions">10</span>
+            </div>
+            <div class="question-area">
+                <p id="question-text">Qual empresa criou o sistema operacional Android?</p>
+            </div>
+        </div>
+
+        <div id="answer-buttons" class="answer-grid">
+            <button class="answer-button">Apple</button>
+            <button class="answer-button">Microsoft</button>
+            <button class="answer-button">Google</button>
+            <button class="answer-button">Samsung</button>
+        </div>
+
+        <div class="quiz-footer">
+            <div id="player-score-container">
+                <i class="fas fa-star score-icon"></i>
+                <span>Pontuação: <strong id="player-score">0</strong></span>
+            </div>
+            <button id="next-question-btn" class="main-button hidden">
+                Próxima <i class="fas fa-arrow-right"></i>
+            </button>
         </div>
     </div>
 
     <div id="result-screen" class="screen">
-        <h2>Fim de jogo!</h2>
-        <div id="leaderboard-container">
-            <h3>Placar da Sala</h3>
-            <ul id="leaderboard-list"></ul>
-        </div>
-        <button id="restart-button" style="display: none;">Jogar Novamente</button>
+        <h2>Placar Final</h2>
+        <div class="trophy-icon"><i class="fas fa-trophy"></i></div>
+        <ul id="leaderboard-list">
+        </ul>
+        <button id="restart-button" class="main-button" style="display: none;">
+            <i class="fas fa-redo-alt"></i> Jogar Novamente
+        </button>
+        <button id="back-to-lobby-btn" class="secondary-button">
+            <i class="fas fa-home"></i> Voltar ao Início
+        </button>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>

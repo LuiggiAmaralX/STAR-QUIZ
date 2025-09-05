@@ -1,26 +1,48 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz - Lobby</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Quiz Show - Lobby</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0TLhqXbMjJdZfaNFcWbVfK7v7XW6x/i/8g4f/q5Z0+6Zt1v1Y5z1p1b1Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/particles.css"> <!-- Novo CSS das partículas -->
 </head>
 <body>
+
+    <div id="particles-js"></div>
+
     <div id="lobby-screen" class="screen active">
-        <h2>Olá, <span id="lobby-nickname"></span>!</h2>
-        <p>Escolha uma opção:</p>
-        <button id="create-room-button">Criar Sala</button>
-        <p>ou</p>
-        <input type="text" id="join-room-input" placeholder="Código da Sala">
-        <button id="join-room-button">Entrar em uma Sala</button>
+        <h2>Bem-vindo(a), <span id="lobby-nickname"></span>!</h2>
+        <p class="subtitle">Crie uma sala ou junte-se a uma existente.</p>
+        
+        <button id="create-room-button" class="main-button">
+            <i class="fas fa-plus-circle"></i> Criar Sala
+        </button>
+
+        <div class="divider">ou</div>
+
+        <div class="join-room-section">
+            <div class="input-group">
+                <i class="fas fa-hashtag icon"></i>
+                <input type="text" id="join-room-input" placeholder="Código da Sala">
+            </div>
+            <button id="join-room-button" class="secondary-button">
+                <i class="fas fa-arrow-right-to-bracket"></i> Entrar na Sala
+            </button>
+        </div>
     </div>
 
-    <script src="js/lobby-functions.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-
-
+    <script src="scripts/lobby-functions.js"></script>
+    <script src="scripts/particles-config.js"></script>
+    
 </body>
 </html>

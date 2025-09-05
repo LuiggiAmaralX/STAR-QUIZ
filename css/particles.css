@@ -1,0 +1,23 @@
+/* ---- Reset para o Body e Canvas ---- */
+/* Remove a margem e define a cor de fundo principal para o efeito de partículas */
+body {
+  margin: 0;
+  background-color: #070825;
+}
+
+canvas {
+  display: block;
+  vertical-align: bottom;
+}
+
+
+/* ---- Container do particles.js ---- */
+/* Posiciona o container de partículas para preencher toda a tela, atrás do conteúdo principal */
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0; /* Garante que as partículas fiquem no fundo */
+}

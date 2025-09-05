@@ -422,3 +422,40 @@ function syncPlayersList() {
 
 // --- INICIALIZAÇÃO DO JOGO ---
 syncPlayersList();
+
+// Atualizar os event listeners para os novos cards
+const categoryCards = document.querySelectorAll('.category-card');
+
+categoryCards.forEach((card) => {
+    card.addEventListener('click', () => {
+        // Remove seleção de outros cards
+        categoryCards.forEach(c => c.classList.remove('selected'));
+        
+        // Adiciona seleção ao card clicado
+        card.classList.add('selected');
+        
+        // Pequeno delay para mostrar a seleção antes de prosseguir
+        setTimeout(() => {
+            const selectedCategory = card.dataset.category;
+            const questionsToSend = questions[selectedCategory];
+
+            const roomRef = database.ref('rooms/' + currentRoomId);
+            roomRef.once('value', (snapshot) => {
+                const roomData = snapshot.val();
+                if (roomData && roomData.players) {
+                    Object.keys(roomData.players).forEach((nickname) => {
+                        roomData.players[nickname].questionsAnswered = 0;
+                    });
+                    
+                    roomRef.update({
+                        status: 'versus',
+                        questions: questionsToSend,
+                        currentQuestionIndex: 0,
+                        questionStartTime: firebase.database.ServerValue.TIMESTAMP,
+                        players: roomData.players,
+                    });
+                }
+            });
+        }, 300);
+    });
+});

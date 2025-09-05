@@ -1,22 +1,54 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz - Login</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0TLhqXbMjJdZfaNFcWbVfK7v7XW6x/i/8g4f/q5Z0+6Zt1v1Y5z1p1b1Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Quiz Show - Login</title>
+    
+    <!-- Font Awesome (Ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0TLhqXbMjJdZfaNFcWbVfK7v7XW6x/i/8g4f/q5Z0+6Zt1v1Y5z1p1b1Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/particles.css"> <!-- Novo CSS das partículas -->
 </head>
 <body>
-    <div id="login-screen" class="screen active">
-        <h1>Bem-vindo ao Quiz</h1>
-        <p>Faça o login para continuar:</p>
-        <input type="text" id="username-input" placeholder="Usuário">
-        <input type="password" id="password-input" placeholder="Senha">
-        <button id="login-button">Entrar</button>
-    </div>
+    
+    <!-- Container para a animação de partículas (ficará no fundo) -->
+    <div id="particles-js"></div>
 
+    <!-- Conteúdo principal da página (card de login) -->
+    <div id="login-screen" class="screen active">
+        <div class="logo-container">
+            <i class="fas fa-brain logo-icon"></i>
+            <h1>Star-QUIZ</h1>
+        </div>
+        <p class="subtitle">Desafie sua mente e divirta-se!</p>
+
+        <div class="input-group">
+            <i class="fas fa-user icon"></i>
+            <input type="text" id="username-input" placeholder="Usuário">
+        </div>
+        
+        <div class="input-group">
+            <i class="fas fa-key icon"></i>
+            <input type="password" id="password-input" placeholder="Senha">
+        </div>
+
+        <button id="login-button" class="main-button">
+            <i class="fas fa-sign-in-alt"></i> Entrar
+        </button>
+
+    <!-- Scripts do particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="scripts/particles-config.js"></script> <!-- Novo JS de configuração -->
+
+    <!-- Seu script de login original -->
     <script>
         const loginButton = document.getElementById('login-button');
         const usernameInput = document.getElementById('username-input');
@@ -37,6 +69,12 @@
             } else {
                 alert('Usuário ou senha inválidos!');
             }
+        });
+
+        /* Pequeno ajuste para o conteúdo aparecer sobre as partículas */
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.screen').style.position = 'relative';
+            document.querySelector('.screen').style.zIndex = '1';
         });
     </script>
 </body>
