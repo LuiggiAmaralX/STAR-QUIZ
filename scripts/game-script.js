@@ -28,6 +28,7 @@ const allScreens = {
 	waiting: document.getElementById('waiting-lobby-screen'),
 	category: document.getElementById('category-screen'),
 	versus: document.getElementById('versus-screen'),
+	roundInfo: document.getElementById('round-info-screen'),
 	quiz: document.getElementById('quiz-screen'),
 	result: document.getElementById('result-screen'),
 };
@@ -181,9 +182,35 @@ categoryCards.forEach((card) => {
  * FUNÇÃO ATUALIZADA para lidar com o novo formato de perguntas.
  * Agora usa 'options' e 'answer' em vez de 'answers'.
  */
+function showRoundInfo(questionIndex) {
+	// Atualiza as informações da rodada
+	document.getElementById('current-round-number').textContent = questionIndex + 1;
+	document.getElementById('total-rounds').textContent = roomQuestions.length;
+	
+	// Calcula e atualiza a barra de progresso
+	const progressPercentage = ((questionIndex + 1) / roomQuestions.length) * 100;
+	document.getElementById('round-progress-fill').style.width = progressPercentage + '%';
+	
+	// Mostra a tela de informações da rodada
+	showScreen(allScreens.roundInfo);
+	
+	// Reproduz som se disponível
+	if (typeof window.playSound === 'function') {
+		window.playSound('round-start');
+	}
+	
+	// Após 3 segundos, mostra a pergunta
+	setTimeout(() => {
+		showQuestionContent(questionIndex);
+	}, 3000);
+}
+
 function showQuestionContent(questionIndex) {
 	const currentQuestion = roomQuestions[questionIndex];
 	if (currentQuestion) {
+		// Mostra a tela do quiz
+		showScreen(allScreens.quiz);
+		
 		// Anima a pergunta
 		if (typeof window.animateIn === 'function') {
 			window.animateIn(questionText, 'fade-in');
@@ -317,11 +344,49 @@ function syncLeaderboard() {
 		leaderboardList.innerHTML = '';
 		if (players) {
 			const playersArray = Object.values(players).sort((a, b) => b.score - a.score);
-			playersArray.forEach((player) => {
+			
+			// Detecta empates na primeira posição
+			const highestScore = playersArray[0]?.score || 0;
+			const winners = playersArray.filter(player => player.score === highestScore);
+			const isTie = winners.length > 1;
+			
+			// Atualiza o título baseado no resultado
+			const resultTitle = document.querySelector('#result-screen h2');
+			if (isTie) {
+				resultTitle.textContent = 'EMPATE!';
+				resultTitle.className = 'tie-title';
+			} else {
+				resultTitle.textContent = 'PLACAR FINAL';
+				resultTitle.className = 'winner-title';
+			}
+			
+			playersArray.forEach((player, index) => {
 				const li = document.createElement('li');
-                // Adiciona um ícone de troféu para o primeiro lugar
-                const icon = player === playersArray[0] ? '<i class="fas fa-trophy winner-icon"></i>' : '';
-				li.innerHTML = `${icon} ${player.nickname}: <strong>${player.score}</strong> pontos`;
+				const isWinner = player.score === highestScore;
+				
+				// Adiciona classes CSS baseadas na posição
+				if (isWinner && isTie) {
+					li.classList.add('tie-position');
+				} else if (isWinner) {
+					li.classList.add('winner-position');
+				} else if (index === 1) {
+					li.classList.add('second-position');
+				} else if (index === 2) {
+					li.classList.add('third-position');
+				}
+				
+				li.innerHTML = `
+					<div class="player-info">
+						<span class="player-name">${player.nickname}</span>
+						${isWinner && isTie ? '<span class="tie-badge">EMPATE</span>' : ''}
+						${isWinner && !isTie ? '<span class="winner-badge">VENCEDOR</span>' : ''}
+					</div>
+					<div class="score-info">
+						<span class="score">${player.score}</span>
+						<span class="points-label">pontos</span>
+					</div>
+				`;
+				
 				leaderboardList.appendChild(li);
 			});
 			
@@ -441,20 +506,24 @@ function syncPlayersList() {
                     document.getElementById('current-question-number').textContent = remoteQuestionIndex + 1;
                     document.getElementById('total-questions').textContent = roomQuestions.length;
 
-                    showQuestionContent(remoteQuestionIndex);
-                    showScreen(allScreens.quiz);
+                    // Mostra a tela de informações da rodada antes da pergunta
+                    showRoundInfo(remoteQuestionIndex);
 
                     clearInterval(questionTimer);
-                    let timeLeft = 10;
-                    timerDisplay.textContent = timeLeft;
+                    
+                    // Inicia o timer após 3 segundos (quando a pergunta aparecer)
+                    setTimeout(() => {
+                        let timeLeft = 10;
+                        timerDisplay.textContent = timeLeft;
 
-                    questionTimer = setInterval(() => {
-                        timeLeft--;
-                        timerDisplay.textContent = Math.max(0, timeLeft);
-                        if (timeLeft <= 0) {
-                            clearInterval(questionTimer);
-                        }
-                    }, 1000);
+                        questionTimer = setInterval(() => {
+                            timeLeft--;
+                            timerDisplay.textContent = Math.max(0, timeLeft);
+                            if (timeLeft <= 0) {
+                                clearInterval(questionTimer);
+                            }
+                        }, 1000);
+                    }, 3000);
 
                     if (localIsHost) {
                         setTimeout(() => {
@@ -464,7 +533,7 @@ function syncPlayersList() {
                                     advanceToNextQuestion();
                                 }
                             });
-                        }, 10500);
+                        }, 13500); // 3 segundos da tela de rodada + 10.5 segundos da pergunta
                     }
                 }
 

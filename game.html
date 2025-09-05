@@ -103,7 +103,23 @@
         </div>
     </div>
 
-    <div id="quiz-screen" class="screen active">
+    <div id="round-info-screen" class="screen">
+        <div class="round-info-container">
+            <div class="round-icon">
+                <i class="fas fa-play-circle"></i>
+            </div>
+            <h2 class="round-title">RODADA</h2>
+            <div class="round-counter">
+                <span id="current-round-number">1</span>/<span id="total-rounds">10</span>
+            </div>
+            <p class="round-subtitle">Prepare-se para a próxima pergunta!</p>
+            <div class="round-progress-bar">
+                <div class="round-progress-fill" id="round-progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="quiz-screen" class="screen">
         <div class="quiz-header">
             <div class="game-meta-info">
                 <span>Sala: <strong id="navbar-room-code">WAITING</strong></span>
