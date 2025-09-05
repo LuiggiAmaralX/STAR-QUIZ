@@ -40,6 +40,24 @@ class NotificationSystem {
         const notification = this.createNotification(message, type, config);
         this.container.appendChild(notification);
 
+        // Reproduz som baseado no tipo
+        if (typeof window.playSound === 'function') {
+            switch (type) {
+                case 'success':
+                    window.playSound('success');
+                    break;
+                case 'error':
+                    window.playSound('error');
+                    break;
+                case 'warning':
+                    window.playSound('notification');
+                    break;
+                case 'info':
+                    window.playSound('notification');
+                    break;
+            }
+        }
+
         // Anima a entrada
         requestAnimationFrame(() => {
             notification.classList.add('show');

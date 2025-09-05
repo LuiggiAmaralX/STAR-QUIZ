@@ -1,0 +1,339 @@
+/**
+ * Sistema de Áudio
+ * Estilos para controles de som e feedback visual
+ */
+
+/* Controle de volume global */
+.audio-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 10px 15px;
+    border-radius: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.audio-controls:hover {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+}
+
+.audio-toggle {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+}
+
+.audio-toggle:hover {
+    background: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+    transform: scale(1.1);
+}
+
+.audio-toggle.muted {
+    color: #dc3545;
+}
+
+.audio-toggle.muted:hover {
+    background: rgba(220, 53, 69, 0.1);
+}
+
+.volume-slider {
+    width: 80px;
+    height: 4px;
+    background: #e9ecef;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+    background: #0056b3;
+    transform: scale(1.2);
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.volume-slider::-moz-range-thumb:hover {
+    background: #0056b3;
+    transform: scale(1.2);
+}
+
+/* Feedback visual para sons */
+.sound-feedback {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.sound-feedback.show {
+    opacity: 1;
+    animation: soundPulse 0.6s ease-out;
+}
+
+.sound-feedback-icon {
+    font-size: 48px;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+}
+
+.sound-feedback.success .sound-feedback-icon {
+    background: rgba(40, 167, 69, 0.9);
+    color: #fff;
+}
+
+.sound-feedback.error .sound-feedback-icon {
+    background: rgba(220, 53, 69, 0.9);
+    color: #fff;
+}
+
+.sound-feedback.click .sound-feedback-icon {
+    background: rgba(0, 123, 255, 0.9);
+    color: #fff;
+}
+
+@keyframes soundPulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Efeito de ondas sonoras */
+.sound-waves {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    pointer-events: none;
+}
+
+.sound-wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    opacity: 0;
+    animation: soundWave 1s ease-out;
+}
+
+.sound-wave:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.sound-wave:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes soundWave {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Indicador de som mutado */
+.muted-indicator {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(220, 53, 69, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.muted-indicator.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .audio-controls {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+    }
+    
+    .volume-slider {
+        width: 60px;
+    }
+    
+    .sound-feedback-icon {
+        font-size: 36px;
+        width: 60px;
+        height: 60px;
+    }
+    
+    .sound-waves {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* Modo escuro */
+@media (prefers-color-scheme: dark) {
+    .audio-controls {
+        background: rgba(33, 37, 41, 0.95);
+        color: #fff;
+    }
+    
+    .audio-controls:hover {
+        background: rgba(33, 37, 41, 1);
+    }
+    
+    .audio-toggle {
+        color: #fff;
+    }
+    
+    .volume-slider {
+        background: #495057;
+    }
+}
+
+/* Animações de entrada */
+.audio-controls {
+    animation: slideInFromRight 0.5s ease-out;
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Estados dos botões com som */
+.btn-with-sound {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-with-sound::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.btn-with-sound:active::before {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+/* Efeito visual para elementos clicáveis */
+.clickable-sound {
+    transition: all 0.2s ease;
+}
+
+.clickable-sound:active {
+    transform: scale(0.95);
+}
+
+/* Indicador de carregamento de áudio */
+.audio-loading {
+    position: relative;
+}
+
+.audio-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

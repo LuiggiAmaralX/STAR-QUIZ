@@ -17,6 +17,10 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/particles.css"> <!-- Novo CSS das partículas -->
     <link rel="stylesheet" href="css/notifications.css"> <!-- Sistema de notificações -->
+    <link rel="stylesheet" href="css/loading.css">
+    <link rel="stylesheet" href="css/audio.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/stats.css">
 </head>
 <body>
     
@@ -25,6 +29,7 @@
 
     <!-- Conteúdo principal da página (card de login) -->
     <div id="login-screen" class="screen active">
+
         <div class="logo-container">
             <i class="fas fa-brain logo-icon"></i>
             <h1>Star-QUIZ</h1>
@@ -51,6 +56,10 @@
 
     <!-- Sistema de notificações -->
     <script src="scripts/notifications.js"></script>
+    <script src="scripts/loading.js"></script>
+    <script src="scripts/audio.js"></script>
+    <script src="scripts/animations.js"></script>
+     <script src="scripts/stats.js"></script>
     
     <!-- Seu script de login original -->
     <script>
@@ -64,18 +73,31 @@
         };
 
         loginButton.addEventListener('click', () => {
+            // Reproduz som de clique
+            if (typeof window.playSound === 'function') {
+                window.playSound('click');
+            }
+            
             const username = usernameInput.value;
             const password = passwordInput.value;
 
-            if (users[username] && users[username].password === password) {
-                localStorage.setItem('playerNickname', username);
-                showSuccess('Login realizado com sucesso!', { title: 'Bem-vindo!' });
-                setTimeout(() => {
-                    window.location.href = 'lobby.html';
-                }, 1000);
-            } else {
-                showError('Usuário ou senha inválidos!', { title: 'Erro de Login' });
-            }
+            // Mostra loading no botão
+            showButtonLoading(loginButton, 'Entrando...');
+
+            // Simula verificação de credenciais com delay
+            setTimeout(() => {
+                if (users[username] && users[username].password === password) {
+                    hideButtonLoading(loginButton);
+                    localStorage.setItem('playerNickname', username);
+                    showSuccess('Login realizado com sucesso!', { title: 'Bem-vindo!' });
+                    setTimeout(() => {
+                        window.location.href = 'lobby.html';
+                    }, 1000);
+                } else {
+                    hideButtonLoading(loginButton);
+                    showError('Usuário ou senha inválidos!', { title: 'Erro de Login' });
+                }
+            }, 1500); // Simula delay de autenticação
         });
 
         /* Pequeno ajuste para o conteúdo aparecer sobre as partículas */

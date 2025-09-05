@@ -35,8 +35,18 @@ const database = firebase.database();
 // (Funções do antigo firebase-service.js necessárias nesta página)
 
 function createRoom(hostNickname) {
+    // Reproduz som de clique
+    if (typeof window.playSound === 'function') {
+        window.playSound('click');
+    }
+    
     const roomId = Math.floor(100000 + Math.random() * 900000).toString();
     const roomRef = database.ref('rooms/' + roomId);
+    const createBtn = document.getElementById('create-room-button');
+    
+    // Mostra loading no botão
+    showButtonLoading(createBtn, 'Criando sala...');
+    
     const roomData = {
         status: 'waiting',
         players: {
@@ -48,13 +58,35 @@ function createRoom(hostNickname) {
         },
         host: hostNickname
     };
-    return roomRef.set(roomData).then(() => roomId).catch(() => null);
+    return roomRef.set(roomData)
+        .then(() => {
+            hideButtonLoading(createBtn);
+            return roomId;
+        })
+        .catch(() => {
+            hideButtonLoading(createBtn);
+            return null;
+        });
 }
 
 function joinRoom(roomId, playerNickname) {
+    // Reproduz som de clique
+    if (typeof window.playSound === 'function') {
+        window.playSound('click');
+    }
+    
     const roomRef = database.ref('rooms/' + roomId);
+    const joinBtn = document.getElementById('join-room-button');
+    const roomInput = document.getElementById('join-room-input');
+    
+    // Mostra loading no botão e input
+    showButtonLoading(joinBtn, 'Entrando...');
+    loading.showInput(roomInput);
+    
     return roomRef.once('value').then(snapshot => {
         if (!snapshot.exists()) {
+            hideButtonLoading(joinBtn);
+            loading.hideInput(roomInput);
             return false;
         }
         const updates = {};
@@ -63,7 +95,17 @@ function joinRoom(roomId, playerNickname) {
             score: 0,
             isHost: false
         };
-        return roomRef.update(updates).then(() => true).catch(() => false);
+        return roomRef.update(updates)
+            .then(() => {
+                hideButtonLoading(joinBtn);
+                loading.hideInput(roomInput);
+                return true;
+            })
+            .catch(() => {
+                hideButtonLoading(joinBtn);
+                loading.hideInput(roomInput);
+                return false;
+            });
     });
 }
 

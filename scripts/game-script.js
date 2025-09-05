@@ -76,6 +76,11 @@ function showScreen(screenToShow) {
 }
 
 startGameButton.addEventListener('click', () => {
+	// Reproduz som de clique
+	if (typeof window.playSound === 'function') {
+		window.playSound('click');
+	}
+	
 	database.ref('rooms/' + currentRoomId).update({ status: 'selecting_category' });
 });
 
@@ -86,6 +91,17 @@ startGameButton.addEventListener('click', () => {
 categoryCards.forEach((card) => {
     card.addEventListener('click', async () => {
         if (!localIsHost) return; // Apenas o host pode selecionar
+
+        // Reproduz som de clique
+        if (typeof window.playSound === 'function') {
+            window.playSound('click');
+        }
+
+        // Mostra loading no card selecionado
+        showCardLoading(card);
+        
+        // Mostra loading global
+        showLoading('Carregando perguntas...', 'Preparando o quiz para você');
 
         // Mostra visualmente que a categoria foi selecionada
         categoryCards.forEach(c => c.classList.remove('selected'));
@@ -102,6 +118,8 @@ categoryCards.forEach((card) => {
             const totalQuestions = totalSnapshot.val();
 
             if (!totalQuestions) {
+                hideCardLoading(card);
+                hideLoading();
                 showError(`Categoria "${selectedCategory}" não encontrada no banco de dados.`, { title: 'Categoria Não Encontrada' });
                 return;
             }
@@ -121,6 +139,8 @@ categoryCards.forEach((card) => {
             const questionsToSend = questionSnapshots.map(snap => snap.val()).filter(q => q); // Filtra nulos caso uma pergunta não exista
 
             if (questionsToSend.length < questionsPerMatch) {
+                hideCardLoading(card);
+                hideLoading();
                 showError('Não foi possível carregar o número necessário de perguntas. Tente novamente.', { title: 'Erro ao Carregar Perguntas' });
                 return;
             }
@@ -135,16 +155,22 @@ categoryCards.forEach((card) => {
                     roomData.players[nickname].questionsAnswered = 0;
                 });
                 
-                roomRef.update({
+                await roomRef.update({
                     status: 'versus',
                     questions: questionsToSend,
                     currentQuestionIndex: 0,
                     questionStartTime: firebase.database.ServerValue.TIMESTAMP,
                     players: roomData.players,
                 });
+                
+                hideCardLoading(card);
+                hideLoading();
+                showSuccess('Perguntas carregadas!', 'O jogo vai começar');
             }
         } catch (error) {
             console.error("Erro ao buscar perguntas:", error);
+            hideCardLoading(card);
+            hideLoading();
             showError("Ocorreu um erro ao carregar as perguntas da categoria. Verifique o console.", { title: 'Erro Interno' });
         }
     });
@@ -158,6 +184,11 @@ categoryCards.forEach((card) => {
 function showQuestionContent(questionIndex) {
 	const currentQuestion = roomQuestions[questionIndex];
 	if (currentQuestion) {
+		// Anima a pergunta
+		if (typeof window.animateIn === 'function') {
+			window.animateIn(questionText, 'fade-in');
+		}
+		
 		questionText.textContent = currentQuestion.text;
 		answerButtonsContainer.innerHTML = '';
 
@@ -165,7 +196,7 @@ function showQuestionContent(questionIndex) {
 		currentQuestion.options.forEach((optionText, index) => {
 			const button = document.createElement('button');
 			button.textContent = optionText;
-			button.classList.add('answer-button');
+			button.classList.add('answer-button', 'answer-btn');
 
 			// Verifica se o índice desta opção é o da resposta correta
 			if (index === currentQuestion.answer) {
@@ -175,6 +206,12 @@ function showQuestionContent(questionIndex) {
 			button.addEventListener('click', selectAnswer);
 			answerButtonsContainer.appendChild(button);
 		});
+		
+		// Anima as opções de resposta em sequência
+		if (typeof window.animateList === 'function') {
+			const answerButtons = answerButtonsContainer.querySelectorAll('.answer-btn');
+			window.animateList(answerButtons, 'slide-in-up', 100);
+		}
 	}
 }
 
@@ -203,6 +240,29 @@ function selectAnswer(e) {
 	Array.from(answerButtonsContainer.children).forEach((button) => (button.disabled = true));
 
 	const isCorrect = e.target.dataset.correct === 'true';
+	
+	// Reproduz som baseado na resposta
+	if (typeof window.playSound === 'function') {
+		if (isCorrect) {
+			window.playSound('success');
+		} else {
+			window.playSound('error');
+		}
+	}
+	
+	// Anima a resposta
+	if (typeof window.animateAnswer === 'function') {
+		window.animateAnswer(e.target, isCorrect);
+	}
+	
+	// Registra a resposta no sistema de estatísticas
+	if (typeof window.recordAnswer === 'function') {
+		document.dispatchEvent(new CustomEvent('answerSelected', {
+			detail: { isCorrect }
+		}));
+		window.recordAnswer({ isCorrect });
+	}
+	
 	if (isCorrect) {
 		const scoreRef = database.ref(`rooms/${currentRoomId}/players/${playerNickname}/score`);
 		scoreRef.transaction((currentScore) => (currentScore || 0) + 1);
@@ -217,12 +277,22 @@ function selectAnswer(e) {
 }
 
 restartButton.addEventListener('click', () => {
+    // Reproduz som de clique
+    if (typeof window.playSound === 'function') {
+        window.playSound('click');
+    }
+    
     if(localIsHost) {
 	    resetRoom(currentRoomId);
     }
 });
 
 document.getElementById('back-to-lobby-btn').addEventListener('click', () => {
+    // Reproduz som de clique
+    if (typeof window.playSound === 'function') {
+        window.playSound('click');
+    }
+    
     window.location.href = 'lobby.html';
 });
 
@@ -254,15 +324,46 @@ function syncLeaderboard() {
 				li.innerHTML = `${icon} ${player.nickname}: <strong>${player.score}</strong> pontos`;
 				leaderboardList.appendChild(li);
 			});
+			
+			// Registra estatísticas do jogador atual
+			const currentPlayer = players[playerNickname];
+			if (currentPlayer && typeof window.recordGame === 'function') {
+				const roomRef = database.ref(`rooms/${currentRoomId}`);
+				roomRef.once('value', (roomSnapshot) => {
+					const roomData = roomSnapshot.val();
+					if (roomData) {
+						const gameData = {
+							score: currentPlayer.score || 0,
+							totalQuestions: roomData.totalQuestions || 10,
+							category: roomData.category || 'Geral',
+							duration: Date.now() - (roomData.startTime || Date.now()),
+							correctAnswers: currentPlayer.score || 0,
+							date: new Date().toISOString()
+						};
+						
+						// Dispara evento personalizado para o sistema de estatísticas
+						document.dispatchEvent(new CustomEvent('gameFinished', {
+							detail: gameData
+						}));
+						
+						// Registra o jogo diretamente
+						window.recordGame(gameData);
+					}
+				});
+			}
 		}
 	});
 }
 
 function syncPlayersList() {
+	// Mostra skeleton loading inicial
+	loading.showPlayersSkeleton(playersList, 2);
+	
 	const roomRef = database.ref('rooms/' + currentRoomId);
 	roomRef.on('value', (snapshot) => {
 		const roomData = snapshot.val();
 		if (!roomData) {
+			loading.hidePlayersSkeleton(playersList);
 			if (gameInProgress) {
 				showWarning('A sala foi fechada. Retornando ao lobby.', { title: 'Sala Fechada' });
 			setTimeout(() => {
@@ -273,6 +374,9 @@ function syncPlayersList() {
 		}
 
 		const players = roomData.players;
+		
+		// Remove skeleton loading
+		loading.hidePlayersSkeleton(playersList);
 		playersList.innerHTML = '';
 		
 		const playersCount = players ? Object.keys(players).length : 0;
