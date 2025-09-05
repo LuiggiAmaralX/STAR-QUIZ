@@ -1084,6 +1084,47 @@ input[type="password"]:focus {
 @keyframes slideInFromLeft { from { transform: translateX(-150%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 @keyframes slideInFromRight { from { transform: translateX(150%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
+/* --- RESPONSIVIDADE PARA CATEGORIAS --- */
+@media (max-width: 1024px) {
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .category-card {
+        padding: 12px;
+    }
+    
+    .category-title {
+        font-size: 1rem;
+        padding: 6px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 20px auto 0;
+    }
+    
+    .category-card {
+        aspect-ratio: 3 / 1;
+        padding: 10px;
+    }
+    
+    .category-title {
+        font-size: 0.9rem;
+    }
+}
+
 /* --- OUTROS AJUSTES (Mantidos) --- */
 .hidden { display: none !important; }
 .join-room-section, #players-list, #leaderboard-list, .social-btn, .power-up-button { display: flex; }
