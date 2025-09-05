@@ -124,6 +124,81 @@
         "q19": { "text": "O 'Apartheid' foi um regime de segregação racial em qual país?", "options": ["Índia", "Brasil", "Estados Unidos", "África do Sul"], "answer": 3 },
         "q20": { "text": "Quem proferiu a famosa frase 'Eu tenho um sonho'?", "options": ["Nelson Mandela", "Malcolm X", "Martin Luther King Jr.", "Mahatma Gandhi"], "answer": 2 }
       }
+    },
+    "ciencias": {
+      "totalQuestions": 20,
+      "questions": {
+        "q1": { "text": "Qual é o elemento químico mais abundante no universo?", "options": ["Oxigênio", "Hidrogênio", "Carbono", "Hélio"], "answer": 1 },
+        "q2": { "text": "Quantos ossos tem o corpo humano adulto?", "options": ["198", "206", "215", "220"], "answer": 1 },
+        "q3": { "text": "Qual a velocidade da luz no vácuo?", "options": ["300.000 km/s", "299.792.458 m/s", "150.000 km/s", "500.000 km/s"], "answer": 1 },
+        "q4": { "text": "Qual cientista desenvolveu a teoria da relatividade?", "options": ["Isaac Newton", "Galileu Galilei", "Albert Einstein", "Stephen Hawking"], "answer": 2 },
+        "q5": { "text": "Qual é a fórmula química da água?", "options": ["H2O", "CO2", "NaCl", "CH4"], "answer": 0 },
+        "q6": { "text": "Quantos cromossomos tem uma célula humana normal?", "options": ["23", "44", "46", "48"], "answer": 2 },
+        "q7": { "text": "Qual é o maior planeta do sistema solar?", "options": ["Saturno", "Netuno", "Júpiter", "Urano"], "answer": 2 },
+        "q8": { "text": "Qual gás é essencial para a respiração humana?", "options": ["Nitrogênio", "Oxigênio", "Dióxido de carbono", "Hidrogênio"], "answer": 1 },
+        "q9": { "text": "Qual é a unidade básica da vida?", "options": ["Átomo", "Molécula", "Célula", "Tecido"], "answer": 2 },
+        "q10": { "text": "Qual cientista é conhecido pela lei da gravidade?", "options": ["Charles Darwin", "Isaac Newton", "Marie Curie", "Nikola Tesla"], "answer": 1 },
+        "q11": { "text": "Qual é o pH da água pura?", "options": ["6", "7", "8", "9"], "answer": 1 },
+        "q12": { "text": "Quantas câmaras tem o coração humano?", "options": ["2", "3", "4", "5"], "answer": 2 },
+        "q13": { "text": "Qual é a menor partícula de um elemento químico?", "options": ["Molécula", "Átomo", "Próton", "Elétron"], "answer": 1 },
+        "q14": { "text": "Qual planeta é conhecido como 'Planeta Vermelho'?", "options": ["Vênus", "Júpiter", "Marte", "Saturno"], "answer": 2 },
+        "q15": { "text": "Qual é o processo pelo qual as plantas produzem seu próprio alimento?", "options": ["Respiração", "Digestão", "Fotossíntese", "Fermentação"], "answer": 2 },
+        "q16": { "text": "Qual é a temperatura de ebulição da água ao nível do mar?", "options": ["90°C", "95°C", "100°C", "105°C"], "answer": 2 },
+        "q17": { "text": "Qual é o órgão responsável pela produção de insulina?", "options": ["Fígado", "Rim", "Pâncreas", "Estômago"], "answer": 2 },
+        "q18": { "text": "Qual é a força que mantém os planetas em órbita ao redor do Sol?", "options": ["Magnetismo", "Gravidade", "Eletricidade", "Pressão"], "answer": 1 },
+        "q19": { "text": "Qual é o gás mais abundante na atmosfera terrestre?", "options": ["Oxigênio", "Dióxido de carbono", "Nitrogênio", "Argônio"], "answer": 2 },
+        "q20": { "text": "Quantos dentes tem um adulto humano completo?", "options": ["28", "30", "32", "34"], "answer": 2 }
+      }
+    },
+    "arte": {
+      "totalQuestions": 20,
+      "questions": {
+        "q1": { "text": "Quem pintou a obra 'Mona Lisa'?", "options": ["Michelangelo", "Leonardo da Vinci", "Rafael", "Donatello"], "answer": 1 },
+        "q2": { "text": "Qual movimento artístico Pablo Picasso ajudou a fundar?", "options": ["Impressionismo", "Surrealismo", "Cubismo", "Expressionismo"], "answer": 2 },
+        "q3": { "text": "Em que museu está exposta a 'Mona Lisa'?", "options": ["Museu do Prado", "Louvre", "Uffizi", "Metropolitan"], "answer": 1 },
+        "q4": { "text": "Quem esculpiu a estátua 'Davi'?", "options": ["Leonardo da Vinci", "Rafael", "Michelangelo", "Bernini"], "answer": 2 },
+        "q5": { "text": "Qual artista cortou a própria orelha?", "options": ["Pablo Picasso", "Vincent van Gogh", "Claude Monet", "Salvador Dalí"], "answer": 1 },
+        "q6": { "text": "Qual é a técnica de pintura que usa pontos de cor?", "options": ["Impressionismo", "Cubismo", "Pontilhismo", "Surrealismo"], "answer": 2 },
+        "q7": { "text": "Quem pintou 'A Noite Estrelada'?", "options": ["Claude Monet", "Vincent van Gogh", "Paul Cézanne", "Edgar Degas"], "answer": 1 },
+        "q8": { "text": "Qual artista é famoso pelos relógios derretidos?", "options": ["René Magritte", "Joan Miró", "Salvador Dalí", "Max Ernst"], "answer": 2 },
+        "q9": { "text": "Em que período histórico ocorreu o Renascimento?", "options": ["Séculos XII-XIII", "Séculos XIV-XVI", "Séculos XVII-XVIII", "Séculos XVIII-XIX"], "answer": 1 },
+        "q10": { "text": "Quem pintou o teto da Capela Sistina?", "options": ["Leonardo da Vinci", "Rafael", "Michelangelo", "Caravaggio"], "answer": 2 },
+        "q11": { "text": "Qual movimento artístico valorizava a luz e as impressões visuais?", "options": ["Romantismo", "Realismo", "Impressionismo", "Neoclassicismo"], "answer": 2 },
+        "q12": { "text": "Quem pintou 'Guernica'?", "options": ["Pablo Picasso", "Joan Miró", "Salvador Dalí", "Francisco Goya"], "answer": 0 },
+        "q13": { "text": "Qual é a técnica de escultura que remove material?", "options": ["Modelagem", "Fundição", "Entalhe", "Assemblage"], "answer": 2 },
+        "q14": { "text": "Quem é considerado o pai do Impressionismo?", "options": ["Claude Monet", "Pierre-Auguste Renoir", "Edgar Degas", "Camille Pissarro"], "answer": 0 },
+        "q15": { "text": "Qual artista brasileiro é famoso pelas obras 'Abaporu' e 'Antropofagia'?", "options": ["Anita Malfatti", "Tarsila do Amaral", "Di Cavalcanti", "Portinari"], "answer": 1 },
+        "q16": { "text": "Em que cidade nasceu Leonardo da Vinci?", "options": ["Florença", "Roma", "Vinci", "Milão"], "answer": 2 },
+        "q17": { "text": "Qual movimento artístico surgiu como reação ao Impressionismo?", "options": ["Fauvismo", "Pós-Impressionismo", "Expressionismo", "Cubismo"], "answer": 1 },
+        "q18": { "text": "Quem pintou 'A Última Ceia'?", "options": ["Michelangelo", "Rafael", "Leonardo da Vinci", "Caravaggio"], "answer": 2 },
+        "q19": { "text": "Qual técnica artística usa cera quente?", "options": ["Aquarela", "Óleo", "Encáustica", "Acrílica"], "answer": 2 },
+        "q20": { "text": "Quem criou a obra 'O Pensador'?", "options": ["Auguste Rodin", "Constantin Brâncuși", "Henry Moore", "Alberto Giacometti"], "answer": 0 }
+      }
+    },
+    "musica": {
+      "totalQuestions": 20,
+      "questions": {
+        "q1": { "text": "Quantas cordas tem um violão tradicional?", "options": ["4", "5", "6", "7"], "answer": 2 },
+        "q2": { "text": "Quem compôs 'A Nona Sinfonia'?", "options": ["Mozart", "Bach", "Beethoven", "Chopin"], "answer": 2 },
+        "q3": { "text": "Qual instrumento Chopin tocava principalmente?", "options": ["Violino", "Piano", "Violoncelo", "Flauta"], "answer": 1 },
+        "q4": { "text": "Quantas teclas brancas tem um piano?", "options": ["50", "52", "54", "56"], "answer": 1 },
+        "q5": { "text": "Qual banda lançou o álbum 'Abbey Road'?", "options": ["The Rolling Stones", "The Beatles", "Led Zeppelin", "Pink Floyd"], "answer": 1 },
+        "q6": { "text": "Em que cidade nasceu Mozart?", "options": ["Viena", "Berlim", "Salzburgo", "Praga"], "answer": 2 },
+        "q7": { "text": "Qual é o nome da escala musical básica?", "options": ["Cromática", "Pentatônica", "Diatônica", "Blues"], "answer": 2 },
+        "q8": { "text": "Quem é conhecido como o 'Rei do Pop'?", "options": ["Elvis Presley", "Michael Jackson", "Prince", "David Bowie"], "answer": 1 },
+        "q9": { "text": "Qual instrumento é conhecido como 'rei dos instrumentos'?", "options": ["Piano", "Violino", "Órgão", "Harpa"], "answer": 2 },
+        "q10": { "text": "Quantas linhas tem uma pauta musical?", "options": ["4", "5", "6", "7"], "answer": 1 },
+        "q11": { "text": "Qual compositor é famoso pelas 'Quatro Estações'?", "options": ["Bach", "Vivaldi", "Handel", "Telemann"], "answer": 1 },
+        "q12": { "text": "Em que década surgiu o rock and roll?", "options": ["1940", "1950", "1960", "1970"], "answer": 1 },
+        "q13": { "text": "Qual é o nome do hino nacional brasileiro?", "options": ["Hino da Independência", "Hino Nacional Brasileiro", "Hino da Proclamação", "Hino da República"], "answer": 1 },
+        "q14": { "text": "Quem compôs 'O Barbeiro de Sevilha'?", "options": ["Mozart", "Verdi", "Rossini", "Puccini"], "answer": 2 },
+        "q15": { "text": "Qual instrumento de sopro não usa palheta?", "options": ["Clarinete", "Saxofone", "Flauta", "Oboé"], "answer": 2 },
+        "q16": { "text": "Em que país nasceu o tango?", "options": ["Brasil", "Argentina", "Uruguai", "Chile"], "answer": 1 },
+        "q17": { "text": "Qual banda britânica lançou 'Bohemian Rhapsody'?", "options": ["The Beatles", "Led Zeppelin", "Queen", "The Who"], "answer": 2 },
+        "q18": { "text": "Quantas cordas tem um violino?", "options": ["3", "4", "5", "6"], "answer": 1 },
+        "q19": { "text": "Qual é o nome da voz masculina mais grave?", "options": ["Tenor", "Barítono", "Baixo", "Contratenor"], "answer": 2 },
+        "q20": { "text": "Quem compôs 'Carmen'?", "options": ["Bizet", "Debussy", "Ravel", "Saint-Saëns"], "answer": 0 }
+      }
     }
   }
 }

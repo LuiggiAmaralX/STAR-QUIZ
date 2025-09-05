@@ -261,7 +261,7 @@ input[type="password"]:focus {
 /* --- CATEGORY SCREEN (ESTILO DO ESBOÇO) --- */
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 colunas por padrão */
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas por padrão */
     gap: 25px;
     width: 100%;
     margin: 30px auto 0;
@@ -1110,7 +1110,7 @@ input[type="password"]:focus {
 
 @media (max-width: 480px) {
     .category-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 12px;
         margin: 20px auto 0;
     }
@@ -1122,6 +1122,13 @@ input[type="password"]:focus {
     
     .category-title {
         font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
     }
 }
 
