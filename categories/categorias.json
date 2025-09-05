@@ -199,6 +199,106 @@
         "q19": { "text": "Qual é o nome da voz masculina mais grave?", "options": ["Tenor", "Barítono", "Baixo", "Contratenor"], "answer": 2 },
         "q20": { "text": "Quem compôs 'Carmen'?", "options": ["Bizet", "Debussy", "Ravel", "Saint-Saëns"], "answer": 0 }
       }
+    },
+    "games": {
+      "totalQuestions": 20,
+      "questions": {
+        "q1": { "text": "Qual é o jogo mais vendido de todos os tempos?", "options": ["Tetris", "Minecraft", "Grand Theft Auto V", "Super Mario Bros"], "answer": 1 },
+        "q2": { "text": "Em que ano foi lançado o primeiro Super Mario Bros?", "options": ["1983", "1985", "1987", "1989"], "answer": 1 },
+        "q3": { "text": "Qual empresa criou o jogo Pac-Man?", "options": ["Nintendo", "Sega", "Namco", "Atari"], "answer": 2 },
+        "q4": { "text": "Qual é o nome do protagonista da série The Legend of Zelda?", "options": ["Zelda", "Link", "Ganondorf", "Epona"], "answer": 1 },
+        "q5": { "text": "Em que console foi lançado originalmente o jogo Halo?", "options": ["PlayStation", "Nintendo 64", "Xbox", "Dreamcast"], "answer": 2 },
+        "q6": { "text": "Qual jogo popularizou o gênero battle royale?", "options": ["Fortnite", "PUBG", "Apex Legends", "Call of Duty Warzone"], "answer": 1 },
+        "q7": { "text": "Qual é o nome da empresa criadora do jogo Pokémon?", "options": ["Nintendo", "Game Freak", "Creatures", "The Pokémon Company"], "answer": 1 },
+        "q8": { "text": "Em que ano foi lançado o primeiro Grand Theft Auto?", "options": ["1995", "1997", "1999", "2001"], "answer": 1 },
+        "q9": { "text": "Qual é o nome do personagem principal de God of War?", "options": ["Kratos", "Atreus", "Zeus", "Ares"], "answer": 0 },
+        "q10": { "text": "Qual jogo é conhecido por ter criado o gênero survival horror?", "options": ["Silent Hill", "Resident Evil", "Alone in the Dark", "Dead Space"], "answer": 2 },
+        "q11": { "text": "Em que plataforma foi lançado originalmente o jogo Minecraft?", "options": ["Xbox", "PlayStation", "PC", "Mobile"], "answer": 2 },
+        "q12": { "text": "Qual é o nome da moeda do jogo Super Mario?", "options": ["Estrelas", "Moedas", "Cogumelos", "Flores"], "answer": 1 },
+        "q13": { "text": "Qual empresa desenvolveu o jogo The Witcher 3?", "options": ["Bethesda", "BioWare", "CD Projekt Red", "Ubisoft"], "answer": 2 },
+        "q14": { "text": "Em que ano foi lançado o primeiro Mortal Kombat?", "options": ["1991", "1992", "1993", "1994"], "answer": 1 },
+        "q15": { "text": "Qual é o nome do protagonista de Half-Life?", "options": ["Gordon Freeman", "Adrian Shephard", "Barney Calhoun", "Alyx Vance"], "answer": 0 },
+        "q16": { "text": "Qual jogo introduziu o conceito de 'respawn'?", "options": ["Doom", "Quake", "Wolfenstein", "Duke Nukem"], "answer": 0 },
+        "q17": { "text": "Em que console foi lançado originalmente Sonic the Hedgehog?", "options": ["Nintendo", "Sega Genesis", "Atari", "PlayStation"], "answer": 1 },
+        "q18": { "text": "Qual é o nome da princesa em Super Mario?", "options": ["Zelda", "Peach", "Daisy", "Rosalina"], "answer": 1 },
+        "q19": { "text": "Qual jogo é considerado o primeiro MMO de sucesso?", "options": ["World of Warcraft", "EverQuest", "Ultima Online", "Runescape"], "answer": 2 },
+        "q20": { "text": "Em que ano foi fundada a Nintendo?", "options": ["1889", "1945", "1960", "1975"], "answer": 0 }
+      }
+    },
+    "libertadores": {
+      "totalQuestions": 20,
+      "questions": {
+        "q1": { "text": "Qual time brasileiro tem mais títulos da Libertadores?", "options": ["São Paulo", "Santos", "Flamengo", "Independiente"], "answer": 0 },
+        "q2": { "text": "Em que ano foi criada a Copa Libertadores?", "options": ["1958", "1960", "1962", "1965"], "answer": 1 },
+        "q3": { "text": "Qual time argentino tem mais títulos da Libertadores?", "options": ["Boca Juniors", "River Plate", "Independiente", "Racing"], "answer": 2 },
+        "q4": { "text": "Quantos títulos da Libertadores o Pelé conquistou?", "options": ["1", "2", "3", "4"], "answer": 1 },
+        "q5": { "text": "Qual foi o primeiro time brasileiro campeão da Libertadores?", "options": ["Santos", "Cruzeiro", "São Paulo", "Flamengo"], "answer": 0 },
+        "q6": { "text": "Em que estádio é tradicionalmente disputada a final da Libertadores?", "options": ["Maracanã", "Monumental", "La Bombonera", "Varia a cada ano"], "answer": 3 },
+        "q7": { "text": "Qual time uruguaio tem mais títulos da Libertadores?", "options": ["Peñarol", "Nacional", "Defensor", "Danubio"], "answer": 0 },
+        "q8": { "text": "Quantas vezes o Flamengo foi campeão da Libertadores?", "options": ["1", "2", "3", "4"], "answer": 2 },
+        "q9": { "text": "Qual jogador tem mais gols na história da Libertadores?", "options": ["Pelé", "Alberto Spencer", "Daniel Onega", "Fernando Morena"], "answer": 1 },
+        "q10": { "text": "Em que ano o Corinthians conquistou sua primeira Libertadores?", "options": ["2010", "2012", "2014", "2016"], "answer": 1 },
+        "q11": { "text": "Qual time chileno tem mais títulos da Libertadores?", "options": ["Colo-Colo", "Universidad de Chile", "Universidad Católica", "Cobreloa"], "answer": 0 },
+        "q12": { "text": "Quantos times brasileiros já foram campeões da Libertadores?", "options": ["8", "10", "12", "14"], "answer": 1 },
+        "q13": { "text": "Qual foi o último time brasileiro campeão da Libertadores antes de 2019?", "options": ["Santos", "Corinthians", "Grêmio", "Atlético-MG"], "answer": 2 },
+        "q14": { "text": "Em que cidade fica o estádio La Bombonera?", "options": ["Buenos Aires", "Montevidéu", "Santiago", "Lima"], "answer": 0 },
+        "q15": { "text": "Qual time colombiano tem mais títulos da Libertadores?", "options": ["Atlético Nacional", "Millonarios", "América de Cali", "Once Caldas"], "answer": 0 },
+        "q16": { "text": "Quantas vezes o Boca Juniors foi campeão da Libertadores?", "options": ["4", "5", "6", "7"], "answer": 2 },
+        "q17": { "text": "Qual foi o primeiro time não-brasileiro e não-argentino a vencer a Libertadores?", "options": ["Peñarol", "Nacional", "Olimpia", "Colo-Colo"], "answer": 0 },
+        "q18": { "text": "Em que ano o Palmeiras conquistou sua primeira Libertadores?", "options": ["1998", "1999", "2000", "2001"], "answer": 1 },
+        "q19": { "text": "Qual time paraguaio foi campeão da Libertadores?", "options": ["Cerro Porteño", "Olimpia", "Guaraní", "Libertad"], "answer": 1 },
+        "q20": { "text": "Quantos gols Pelé marcou em finais de Libertadores?", "options": ["2", "3", "4", "5"], "answer": 2 }
+      }
+    },
+    "quimica": {
+      "totalQuestions": 20,
+      "questions": {
+        "q1": { "text": "Qual é o símbolo químico do ouro?", "options": ["Go", "Au", "Ag", "Or"], "answer": 1 },
+        "q2": { "text": "Quantos prótons tem o átomo de carbono?", "options": ["4", "6", "8", "12"], "answer": 1 },
+        "q3": { "text": "Qual é a fórmula química do sal de cozinha?", "options": ["NaCl", "KCl", "CaCl2", "MgCl2"], "answer": 0 },
+        "q4": { "text": "Qual gás é liberado quando o magnésio reage com ácido?", "options": ["Oxigênio", "Nitrogênio", "Hidrogênio", "Dióxido de carbono"], "answer": 2 },
+        "q5": { "text": "Qual é o número atômico do hidrogênio?", "options": ["0", "1", "2", "3"], "answer": 1 },
+        "q6": { "text": "Qual é a fórmula química do ácido sulfúrico?", "options": ["HCl", "HNO3", "H2SO4", "H3PO4"], "answer": 2 },
+        "q7": { "text": "Qual elemento tem o símbolo Fe?", "options": ["Flúor", "Ferro", "Fósforo", "Francium"], "answer": 1 },
+        "q8": { "text": "Quantos elétrons tem um átomo neutro de oxigênio?", "options": ["6", "8", "10", "16"], "answer": 1 },
+        "q9": { "text": "Qual é o pH de uma solução neutra?", "options": ["0", "7", "14", "1"], "answer": 1 },
+        "q10": { "text": "Qual gás compõe cerca de 78% da atmosfera terrestre?", "options": ["Oxigênio", "Dióxido de carbono", "Nitrogênio", "Argônio"], "answer": 2 },
+        "q11": { "text": "Qual é a fórmula química do metano?", "options": ["CH4", "C2H6", "C3H8", "C4H10"], "answer": 0 },
+        "q12": { "text": "Qual elemento é conhecido como 'rei dos elementos'?", "options": ["Ouro", "Carbono", "Hidrogênio", "Oxigênio"], "answer": 1 },
+        "q13": { "text": "Qual é o símbolo químico da prata?", "options": ["Pr", "Pt", "Ag", "Si"], "answer": 2 },
+        "q14": { "text": "Quantas ligações covalentes o carbono pode formar?", "options": ["2", "3", "4", "6"], "answer": 2 },
+        "q15": { "text": "Qual é a fórmula química da amônia?", "options": ["NH3", "NO2", "N2O", "HNO3"], "answer": 0 },
+        "q16": { "text": "Qual elemento tem massa atômica aproximadamente 16?", "options": ["Carbono", "Nitrogênio", "Oxigênio", "Flúor"], "answer": 2 },
+        "q17": { "text": "Qual é o nome do processo de passagem direta do sólido para o gasoso?", "options": ["Fusão", "Vaporização", "Sublimação", "Condensação"], "answer": 2 },
+        "q18": { "text": "Qual ácido está presente no estômago humano?", "options": ["Ácido sulfúrico", "Ácido clorídrico", "Ácido nítrico", "Ácido acético"], "answer": 1 },
+        "q19": { "text": "Qual é o símbolo químico do cálcio?", "options": ["C", "Ca", "Cl", "Cr"], "answer": 1 },
+        "q20": { "text": "Qual gás é produzido na fotossíntese?", "options": ["Dióxido de carbono", "Nitrogênio", "Oxigênio", "Hidrogênio"], "answer": 2 }
+      }
+    },
+    "harry_potter": {
+      "totalQuestions": 20,
+      "questions": {
+        "q1": { "text": "Qual é o nome da escola de magia de Harry Potter?", "options": ["Beauxbatons", "Durmstrang", "Hogwarts", "Ilvermorny"], "answer": 2 },
+        "q2": { "text": "Qual é o nome da coruja de Harry Potter?", "options": ["Edwiges", "Errol", "Pig", "Fawkes"], "answer": 0 },
+        "q3": { "text": "Quantas casas existem em Hogwarts?", "options": ["3", "4", "5", "6"], "answer": 1 },
+        "q4": { "text": "Qual é o nome do diretor de Hogwarts?", "options": ["Severus Snape", "Albus Dumbledore", "Minerva McGonagall", "Rubeus Hagrid"], "answer": 1 },
+        "q5": { "text": "Em que casa Harry Potter foi selecionado?", "options": ["Grifinória", "Sonserina", "Corvinal", "Lufa-Lufa"], "answer": 0 },
+        "q6": { "text": "Qual é o nome do melhor amigo de Harry Potter?", "options": ["Neville Longbottom", "Dean Thomas", "Ron Weasley", "Seamus Finnigan"], "answer": 2 },
+        "q7": { "text": "Qual é o nome da melhor amiga de Harry Potter?", "options": ["Luna Lovegood", "Ginny Weasley", "Hermione Granger", "Cho Chang"], "answer": 2 },
+        "q8": { "text": "Qual é o nome do vilão principal da série?", "options": ["Draco Malfoy", "Severus Snape", "Lord Voldemort", "Bellatrix Lestrange"], "answer": 2 },
+        "q9": { "text": "Qual é o esporte praticado no mundo mágico?", "options": ["Quadribol", "Quidditch", "Quadball", "Quidbol"], "answer": 1 },
+        "q10": { "text": "Qual é o nome da rua onde Harry morava com os Dursley?", "options": ["Rua dos Alfeneiros", "Rua Grimmauld", "Beco Diagonal", "Rua Magnólia"], "answer": 0 },
+        "q11": { "text": "Qual é o nome do guardião das chaves de Hogwarts?", "options": ["Hagrid", "Filch", "Dobby", "Kreacher"], "answer": 0 },
+        "q12": { "text": "Quantos livros tem a série Harry Potter?", "options": ["5", "6", "7", "8"], "answer": 2 },
+        "q13": { "text": "Qual é o nome do banco dos bruxos?", "options": ["Gringotes", "Gringotts", "Gringots", "Gringotes"], "answer": 1 },
+        "q14": { "text": "Qual é a posição de Harry no time de Quadribol?", "options": ["Goleiro", "Batedor", "Artilheiro", "Apanhador"], "answer": 3 },
+        "q15": { "text": "Qual é o nome do professor de Poções?", "options": ["Severus Snape", "Horace Slughorn", "Ambos estão corretos", "Nenhum dos dois"], "answer": 2 },
+        "q16": { "text": "Qual é o nome da plataforma para pegar o Expresso de Hogwarts?", "options": ["9 1/2", "9 3/4", "10 1/2", "10 3/4"], "answer": 1 },
+        "q17": { "text": "Qual é o nome do elfo doméstico dos Malfoy?", "options": ["Dobby", "Kreacher", "Winky", "Griphook"], "answer": 0 },
+        "q18": { "text": "Qual é o nome do dragão que Harry enfrentou no Torneio Tribruxo?", "options": ["Rabo-Córneo Húngaro", "Galês Verde", "Hébrida Negra", "Bola de Fogo Chinês"], "answer": 0 },
+        "q19": { "text": "Qual é o nome do fantasma da Grifinória?", "options": ["Nick Quase Sem Cabeça", "Barão Sangrento", "Dama Cinzenta", "Frei Gorducho"], "answer": 0 },
+        "q20": { "text": "Qual é o feitiço para desarmar o oponente?", "options": ["Expelliarmus", "Stupefy", "Petrificus Totalus", "Avada Kedavra"], "answer": 0 }
+      }
     }
   }
 }

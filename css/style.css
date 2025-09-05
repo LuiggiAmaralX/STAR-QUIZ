@@ -261,7 +261,7 @@ input[type="password"]:focus {
 /* --- CATEGORY SCREEN (ESTILO DO ESBOÇO) --- */
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 colunas por padrão */
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas por padrão para 12 categorias */
     gap: 25px;
     width: 100%;
     margin: 30px auto 0;
@@ -1087,7 +1087,7 @@ input[type="password"]:focus {
 /* --- RESPONSIVIDADE PARA CATEGORIAS --- */
 @media (max-width: 1024px) {
     .category-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
 }
