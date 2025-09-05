@@ -80,7 +80,7 @@ createRoomButton.addEventListener('click', () => {
             localStorage.setItem('currentRoomId', roomId);
             window.location.href = 'game.html';
         } else {
-            alert('Não foi possível criar a sala. Tente novamente.');
+            showError('Não foi possível criar a sala. Tente novamente.', { title: 'Erro ao Criar Sala' });
         }
     });
 });
@@ -88,16 +88,19 @@ createRoomButton.addEventListener('click', () => {
 joinRoomButton.addEventListener('click', () => {
     const roomId = joinRoomInput.value.trim();
     if (!roomId) {
-        alert('Por favor, insira o código da sala.');
+        showWarning('Por favor, insira o código da sala.', { title: 'Campo Obrigatório' });
         return;
     }
     joinRoom(roomId, playerNickname).then(success => {
         if (success) {
             // Salva o ID da sala e redireciona para a página do jogo
             localStorage.setItem('currentRoomId', roomId);
-            window.location.href = 'game.html';
+            showSuccess('Entrando na sala...', { title: 'Sucesso!' });
+            setTimeout(() => {
+                window.location.href = 'game.html';
+            }, 1000);
         } else {
-            alert('Sala não encontrada ou erro ao entrar.');
+            showError('Sala não encontrada ou erro ao entrar.', { title: 'Erro ao Entrar' });
         }
     });
 });

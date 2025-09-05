@@ -16,6 +16,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/particles.css"> <!-- Novo CSS das partículas -->
+    <link rel="stylesheet" href="css/notifications.css"> <!-- Sistema de notificações -->
 </head>
 <body>
     
@@ -48,6 +49,9 @@
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="scripts/particles-config.js"></script> <!-- Novo JS de configuração -->
 
+    <!-- Sistema de notificações -->
+    <script src="scripts/notifications.js"></script>
+    
     <!-- Seu script de login original -->
     <script>
         const loginButton = document.getElementById('login-button');
@@ -65,9 +69,12 @@
 
             if (users[username] && users[username].password === password) {
                 localStorage.setItem('playerNickname', username);
-                window.location.href = 'lobby.html';
+                showSuccess('Login realizado com sucesso!', { title: 'Bem-vindo!' });
+                setTimeout(() => {
+                    window.location.href = 'lobby.html';
+                }, 1000);
             } else {
-                alert('Usuário ou senha inválidos!');
+                showError('Usuário ou senha inválidos!', { title: 'Erro de Login' });
             }
         });
 

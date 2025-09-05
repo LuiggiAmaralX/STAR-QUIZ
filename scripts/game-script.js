@@ -2,8 +2,10 @@
 const playerNickname = localStorage.getItem('playerNickname');
 const currentRoomId = localStorage.getItem('currentRoomId');
 if (!playerNickname || !currentRoomId) {
-	alert('Erro: Dados da sessão não encontrados. Retornando ao lobby.');
-	window.location.href = 'lobby.html';
+	showError('Dados da sessão não encontrados. Retornando ao lobby.', { title: 'Erro de Sessão' });
+	setTimeout(() => {
+		window.location.href = 'lobby.html';
+	}, 2000);
 }
 document.getElementById('lobby-room-code').textContent = currentRoomId;
 
@@ -100,7 +102,7 @@ categoryCards.forEach((card) => {
             const totalQuestions = totalSnapshot.val();
 
             if (!totalQuestions) {
-                alert(`Categoria "${selectedCategory}" não encontrada no banco de dados.`);
+                showError(`Categoria "${selectedCategory}" não encontrada no banco de dados.`, { title: 'Categoria Não Encontrada' });
                 return;
             }
 
@@ -119,7 +121,7 @@ categoryCards.forEach((card) => {
             const questionsToSend = questionSnapshots.map(snap => snap.val()).filter(q => q); // Filtra nulos caso uma pergunta não exista
 
             if (questionsToSend.length < questionsPerMatch) {
-                alert('Não foi possível carregar o número necessário de perguntas. Tente novamente.');
+                showError('Não foi possível carregar o número necessário de perguntas. Tente novamente.', { title: 'Erro ao Carregar Perguntas' });
                 return;
             }
             
@@ -143,7 +145,7 @@ categoryCards.forEach((card) => {
             }
         } catch (error) {
             console.error("Erro ao buscar perguntas:", error);
-            alert("Ocorreu um erro ao carregar as perguntas da categoria. Verifique o console.");
+            showError("Ocorreu um erro ao carregar as perguntas da categoria. Verifique o console.", { title: 'Erro Interno' });
         }
     });
 });
@@ -262,8 +264,10 @@ function syncPlayersList() {
 		const roomData = snapshot.val();
 		if (!roomData) {
 			if (gameInProgress) {
-				alert('A sala foi fechada. Retornando ao lobby.');
+				showWarning('A sala foi fechada. Retornando ao lobby.', { title: 'Sala Fechada' });
+			setTimeout(() => {
 				window.location.href = 'lobby.html';
+			}, 2000);
 			}
 			return;
 		}
