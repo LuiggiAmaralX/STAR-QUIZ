@@ -16,7 +16,7 @@
     border-radius: 12px;
     padding: 16px 20px;
     margin-bottom: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+
     border-left: 4px solid #3b82f6;
     display: flex;
     align-items: center;
@@ -198,7 +198,6 @@
 /* Efeitos hover */
 .notification:hover {
     transform: translateX(-4px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* Animação de pulse para notificações importantes */
@@ -207,6 +206,33 @@
 }
 
 @keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Box shadow apenas no hover para desktop */
+@media (min-width: 1024px) {
+    .notification {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    }
+    
+    .notification:hover {
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .notification.pulse {
+        animation: pulse-desktop 2s infinite;
+    }
+}
+
+@keyframes pulse-desktop {
     0% {
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
     }

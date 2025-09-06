@@ -1,60 +1,77 @@
-/* ===== ANIMAÇÕES DE TRANSIÇÃO ===== */
+/* ==========================================================================
+   ANIMATIONS.CSS - Sistema de Animações Futurista
+   Microanimações e transições suaves inspiradas em Glassmorphism/Neumorphism
+   ========================================================================== */
 
-/* Animações de entrada */
-@keyframes fadeIn {
+/* === KEYFRAMES FUTURISTAS === */
+
+/* Animações de entrada com efeitos glassmorphism */
+@keyframes fadeInGlass {
     from {
         opacity: 0;
+        backdrop-filter: blur(0px);
+        transform: scale(0.95);
     }
     to {
         opacity: 1;
+        backdrop-filter: var(--blur-md);
+        transform: scale(1);
     }
 }
 
-@keyframes slideInUp {
+@keyframes slideInUpGlass {
     from {
-        transform: translateY(30px);
+        transform: translateY(var(--space-8)) scale(0.95);
         opacity: 0;
+        backdrop-filter: blur(0px);
     }
     to {
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
         opacity: 1;
+        backdrop-filter: var(--blur-md);
     }
 }
 
-@keyframes slideInDown {
+@keyframes slideInDownGlass {
     from {
-        transform: translateY(-30px);
+        transform: translateY(calc(-1 * var(--space-8))) scale(0.95);
         opacity: 0;
+        backdrop-filter: blur(0px);
     }
     to {
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
         opacity: 1;
+        backdrop-filter: var(--blur-md);
     }
 }
 
-@keyframes slideInLeft {
+@keyframes slideInLeftGlass {
     from {
-        transform: translateX(-30px);
+        transform: translateX(calc(-1 * var(--space-8))) scale(0.95);
         opacity: 0;
+        backdrop-filter: blur(0px);
     }
     to {
-        transform: translateX(0);
+        transform: translateX(0) scale(1);
         opacity: 1;
+        backdrop-filter: var(--blur-md);
     }
 }
 
-@keyframes slideInRight {
+@keyframes slideInRightGlass {
     from {
-        transform: translateX(30px);
+        transform: translateX(var(--space-8)) scale(0.95);
         opacity: 0;
+        backdrop-filter: blur(0px);
     }
     to {
-        transform: translateX(0);
+        transform: translateX(0) scale(1);
         opacity: 1;
+        backdrop-filter: var(--blur-md);
     }
 }
 
-@keyframes scaleIn {
+@keyframes scaleInGlow {
     from {
         transform: scale(0.8);
         opacity: 0;
@@ -65,58 +82,70 @@
     }
 }
 
-@keyframes bounceIn {
+@keyframes bounceInFuturistic {
     0% {
-        transform: scale(0.3);
+        transform: scale(0.3) rotate(-5deg);
         opacity: 0;
+        filter: blur(4px);
     }
     50% {
-        transform: scale(1.05);
+        transform: scale(1.05) rotate(2deg);
         opacity: 0.8;
+        filter: blur(1px);
     }
     70% {
-        transform: scale(0.9);
+        transform: scale(0.95) rotate(-1deg);
         opacity: 0.9;
+        filter: blur(0.5px);
     }
     100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+        filter: blur(0px);
+    }
+}
+
+/* Animações de saída com efeitos glassmorphism */
+@keyframes fadeOutGlass {
+    from {
+        opacity: 1;
+        backdrop-filter: var(--blur-md);
         transform: scale(1);
-        opacity: 1;
-    }
-}
-
-/* Animações de saída */
-@keyframes fadeOut {
-    from {
-        opacity: 1;
     }
     to {
         opacity: 0;
+        backdrop-filter: blur(0px);
+        transform: scale(0.95);
     }
 }
 
-@keyframes slideOutUp {
+@keyframes slideOutUpGlass {
     from {
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
         opacity: 1;
+        backdrop-filter: var(--blur-md);
     }
     to {
-        transform: translateY(-30px);
+        transform: translateY(calc(-1 * var(--space-8))) scale(0.95);
         opacity: 0;
+        backdrop-filter: blur(0px);
     }
 }
 
-@keyframes slideOutDown {
+@keyframes slideOutDownGlass {
     from {
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
         opacity: 1;
+        backdrop-filter: var(--blur-md);
     }
     to {
-        transform: translateY(30px);
+        transform: translateY(var(--space-8)) scale(0.95);
         opacity: 0;
+        backdrop-filter: blur(0px);
     }
 }
 
-@keyframes scaleOut {
+@keyframes scaleOutGlow {
     from {
         transform: scale(1);
         opacity: 1;
@@ -127,99 +156,216 @@
     }
 }
 
-/* Classes de animação */
+/* Animações especiais futuristas */
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes shimmerEffect {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+@keyframes floatAnimation {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes rotateGlow {
+    0% {
+        transform: rotate(0deg);
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* === CLASSES DE ANIMAÇÃO FUTURISTAS === */
+
+/* Animações de entrada */
 .animate-fade-in {
-    animation: fadeIn 0.5s ease-out forwards;
+    animation: fadeInGlass var(--transition-slow) var(--ease-out) forwards;
 }
 
 .animate-slide-in-up {
-    animation: slideInUp 0.6s ease-out forwards;
+    animation: slideInUpGlass var(--transition-slow) var(--ease-out) forwards;
 }
 
 .animate-slide-in-down {
-    animation: slideInDown 0.6s ease-out forwards;
+    animation: slideInDownGlass var(--transition-slow) var(--ease-out) forwards;
 }
 
 .animate-slide-in-left {
-    animation: slideInLeft 0.6s ease-out forwards;
+    animation: slideInLeftGlass var(--transition-slow) var(--ease-out) forwards;
 }
 
 .animate-slide-in-right {
-    animation: slideInRight 0.6s ease-out forwards;
+    animation: slideInRightGlass var(--transition-slow) var(--ease-out) forwards;
 }
 
 .animate-scale-in {
-    animation: scaleIn 0.4s ease-out forwards;
+    animation: scaleInGlow var(--transition-normal) var(--ease-out) forwards;
 }
 
 .animate-bounce-in {
-    animation: bounceIn 0.8s ease-out forwards;
+    animation: bounceInFuturistic var(--transition-bounce) var(--ease-bounce) forwards;
 }
 
+/* Animações de saída */
 .animate-fade-out {
-    animation: fadeOut 0.3s ease-in forwards;
+    animation: fadeOutGlass var(--transition-fast) var(--ease-in) forwards;
 }
 
 .animate-slide-out-up {
-    animation: slideOutUp 0.4s ease-in forwards;
+    animation: slideOutUpGlass var(--transition-normal) var(--ease-in) forwards;
 }
 
 .animate-slide-out-down {
-    animation: slideOutDown 0.4s ease-in forwards;
+    animation: slideOutDownGlass var(--transition-normal) var(--ease-in) forwards;
 }
 
 .animate-scale-out {
-    animation: scaleOut 0.3s ease-in forwards;
+    animation: scaleOutGlow var(--transition-fast) var(--ease-in) forwards;
 }
 
-/* Transições suaves para elementos interativos */
+/* Animações especiais */
+.animate-glow-pulse {
+    animation: glowPulse 2s var(--ease-in-out) infinite;
+}
+
+.animate-shimmer {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    background-size: 200% 100%;
+    animation: shimmerEffect 2s var(--ease-in-out) infinite;
+}
+
+.animate-float {
+    animation: floatAnimation 3s var(--ease-in-out) infinite;
+}
+
+.animate-rotate-glow {
+    animation: rotateGlow 4s linear infinite;
+}
+
+/* Microanimações para interatividade */
+.micro-bounce {
+    transition: transform var(--transition-fast) var(--ease-bounce);
+}
+
+.micro-bounce:hover {
+    transform: translateY(-2px) scale(1.02);
+}
+
+.micro-glow {
+    transition: all var(--transition-normal) var(--ease-out);
+}
+
+.micro-glow:hover {
+    transform: translateY(-1px);
+}
+
+.micro-scale {
+    transition: transform var(--transition-fast) var(--ease-out);
+}
+
+.micro-scale:hover {
+    transform: scale(1.05);
+}
+
+.micro-slide {
+    transition: transform var(--transition-normal) var(--ease-out);
+}
+
+.micro-slide:hover {
+    transform: translateX(var(--space-2));
+}
+
+/* === TRANSIÇÕES SUAVES FUTURISTAS === */
 .smooth-transition {
-    transition: all 0.3s ease;
+    transition: all var(--transition-normal) var(--ease-out);
 }
 
 .smooth-transition-fast {
-    transition: all 0.2s ease;
+    transition: all var(--transition-fast) var(--ease-out);
 }
 
 .smooth-transition-slow {
-    transition: all 0.5s ease;
+    transition: all var(--transition-slow) var(--ease-out);
 }
 
-/* Animações específicas para telas */
+.smooth-transition-bounce {
+    transition: all var(--transition-normal) var(--ease-bounce);
+}
+
+/* === ANIMAÇÕES ESPECÍFICAS PARA TELAS === */
 .screen {
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition: 
+        opacity var(--transition-slow) var(--ease-out),
+        transform var(--transition-slow) var(--ease-out),
+        backdrop-filter var(--transition-slow) var(--ease-out);
+    backdrop-filter: var(--blur-md);
 }
 
 .screen:not(.active) {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(var(--space-6)) scale(0.98);
     pointer-events: none;
+    backdrop-filter: blur(0px);
 }
 
 .screen.active {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     pointer-events: auto;
+    backdrop-filter: var(--blur-md);
 }
 
-/* Animações para botões */
+/* Efeito de entrada para telas */
+.screen.entering {
+    animation: slideInUpGlass var(--transition-slow) var(--ease-out) forwards;
+}
+
+.screen.exiting {
+    animation: slideOutDownGlass var(--transition-normal) var(--ease-in) forwards;
+}
+
+/* === ANIMAÇÕES PARA BOTÕES FUTURISTAS === */
 .btn, button {
-    transition: all 0.2s ease;
+    transition: all var(--transition-normal) var(--ease-out);
     position: relative;
     overflow: hidden;
 }
 
 .btn:hover, button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px) scale(1.02);
 }
 
 .btn:active, button:active {
-    transform: translateY(0);
-    transition: all 0.1s ease;
+    transform: translateY(-1px) scale(0.98);
+    transition: all var(--transition-fast) var(--ease-in);
 }
 
-/* Efeito ripple para botões */
+/* Efeito ripple futurista para botões */
 .btn::before, button::before {
     content: '';
     position: absolute;
@@ -228,14 +374,61 @@
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
+    background: radial-gradient(
+        circle,
+        rgba(0, 212, 255, 0.4) 0%,
+        rgba(124, 58, 237, 0.2) 50%,
+        transparent 70%
+    );
     transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
+    transition: 
+        width var(--transition-slow) var(--ease-out),
+        height var(--transition-slow) var(--ease-out),
+        opacity var(--transition-slow) var(--ease-out);
+    opacity: 0;
 }
 
 .btn:active::before, button:active::before {
     width: 300px;
     height: 300px;
+    opacity: 1;
+}
+
+/* Efeito shimmer para botões primários */
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: left var(--transition-slow) var(--ease-out);
+}
+
+.btn-primary:hover::after {
+    left: 100%;
+}
+
+/* Estados especiais para botões */
+.btn.loading {
+    animation: glowPulse 1.5s var(--ease-in-out) infinite;
+    pointer-events: none;
+}
+
+.btn.success {
+    animation: bounceInFuturistic var(--transition-bounce) var(--ease-bounce);
+    background: var(--gradient-success) !important;
+}
+
+.btn.error {
+    animation: scaleInGlow var(--transition-normal) var(--ease-out);
+    background: var(--gradient-danger) !important;
 }
 
 /* Animações para cards */
@@ -245,13 +438,11 @@
 
 .category-card:hover {
     transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .category-card.selected {
     animation: bounceIn 0.6s ease-out;
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(74, 144, 226, 0.5);
 }
 
 /* Animações para inputs */
@@ -261,7 +452,6 @@ input, select, textarea {
 
 input:focus, select:focus, textarea:focus {
     transform: scale(1.02);
-    box-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
 }
 
 /* Animações para lista de jogadores */
@@ -408,4 +598,85 @@ input:focus, select:focus, textarea:focus {
 @keyframes fadeOut {
     from { opacity: 1; }
     to { opacity: 0; }
+}
+
+/* Box shadow apenas no hover para desktop */
+@media (min-width: 1024px) {
+    .micro-glow:hover {
+        box-shadow: var(--shadow-lg), var(--glow-primary);
+    }
+    
+    .btn:hover, button:hover {
+        box-shadow: var(--shadow-lg), var(--glow-primary);
+    }
+    
+    .category-card:hover {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .category-card.selected {
+        box-shadow: 0 0 20px rgba(74, 144, 226, 0.5);
+    }
+    
+    input:focus, select:focus, textarea:focus {
+        box-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+    }
+}
+
+/* Keyframes com box shadow apenas para desktop */
+@media (min-width: 1024px) {
+    @keyframes scaleInGlowDesktop {
+        from {
+            transform: scale(0.8);
+            opacity: 0;
+            box-shadow: none;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+            box-shadow: var(--shadow-lg), var(--glow-primary);
+        }
+    }
+    
+    @keyframes scaleOutGlowDesktop {
+        from {
+            transform: scale(1);
+            opacity: 1;
+            box-shadow: var(--shadow-lg), var(--glow-primary);
+        }
+        to {
+            transform: scale(0.8);
+            opacity: 0;
+            box-shadow: none;
+        }
+    }
+    
+    @keyframes glowPulseDesktop {
+        0%, 100% {
+            box-shadow: var(--shadow-md), var(--glow-primary);
+        }
+        50% {
+            box-shadow: var(--shadow-xl), 0 0 30px rgba(0, 212, 255, 0.6);
+        }
+    }
+    
+    .animate-scale-in {
+        animation: scaleInGlowDesktop var(--transition-normal) var(--ease-out) forwards;
+    }
+    
+    .animate-scale-out {
+        animation: scaleOutGlowDesktop var(--transition-fast) var(--ease-in) forwards;
+    }
+    
+    .animate-glow-pulse {
+        animation: glowPulseDesktop 2s var(--ease-in-out) infinite;
+    }
+    
+    .btn.loading {
+        animation: glowPulseDesktop 1.5s var(--ease-in-out) infinite;
+    }
+    
+    .btn.error {
+        animation: scaleInGlowDesktop var(--transition-normal) var(--ease-out);
+    }
 }

@@ -1,162 +1,343 @@
 /* ==========================================================================
-   GAME.CSS - Estilos específicos da página de Jogo (game.html)
-   Contém: Quiz, Timer, Respostas, Resultados e elementos específicos do jogo
+   GAME.CSS - Estilos Futuristas da página de Jogo (game.html)
+   Design minimalista com glassmorphism e microanimações
    ========================================================================== */
 
-/* --- QUIZ SCREEN MODERNIZADO --- */
+/* === QUIZ SCREEN FUTURISTA === */
 #quiz-screen {
-    background: var(--dark-color-1);
-    padding: 20px;
+    background: var(--surface-glass);
+    backdrop-filter: var(--blur-xl);
+    -webkit-backdrop-filter: var(--blur-xl);
+    padding: var(--space-6);
     max-width: 1000px;
     position: relative;
+    border-radius: var(--radius-2xl);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* --- CABEÇALHO DO QUIZ --- */
+/* Box shadow apenas no hover para desktop */
+@media (min-width: 1024px) {
+    #quiz-screen:hover {
+        box-shadow: var(--shadow-2xl);
+    }
+}
+
+#quiz-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 212, 255, 0.02) 0%,
+        rgba(124, 58, 237, 0.02) 50%,
+        rgba(6, 255, 165, 0.02) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* === CABEÇALHO DO QUIZ FUTURISTA === */
 .quiz-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    padding: 15px 20px;
-    background: rgba(26, 42, 66, 0.8);
-    border-radius: 15px;
-    border: var(--border-width-card) solid var(--blue-light-accent);
+    margin-bottom: var(--space-6);
+    padding: var(--space-4) var(--space-6);
+    background: var(--surface-glass);
+    backdrop-filter: var(--blur-lg);
+    -webkit-backdrop-filter: var(--blur-lg);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    position: relative;
+    z-index: 1;
 }
 
-/* --- TIMER CONTAINER --- */
+/* Box shadow apenas no hover para desktop */
+@media (min-width: 1024px) {
+    .quiz-header:hover {
+        box-shadow: var(--shadow-lg), var(--glow-primary);
+    }
+}
+
+/* === TIMER CONTAINER FUTURISTA === */
 #timer-container {
     display: flex;
     align-items: center;
-    gap: 8px;
-    background: var(--yellow-accent);
-    padding: 10px 16px;
-    border-radius: 25px;
-    color: var(--blue-dark-bg);
-    font-weight: 700;
-    font-size: 1.1rem;
+    gap: var(--space-2);
+    background: var(--gradient-secondary);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-full);
+    color: #ffffff;
+    font-weight: var(--font-bold);
+    font-size: var(--text-lg);
+    transition: all var(--transition-normal) var(--ease-out);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Box shadow apenas no hover para desktop */
+@media (min-width: 1024px) {
+    #timer-container:hover {
+        box-shadow: var(--shadow-md), var(--glow-secondary);
+    }
+}
+
+#timer-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transition: opacity var(--transition-normal) var(--ease-out);
+}
+
+#timer-container:hover::before {
+    opacity: 1;
 }
 
 .timer-icon {
-    font-size: 1.2rem;
+    font-size: var(--text-xl);
+    animation: rotateGlow 2s var(--ease-in-out) infinite;
 }
 
 /* Timer com pouco tempo */
 #timer-container.warning {
-    background: var(--red-incorrect);
-    color: white;
-    animation: timerWarning 0.5s infinite;
+    background: linear-gradient(135deg, #ff4757, #ff3742);
+    color: var(--text-primary);
+    animation: timerWarningGlass var(--transition-fast) infinite;
 }
 
-@keyframes timerWarning {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+/* Box shadow apenas no hover para desktop */
+@media (min-width: 1024px) {
+    #timer-container.warning:hover {
+        box-shadow: var(--shadow-lg), 0 0 30px rgba(255, 71, 87, 0.6);
+    }
 }
 
-/* --- CONTADOR DE QUESTÕES --- */
+@keyframes timerWarningGlass {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: var(--shadow-lg), 0 0 30px rgba(255, 71, 87, 0.6);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: var(--shadow-xl), 0 0 40px rgba(255, 71, 87, 0.8);
+    }
+}
+
+/* === CONTADOR DE QUESTÕES FUTURISTA === */
 #question-counter {
-    background: var(--cyan-main);
-    color: white;
-    padding: 10px 16px;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 1rem;
+    background: var(--gradient-primary);
+    color: var(--text-primary);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-full);
+    font-weight: var(--font-bold);
+    font-size: var(--text-base);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    backdrop-filter: var(--blur-sm);
+    -webkit-backdrop-filter: var(--blur-sm);
+    transition: all var(--transition-normal) var(--ease-out);
 }
 
-/* --- ÁREA DA PERGUNTA --- */
+/* Box shadow apenas no hover para desktop */
+@media (min-width: 1024px) {
+    #question-counter:hover {
+        transform: translateY(-1px) scale(1.02);
+        box-shadow: var(--shadow-lg), 0 0 25px rgba(0, 212, 255, 0.5);
+    }
+}
+
+/* === ÁREA DA PERGUNTA FUTURISTA === */
 .question-area {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 30px 25px;
-    border-radius: 20px;
-    margin: 20px 0;
-    border: 2px solid var(--cyan-light);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    background: var(--surface-glass);
+    backdrop-filter: var(--blur-lg);
+    -webkit-backdrop-filter: var(--blur-lg);
+    padding: var(--space-8) var(--space-6);
+    border-radius: var(--radius-2xl);
+    margin: var(--space-6) 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
 }
 
+/* Box shadow apenas no hover para desktop */
+@media (min-width: 1024px) {
+    .question-area:hover {
+        box-shadow: var(--shadow-xl);
+    }
+}
 
+.question-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    pointer-events: none;
+}
 
 #question-text {
-    font-family: var(--font-family-headings);
-    font-size: 1.6rem;
-    color: #1f2937;
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    color: var(--text-primary);
     text-align: center;
     line-height: 1.4;
     margin: 0;
-    font-weight: 600;
+    font-weight: var(--font-semibold);
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* --- GRID DE RESPOSTAS --- */
+/* === GRID DE RESPOSTAS FUTURISTA === */
 .answer-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-top: 25px;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+    position: relative;
+    z-index: 1;
 }
 
 .answer-button {
-    background: var(--blue-medium-bg);
-    color: white;
-    border: 2px solid var(--blue-light-accent);
-    border-radius: 15px;
-    padding: 20px 15px;
-    font-size: 1.1rem;
-    font-weight: 600;
+    background: var(--surface-glass);
+    backdrop-filter: var(--blur-md);
+    -webkit-backdrop-filter: var(--blur-md);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6) var(--space-4);
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
     text-align: center;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all var(--transition-normal) var(--ease-out);
     min-height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.answer-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.05);
+    opacity: 0;
+    transition: opacity var(--transition-normal) var(--ease-out);
+}
+
+.answer-button:hover::before {
+    opacity: 1;
 }
 
 
 
-.answer-button:hover:not(.correct):not(.incorrect) {
-    background: var(--cyan-main);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(20, 184, 166, 0.2);
-    border-color: var(--cyan-light);
+/* Box shadow apenas no hover para desktop */
+@media (min-width: 1024px) {
+    .answer-button:hover:not(.correct):not(.incorrect) {
+        background: var(--gradient-primary);
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: var(--shadow-lg), var(--glow-primary);
+        border-color: rgba(0, 212, 255, 0.4);
+    }
 }
 
 .answer-button:active {
-    transform: translateY(0);
+    transform: translateY(-1px) scale(1.01);
 }
 
-/* --- ESTADOS DAS RESPOSTAS --- */
+/* === ESTADOS DAS RESPOSTAS FUTURISTAS === */
 .answer-button.correct {
-    background: var(--green-correct);
-    border-color: #10b981;
-    animation: correctAnswer 0.8s ease;
-    box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+    background: #2d3748;
+    border-color: rgba(45, 55, 72, 0.5);
+    animation: correctAnswerGlass var(--transition-slow) var(--ease-out);
+    color: #ffffff;
+}
+
+/* Box shadow apenas no hover para desktop */
+@media (min-width: 1024px) {
+    .answer-button.correct:hover {
+        box-shadow: var(--shadow-xl), 0 0 40px rgba(45, 55, 72, 0.6);
+    }
 }
 
 .answer-button.incorrect {
-    background: var(--red-incorrect);
-    border-color: #ef4444;
-    animation: incorrectAnswer 0.8s ease;
-    box-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
-    opacity: 0.8;
+    background: #4a5568;
+    border-color: rgba(74, 85, 104, 0.5);
+    animation: incorrectAnswerGlass var(--transition-slow) var(--ease-out);
+    opacity: 0.9;
+    color: #ffffff;
 }
 
-@keyframes correctAnswer {
-    0% { transform: scale(1); }
-    25% { transform: scale(1.1) rotate(2deg); }
-    50% { transform: scale(1.05) rotate(-1deg); }
-    75% { transform: scale(1.08) rotate(1deg); }
-    100% { transform: scale(1) rotate(0deg); }
+/* Box shadow apenas no hover para desktop */
+@media (min-width: 1024px) {
+    .answer-button.incorrect:hover {
+        box-shadow: var(--shadow-xl), 0 0 40px rgba(74, 85, 104, 0.6);
+    }
 }
 
-@keyframes incorrectAnswer {
-    0% { transform: translateX(0) rotate(0deg); }
-    20% { transform: translateX(-8px) rotate(-2deg); }
-    40% { transform: translateX(8px) rotate(2deg); }
-    60% { transform: translateX(-6px) rotate(-1deg); }
-    80% { transform: translateX(4px) rotate(1deg); }
-    100% { transform: translateX(0) rotate(0deg); }
+@keyframes correctAnswerGlass {
+    0% { 
+        transform: scale(1);
+    }
+    25% { 
+        transform: scale(1.08) rotate(1deg);
+    }
+    50% { 
+        transform: scale(1.04) rotate(-0.5deg);
+    }
+    75% { 
+        transform: scale(1.06) rotate(0.5deg);
+    }
+    100% { 
+        transform: scale(1) rotate(0deg);
+    }
 }
 
-/* Efeito de partículas para resposta correta */
+@keyframes incorrectAnswerGlass {
+    0% { 
+        transform: translateX(0) rotate(0deg);
+    }
+    20% { 
+        transform: translateX(-6px) rotate(-1deg);
+    }
+    40% { 
+        transform: translateX(6px) rotate(1deg);
+    }
+    60% { 
+        transform: translateX(-4px) rotate(-0.5deg);
+    }
+    80% { 
+        transform: translateX(2px) rotate(0.5deg);
+    }
+    100% { 
+        transform: translateX(0) rotate(0deg);
+    }
+}
+
+/* Efeito de partículas futurista para resposta correta */
 .answer-button.correct::after {
     content: '✨';
     position: absolute;
@@ -164,119 +345,222 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 2rem;
-    animation: sparkle 0.8s ease;
+    animation: sparkleGlass var(--transition-slow) var(--ease-out);
     pointer-events: none;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
-@keyframes sparkle {
-    0% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
-    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
-    100% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+@keyframes sparkleGlass {
+    0% { 
+        opacity: 0; 
+        transform: translate(-50%, -50%) scale(0) rotate(0deg);
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    50% { 
+        opacity: 1; 
+        transform: translate(-50%, -50%) scale(1.3) rotate(180deg);
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+    }
+    100% { 
+        opacity: 0; 
+        transform: translate(-50%, -50%) scale(0) rotate(360deg);
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
 }
 
-/* --- RODAPÉ DO QUIZ --- */
+/* === RODAPÉ DO QUIZ FUTURISTA === */
 .quiz-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 30px;
-    padding: 20px 25px;
-    background: rgba(26, 42, 66, 0.8);
-    border-radius: 20px;
-    border: var(--border-width-card) solid var(--blue-light-accent);
-    backdrop-filter: blur(10px);
+    margin-top: var(--space-8);
+    padding: var(--space-6);
+    background: var(--surface-glass);
+    backdrop-filter: var(--blur-lg);
+    -webkit-backdrop-filter: var(--blur-lg);
+    border-radius: var(--radius-2xl);
+    border: 1px solid rgba(0, 212, 255, 0.2);
     position: relative;
     z-index: 1;
-    animation: footerSlideIn 0.6s ease-out 1s both;
+    animation: footerSlideInGlass var(--transition-slow) var(--ease-out) 1s both;
+    overflow: hidden;
 }
 
-@keyframes footerSlideIn {
+.quiz-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 212, 255, 0.03) 0%,
+        rgba(124, 58, 237, 0.03) 100%
+    );
+    pointer-events: none;
+}
+
+@keyframes footerSlideInGlass {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px) scale(0.95);
+        backdrop-filter: blur(0px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
+        backdrop-filter: var(--blur-lg);
     }
 }
 
 #player-score-container {
     display: flex;
     align-items: center;
-    gap: 10px;
-    background: var(--yellow-accent);
-    padding: 12px 20px;
-    border-radius: 25px;
-    color: var(--blue-dark-bg);
-    font-weight: 700;
-    font-size: 1.1rem;
-    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+    gap: var(--space-3);
+    background: var(--gradient-secondary);
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-full);
+    color: var(--text-primary);
+    font-weight: var(--font-bold);
+    font-size: var(--text-lg);
+    border: 1px solid rgba(6, 255, 165, 0.3);
+    position: relative;
+    z-index: 1;
+    transition: all var(--transition-normal) var(--ease-out);
+}
+
+/* Box shadow apenas no hover para desktop */
+@media (min-width: 1024px) {
+    .quiz-footer:hover {
+        box-shadow: var(--shadow-lg), var(--glow-primary);
+    }
+    
+    #player-score-container {
+        box-shadow: var(--shadow-md), var(--glow-secondary);
+    }
+    
+    #player-score-container:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: var(--shadow-lg), 0 0 25px rgba(6, 255, 165, 0.5);
+    }
 }
 
 .score-icon {
-    font-size: 1.2rem;
-    animation: starTwinkle 2s infinite;
+    font-size: var(--text-xl);
+    animation: starTwinkleGlass 2s var(--ease-in-out) infinite;
 }
 
-@keyframes starTwinkle {
-    0%, 100% { transform: scale(1) rotate(0deg); }
-    50% { transform: scale(1.1) rotate(5deg); }
+@keyframes starTwinkleGlass {
+    0%, 100% { 
+        transform: scale(1) rotate(0deg);
+        text-shadow: 0 0 8px rgba(6, 255, 165, 0.5);
+    }
+    50% { 
+        transform: scale(1.1) rotate(5deg);
+        text-shadow: 0 0 15px rgba(6, 255, 165, 0.8);
+    }
 }
 
 #next-question-btn {
-    background: var(--cyan-main);
-    border: none;
-    padding: 15px 25px;
-    border-radius: 25px;
-    color: white;
-    font-weight: 700;
-    font-size: 1.1rem;
+    background: var(--gradient-primary);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    padding: var(--space-4) var(--space-6);
+    border-radius: var(--radius-full);
+    color: var(--text-primary);
+    font-weight: var(--font-bold);
+    font-size: var(--text-lg);
     cursor: pointer;
-    transition: all var(--transition-medium);
-    box-shadow: 0 4px 15px rgba(20, 184, 166, 0.3);
+    transition: all var(--transition-normal) var(--ease-out);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--space-2);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
 }
 
-#next-question-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(20, 184, 166, 0.4);
-    background: var(--cyan-light);
+#next-question-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transition: opacity var(--transition-normal) var(--ease-out);
+}
+
+#next-question-btn:hover::before {
+    opacity: 1;
+}
+
+/* Box shadow apenas no hover para desktop */
+@media (min-width: 1024px) {
+    #next-question-btn {
+        box-shadow: var(--shadow-md), var(--glow-primary);
+    }
+    
+    #next-question-btn:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: var(--shadow-lg), 0 0 30px rgba(0, 212, 255, 0.5);
+    }
 }
 
 #next-question-btn:active {
-    transform: translateY(0);
+    transform: translateY(-1px) scale(1.01);
 }
 
 #next-question-btn:disabled {
-    opacity: 0.5;
+    opacity: 0.7;
     cursor: not-allowed;
     transform: none;
+    color: var(--text-secondary);
 }
 
-/* --- RESULT SCREEN MODERNIZADO --- */
+/* Box shadow apenas no hover para desktop */
+@media (min-width: 1024px) {
+    #next-question-btn:disabled {
+        box-shadow: var(--shadow-sm);
+    }
+    
+    #next-question-btn:disabled:hover {
+        transform: none;
+        box-shadow: var(--shadow-sm);
+    }
+}
+
+/* === RESULT SCREEN FUTURISTA === */
 #result-screen {
-    background: var(--blue-dark-bg);
-    padding: 40px;
+    background: var(--surface-glass);
+    backdrop-filter: var(--blur-xl);
+    -webkit-backdrop-filter: var(--blur-xl);
+    padding: var(--space-10);
     position: relative;
     overflow: hidden;
-    border: 3px solid var(--cyan-light);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 
-                0 0 0 1px rgba(20, 184, 166, 0.2),
-                inset 0 2px 4px rgba(255, 255, 255, 0.1);
-    animation: resultScreenSlideIn 1s ease-out forwards;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-2xl);
+    animation: resultScreenSlideInGlass 1s var(--ease-out) forwards;
 }
 
-@keyframes resultScreenSlideIn {
+@keyframes resultScreenSlideInGlass {
     from {
         opacity: 0;
         transform: scale(0.9) translateY(50px);
+        backdrop-filter: blur(0px);
     }
     to {
         opacity: 1;
         transform: scale(1) translateY(0);
+        backdrop-filter: var(--blur-xl);
+    }
+}
+
+/* Box shadow apenas no hover para desktop */
+@media (min-width: 1024px) {
+    #result-screen {
+        box-shadow: var(--shadow-2xl), var(--glow-primary);
     }
 }
 
@@ -287,96 +571,140 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(245, 158, 11, 0.1);
+    background: linear-gradient(
+        135deg,
+        rgba(6, 255, 165, 0.05) 0%,
+        rgba(0, 212, 255, 0.05) 50%,
+        rgba(124, 58, 237, 0.05) 100%
+    );
     pointer-events: none;
     z-index: 0;
-    animation: backgroundPulse 4s ease-in-out infinite;
+    animation: backgroundPulseGlass 4s var(--ease-in-out) infinite;
 }
 
-@keyframes backgroundPulse {
-    0%, 100% { opacity: 0.8; }
-    50% { opacity: 1; }
+@keyframes backgroundPulseGlass {
+    0%, 100% { 
+        opacity: 0.8;
+        background: linear-gradient(
+            135deg,
+            rgba(6, 255, 165, 0.05) 0%,
+            rgba(0, 212, 255, 0.05) 50%,
+            rgba(124, 58, 237, 0.05) 100%
+        );
+    }
+    50% { 
+        opacity: 1;
+        background: linear-gradient(
+            135deg,
+            rgba(6, 255, 165, 0.08) 0%,
+            rgba(0, 212, 255, 0.08) 50%,
+            rgba(124, 58, 237, 0.08) 100%
+        );
+    }
 }
 
 #result-screen h2 {
-    font-family: var(--font-family-headings);
-    font-size: 3.5rem;
-    color: var(--yellow-accent);
+    font-family: var(--font-heading);
+    font-size: var(--text-5xl);
+    color: var(--accent-secondary);
     text-align: center;
-    margin-bottom: 30px;
-    text-shadow: 3px 3px 0px rgba(0,0,0,0.3), 0 0 20px rgba(245, 158, 11, 0.5);
-    animation: titleGlow 2s ease-in-out infinite alternate;
+    margin-bottom: var(--space-8);
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(6, 255, 165, 0.5);
+    animation: titleGlowGlass 2s var(--ease-in-out) infinite alternate;
     position: relative;
     z-index: 1;
+    font-weight: var(--font-bold);
+    letter-spacing: 0.02em;
 }
 
-@keyframes titleGlow {
-    from { text-shadow: 3px 3px 0px rgba(0,0,0,0.3), 0 0 20px rgba(245, 158, 11, 0.5); }
-    to { text-shadow: 3px 3px 0px rgba(0,0,0,0.3), 0 0 30px rgba(245, 158, 11, 0.8); }
+@keyframes titleGlowGlass {
+    from { 
+        text-shadow: 0 0 20px rgba(6, 255, 165, 0.5);
+        transform: scale(1);
+    }
+    to { 
+        text-shadow: 0 0 40px rgba(6, 255, 165, 0.8);
+        transform: scale(1.02);
+    }
 }
 
-/* Títulos dinâmicos baseados no resultado */
+/* Títulos dinâmicos futuristas baseados no resultado */
 .winner-title {
-    color: var(--yellow-accent) !important;
-    text-shadow: 3px 3px 0px rgba(0,0,0,0.3), 0 0 30px rgba(245, 158, 11, 0.8) !important;
-    animation: winnerTitleGlow 2s ease-in-out infinite alternate !important;
+    background: var(--gradient-secondary) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    text-shadow: 0 0 40px rgba(6, 255, 165, 0.8) !important;
+    animation: winnerTitleGlowGlass 2s var(--ease-in-out) infinite alternate !important;
 }
 
 .tie-title {
-    color: var(--cyan-main) !important;
-    text-shadow: 3px 3px 0px rgba(0,0,0,0.3), 0 0 30px rgba(20, 184, 166, 0.8) !important;
-    animation: tieTitleGlow 2s ease-in-out infinite alternate !important;
+    background: var(--gradient-primary) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    text-shadow: 0 0 40px rgba(0, 212, 255, 0.8) !important;
+    animation: tieTitleGlowGlass 2s var(--ease-in-out) infinite alternate !important;
 }
 
-@keyframes winnerTitleGlow {
+@keyframes winnerTitleGlowGlass {
     from { 
-        text-shadow: 3px 3px 0px rgba(0,0,0,0.3), 0 0 20px rgba(245, 158, 11, 0.5);
+        text-shadow: 0 0 30px rgba(6, 255, 165, 0.6);
         transform: scale(1);
     }
     to { 
-        text-shadow: 3px 3px 0px rgba(0,0,0,0.3), 0 0 40px rgba(245, 158, 11, 1);
-        transform: scale(1.02);
+        text-shadow: 0 0 50px rgba(6, 255, 165, 1);
+        transform: scale(1.03);
     }
 }
 
-@keyframes tieTitleGlow {
+@keyframes tieTitleGlowGlass {
     from { 
-        text-shadow: 3px 3px 0px rgba(0,0,0,0.3), 0 0 20px rgba(20, 184, 166, 0.5);
+        text-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
         transform: scale(1);
     }
     to { 
-        text-shadow: 3px 3px 0px rgba(0,0,0,0.3), 0 0 40px rgba(20, 184, 166, 1);
-        transform: scale(1.02);
+        text-shadow: 0 0 50px rgba(0, 212, 255, 1);
+        transform: scale(1.03);
     }
 }
 
 .trophy-icon {
     font-size: 8rem;
-    color: var(--yellow-accent);
-    margin: 30px 0;
-    text-shadow: 5px 5px 0px rgba(0,0,0,0.2), 0 0 30px rgba(245, 158, 11, 0.6);
-    animation: trophyAnimation 2s ease-in-out infinite;
+    color: var(--accent-secondary);
+    margin: var(--space-8) 0;
+    text-shadow: 0 0 40px rgba(6, 255, 165, 0.6);
+    animation: trophyAnimationGlass 2s var(--ease-in-out) infinite;
     position: relative;
     z-index: 1;
     display: block;
+    filter: drop-shadow(0 0 30px rgba(6, 255, 165, 0.6));
 }
 
-@keyframes trophyAnimation {
+@keyframes trophyAnimationGlass {
     0%, 100% { 
         transform: scale(1) rotate(0deg);
-        filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.6));
+        filter: drop-shadow(0 0 30px rgba(6, 255, 165, 0.6));
+        text-shadow: 0 0 40px rgba(6, 255, 165, 0.6);
     }
     25% { 
-        transform: scale(1.1) rotate(-2deg);
-        filter: drop-shadow(0 0 30px rgba(245, 158, 11, 0.8));
+        transform: scale(1.08) rotate(-1deg);
+        filter: drop-shadow(0 0 40px rgba(6, 255, 165, 0.8));
+        text-shadow: 0 0 50px rgba(6, 255, 165, 0.8);
     }
     50% { 
-        transform: scale(1.05) rotate(0deg);
-        filter: drop-shadow(0 0 25px rgba(245, 158, 11, 0.7));
+        transform: scale(1.04) rotate(0deg);
+        filter: drop-shadow(0 0 35px rgba(6, 255, 165, 0.7));
+        text-shadow: 0 0 45px rgba(6, 255, 165, 0.7);
     }
     75% { 
-        transform: scale(1.1) rotate(2deg);
-        filter: drop-shadow(0 0 30px rgba(245, 158, 11, 0.8));
+        transform: scale(1.08) rotate(1deg);
+        filter: drop-shadow(0 0 40px rgba(6, 255, 165, 0.8));
+        text-shadow: 0 0 50px rgba(6, 255, 165, 0.8);
     }
 }
 
@@ -399,19 +727,36 @@
 }
 
 #restart-button {
-    background: var(--green-correct);
-    border: 3px solid #10b981;
-    color: white;
-    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+    background: #2d3748;
+    border: 3px solid #2d3748;
+    color: #ffffff;
     animation-delay: 1.2s;
 }
 
 #back-to-lobby-btn {
-    background: var(--blue-medium-bg);
-    border: 3px solid var(--blue-light-accent);
-    color: var(--cyan-light);
-    box-shadow: 0 8px 25px rgba(58, 80, 107, 0.4);
+    background: #4a5568;
+    border: 3px solid #4a5568;
+    color: #ffffff;
     animation-delay: 1.4s;
+}
+
+/* Box shadow apenas no hover para desktop */
+@media (min-width: 1024px) {
+    #restart-button {
+        box-shadow: 0 8px 25px rgba(45, 55, 72, 0.4);
+    }
+    
+    #restart-button:hover {
+        box-shadow: 0 12px 35px rgba(45, 55, 72, 0.6);
+    }
+    
+    #back-to-lobby-btn {
+        box-shadow: 0 8px 25px rgba(74, 85, 104, 0.4);
+    }
+    
+    #back-to-lobby-btn:hover {
+        box-shadow: 0 12px 35px rgba(74, 85, 104, 0.4);
+    }
 }
 
 @keyframes resultButtonSlideIn {
@@ -438,103 +783,121 @@
 
 #restart-button:hover {
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 12px 35px rgba(16, 185, 129, 0.6);
-    background: #10b981;
+    background: #2d3748;
 }
 
 #back-to-lobby-btn:hover {
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 12px 35px rgba(20, 184, 166, 0.4);
-    background: var(--cyan-main);
-    color: white;
+    background: #4a5568;
+    color: #ffffff;
 }
 
 #restart-button:hover::before, #back-to-lobby-btn:hover::before {
     left: 100%;
 }
 
-/* ==========================================================================
-   GAME.CSS - Estilos da Tela de Jogo (Quiz)
-   ========================================================================== */
-
-#quiz-screen {
-    max-width: 1000px;
+/* === RESPONSIVIDADE DO JOGO === */
+@media (max-width: 768px) {
+    #quiz-screen {
+        padding: var(--space-4);
+        max-width: 100%;
+        margin: var(--space-2);
+    }
+    
+    .quiz-header {
+        flex-direction: column;
+        gap: var(--space-3);
+        margin-bottom: var(--space-4);
+        padding: var(--space-3);
+    }
+    
+    #timer-container {
+        font-size: var(--text-base);
+        padding: var(--space-2) var(--space-3);
+    }
+    
+    .quiz-answers-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+    }
+    
+    .answer-btn {
+        padding: var(--space-4);
+        font-size: var(--text-sm);
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    #question-text {
+        font-size: var(--text-xl);
+        line-height: 1.3;
+        margin-bottom: var(--space-3);
+    }
+    
+    #question-category {
+        font-size: var(--text-sm);
+    }
+    
+    .quiz-footer {
+        flex-direction: column;
+        gap: var(--space-2);
+        margin-top: var(--space-4);
+    }
+    
+    #score-display, #round-display {
+        font-size: var(--text-sm);
+    }
 }
 
-.quiz-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+@media (max-width: 480px) {
+    #quiz-screen {
+        padding: var(--space-3);
+        margin: var(--space-1);
+    }
+    
+    .quiz-header {
+        padding: var(--space-2);
+        gap: var(--space-2);
+    }
+    
+    #timer-container {
+        font-size: var(--text-sm);
+        padding: var(--space-2);
+    }
+    
+    .answer-btn {
+        padding: var(--space-3);
+        font-size: var(--text-xs);
+        min-height: 50px;
+    }
+    
+    #question-text {
+        font-size: var(--text-lg);
+        line-height: 1.2;
+    }
+    
+    #question-category {
+        font-size: var(--text-xs);
+    }
+    
+    #restart-button, #back-to-lobby-btn {
+        padding: var(--space-3) var(--space-4);
+        font-size: var(--text-sm);
+        margin: var(--space-2) 0;
+    }
 }
 
-.quiz-timer {
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
-.quiz-timer.warning {
-    color: var(--accent-color);
-}
-
-.quiz-question-area {
-    margin-bottom: 30px;
-}
-
-#question-text {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-#question-category {
-    font-size: 1.1rem;
-    color: var(--dark-color-5);
-}
-
-.quiz-answers-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-}
-
-.answer-btn {
-    background-color: var(--dark-color-2);
-    border: var(--border-width) solid var(--dark-color-3);
-    border-radius: var(--border-radius-card);
-    padding: 20px;
-    font-size: 1.2rem;
-    text-align: center;
-    cursor: pointer;
-    transition: all var(--transition-medium);
-}
-
-.answer-btn:hover {
-    background-color: var(--dark-color-3);
-    transform: translateY(-3px);
-}
-
-.answer-btn.correct {
-    background-color: #28a745; /* Verde para resposta correta */
-    color: white;
-    border-color: #28a745;
-}
-
-.answer-btn.incorrect {
-    background-color: #dc3545; /* Vermelho para resposta incorreta */
-    color: white;
-    border-color: #dc3545;
-}
-
-.quiz-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 30px;
-}
-
-#score-display,
-#round-display {
-    font-size: 1.2rem;
-    font-weight: 600;
+@media (max-width: 360px) {
+    .answer-btn {
+        padding: var(--space-2);
+        font-size: 12px;
+        min-height: 45px;
+    }
+    
+    #question-text {
+        font-size: var(--text-base);
+    }
 }

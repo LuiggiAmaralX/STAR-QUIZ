@@ -1,20 +1,25 @@
-/* ===== SISTEMA DE ESTATÍSTICAS ===== */
+/* ==========================================================================
+   STATS.CSS - Sistema de Estatísticas Futurista
+   Design com glassmorphism e microanimações
+   ========================================================================== */
 
-/* Modal de estatísticas */
+/* === MODAL DE ESTATÍSTICAS FUTURISTA === */
 .stats-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--overlay-dark);
+    backdrop-filter: var(--blur-sm);
+    -webkit-backdrop-filter: var(--blur-sm);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: all var(--transition-normal) var(--ease-out);
 }
 
 .stats-modal.active {
@@ -23,145 +28,225 @@
 }
 
 .stats-content {
-    background: var(--dark-color-2);
-    border-radius: 20px;
-    padding: 30px;
+    background: var(--surface-glass);
+    backdrop-filter: var(--blur-xl);
+    -webkit-backdrop-filter: var(--blur-xl);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
     max-width: 600px;
     width: 90%;
     max-height: 80vh;
     overflow-y: auto;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+
     transform: scale(0.8);
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-normal) var(--ease-out);
+    position: relative;
+}
+
+.stats-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 212, 255, 0.03) 0%,
+        rgba(124, 58, 237, 0.03) 100%
+    );
+    border-radius: var(--radius-2xl);
+    pointer-events: none;
 }
 
 .stats-modal.active .stats-content {
     transform: scale(1);
+    animation: modalSlideInGlass var(--transition-slow) var(--ease-out);
 }
 
 .stats-header {
-    background-color: var(--dark-color-2);
-    padding: 30px;
+    background: transparent;
+    padding: var(--space-8) var(--space-8) var(--space-4);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: var(--space-6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1;
 }
 
 .stats-title {
-    font-size: 28px;
-    font-weight: bold;
-    color: white;
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    color: var(--text-primary);
     margin: 0;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
 }
 
 .stats-close {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: var(--blur-sm);
+    -webkit-backdrop-filter: var(--blur-sm);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    font-size: var(--text-xl);
     cursor: pointer;
-    padding: 5px;
-    border-radius: 50%;
-    transition: all 0.2s ease;
+    padding: var(--space-2);
+    border-radius: var(--radius-full);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal) var(--ease-out);
 }
 
 .stats-close:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: rotate(90deg);
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: var(--glow-accent);
 }
 
-/* Seções de estatísticas */
+/* === SEÇÕES DE ESTATÍSTICAS FUTURISTAS === */
 .stats-section {
-    margin-bottom: 25px;
+    margin-bottom: var(--space-6);
+    position: relative;
+    z-index: 1;
 }
 
 .stats-section-title {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    margin-bottom: 15px;
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-4);
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--space-3);
+    padding: var(--space-2) 0;
 }
 
 .stats-section-title i {
-    font-size: 24px;
-    color: #ffd700;
+    font-size: var(--text-2xl);
+    color: var(--accent-secondary);
+    text-shadow: 0 0 10px rgba(6, 255, 165, 0.5);
+    animation: iconGlow 2s var(--ease-in-out) infinite alternate;
 }
 
-/* Cards de estatísticas */
+/* === CARDS DE ESTATÍSTICAS FUTURISTAS === */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    margin-bottom: 20px;
+    gap: var(--space-4);
+    margin-bottom: var(--space-5);
 }
 
 .stat-card {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    padding: 20px;
+    background: var(--surface-glass-light);
+    backdrop-filter: var(--blur-md);
+    -webkit-backdrop-filter: var(--blur-md);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    padding: var(--space-5);
     text-align: center;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
+    transition: all var(--transition-normal) var(--ease-out);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 212, 255, 0.05) 0%,
+        rgba(6, 255, 165, 0.05) 100%
+    );
+    opacity: 0;
+    transition: opacity var(--transition-normal) var(--ease-out);
 }
 
 .stat-card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(0, 212, 255, 0.3);
+}
+
+.stat-card:hover::before {
+    opacity: 1;
 }
 
 .stat-value {
-    font-size: 32px;
-    font-weight: bold;
-    color: #ffd700;
-    margin-bottom: 5px;
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    color: var(--accent-secondary);
+    margin-bottom: var(--space-1);
     display: block;
+    text-shadow: 0 0 15px rgba(6, 255, 165, 0.4);
+    position: relative;
+    z-index: 1;
 }
 
 .stat-label {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.1em;
+    font-weight: var(--font-medium);
+    position: relative;
+    z-index: 1;
 }
 
-/* Gráfico de progresso */
+/* === GRÁFICO DE PROGRESSO FUTURISTA === */
 .progress-section {
-    margin: 20px 0;
+    margin: var(--space-5) 0;
+    position: relative;
+    z-index: 1;
 }
 
 .progress-item {
-    margin-bottom: 15px;
+    margin-bottom: var(--space-4);
 }
 
 .progress-label {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 5px;
-    color: white;
-    font-size: 14px;
+    margin-bottom: var(--space-2);
+    color: var(--text-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
 }
 
 .progress-bar-container {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: var(--blur-sm);
+    -webkit-backdrop-filter: var(--blur-sm);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-full);
+    height: 12px;
     overflow: hidden;
+    position: relative;
 }
 
 .progress-bar {
     height: 100%;
-    background: var(--green-correct);
-    border-radius: 10px;
-    transition: width 0.8s ease;
+    background: linear-gradient(
+        90deg,
+        var(--accent-secondary) 0%,
+        var(--accent-primary) 100%
+    );
+    border-radius: var(--radius-full);
+    transition: width var(--transition-slow) var(--ease-out);
     position: relative;
+
 }
 
 .progress-bar::after {
@@ -171,309 +256,496 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: transparent;
-    animation: none;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%
+    );
+    animation: progressShimmer 2s linear infinite;
 }
 
-/* Histórico de jogos */
+/* === HISTÓRICO DE JOGOS FUTURISTA === */
 .history-list {
     max-height: 200px;
     overflow-y: auto;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    padding: 10px;
+    background: var(--surface-glass-light);
+    backdrop-filter: var(--blur-md);
+    -webkit-backdrop-filter: var(--blur-md);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-lg);
+    padding: var(--space-3);
+    position: relative;
 }
 
 .history-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    margin-bottom: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    transition: all 0.2s ease;
+    padding: var(--space-3);
+    margin-bottom: var(--space-2);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: var(--blur-sm);
+    -webkit-backdrop-filter: var(--blur-sm);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-normal) var(--ease-out);
+    position: relative;
+    overflow: hidden;
+}
+
+.history-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(0, 212, 255, 0.05) 0%,
+        rgba(6, 255, 165, 0.05) 100%
+    );
+    opacity: 0;
+    transition: opacity var(--transition-normal) var(--ease-out);
 }
 
 .history-item:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateX(5px);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(8px) scale(1.02);
+    border-color: rgba(0, 212, 255, 0.2);
+}
+
+.history-item:hover::before {
+    opacity: 1;
 }
 
 .history-date {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 12px;
+    color: var(--text-tertiary);
+    font-size: var(--text-xs);
+    font-weight: var(--font-medium);
+    position: relative;
+    z-index: 1;
 }
 
 .history-score {
-    color: #ffd700;
-    font-weight: bold;
+    color: var(--accent-secondary);
+    font-weight: var(--font-bold);
+    text-shadow: 0 0 8px rgba(6, 255, 165, 0.4);
+    position: relative;
+    z-index: 1;
 }
 
 .history-category {
-    color: white;
-    font-size: 14px;
+    color: var(--text-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    position: relative;
+    z-index: 1;
 }
 
-/* Conquistas */
+/* === CONQUISTAS FUTURISTAS === */
 .achievements-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    gap: 10px;
+    gap: var(--space-3);
 }
 
 .achievement-badge {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 15px 10px;
+    background: var(--surface-glass-light);
+    backdrop-filter: var(--blur-md);
+    -webkit-backdrop-filter: var(--blur-md);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4) var(--space-3);
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all var(--transition-normal) var(--ease-out);
     cursor: pointer;
     position: relative;
+    overflow: hidden;
+}
+
+.achievement-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 212, 255, 0.05) 0%,
+        rgba(6, 255, 165, 0.05) 100%
+    );
+    opacity: 0;
+    transition: opacity var(--transition-normal) var(--ease-out);
 }
 
 .achievement-badge.unlocked {
-    background: var(--yellow-accent);
-    color: var(--dark-color-1);
-    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    background: linear-gradient(
+        135deg,
+        var(--accent-secondary) 0%,
+        var(--accent-primary) 100%
+    );
+    color: var(--surface-dark);
+
+    border-color: rgba(6, 255, 165, 0.3);
 }
 
 .achievement-badge:hover {
-    transform: scale(1.05);
+    transform: scale(1.08) translateY(-2px);
+}
+
+.achievement-badge:hover::before {
+    opacity: 1;
 }
 
 .achievement-icon {
-    font-size: 24px;
-    margin-bottom: 5px;
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-1);
     display: block;
+    position: relative;
+    z-index: 1;
 }
 
 .achievement-name {
-    font-size: 10px;
-    font-weight: bold;
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.05em;
+    position: relative;
+    z-index: 1;
 }
 
 .achievement-badge.locked {
-    opacity: 0.4;
-    filter: grayscale(100%);
+    opacity: 0.6;
+    filter: grayscale(100%) blur(0.5px);
+    color: var(--text-secondary);
 }
 
-/* Botão de estatísticas */
+/* === BOTÃO DE ESTATÍSTICAS FUTURISTA === */
 .stats-button {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    background: var(--dark-color-3);
-    color: white;
-    border: none;
-    border-radius: 50%;
+    top: var(--space-5);
+    right: var(--space-5);
+    background: var(--surface-glass);
+    backdrop-filter: var(--blur-lg);
+    -webkit-backdrop-filter: var(--blur-lg);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-full);
     width: 50px;
     height: 50px;
-    font-size: 20px;
+    font-size: var(--text-xl);
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    z-index: 100;
+    transition: all var(--transition-normal) var(--ease-out);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .stats-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1) rotate(5deg);
+    border-color: rgba(0, 212, 255, 0.3);
 }
 
-/* Tooltip para conquistas */
+/* === TOOLTIP PARA CONQUISTAS FUTURISTA === */
 .achievement-tooltip {
     position: absolute;
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.9);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 12px;
+    background: var(--surface-glass);
+    backdrop-filter: var(--blur-lg);
+    -webkit-backdrop-filter: var(--blur-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    font-size: var(--text-xs);
+    font-weight: var(--font-medium);
     white-space: nowrap;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.2s ease;
+    transition: all var(--transition-normal) var(--ease-out);
     z-index: 1001;
+
 }
 
 .achievement-badge:hover .achievement-tooltip {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(-5px);
+    transform: translateX(-50%) translateY(-8px);
 }
 
-/* Responsividade */
+/* === RESPONSIVIDADE FUTURISTA === */
 @media (max-width: 768px) {
     .stats-content {
-        padding: 20px;
-        margin: 10px;
+        padding: var(--space-5);
+        margin: var(--space-3);
+        max-width: 95vw;
+        max-height: 85vh;
+    }
+    
+    .stats-header {
+        padding: var(--space-5) var(--space-5) var(--space-3);
+    }
+    
+    .stats-title {
+        font-size: var(--text-2xl);
     }
     
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-3);
     }
     
     .stat-value {
-        font-size: 24px;
+        font-size: var(--text-3xl);
     }
     
     .achievements-grid {
         grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-2);
     }
     
     .stats-button {
         width: 45px;
         height: 45px;
-        font-size: 18px;
+        font-size: var(--text-lg);
+        top: var(--space-4);
+        right: var(--space-4);
+        z-index: 1001;
+        position: fixed !important;
     }
 }
 
 @media (max-width: 480px) {
+    .stats-content {
+        padding: var(--space-4);
+        margin: var(--space-2);
+        max-width: 98vw;
+        max-height: 90vh;
+    }
+    
     .stats-grid {
         grid-template-columns: 1fr;
     }
     
     .achievements-grid {
         grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-1);
+    }
+    
+    .achievement-badge {
+        padding: var(--space-2);
+    }
+    
+    .achievement-icon {
+        font-size: var(--text-lg);
+    }
+    
+    .achievement-name {
+        font-size: 0.6rem;
     }
     
     .history-item {
         flex-direction: column;
         align-items: flex-start;
-        gap: 5px;
+        gap: var(--space-1);
+        padding: var(--space-2);
+    }
+    
+    .stats-section-title {
+        font-size: var(--text-lg);
+    }
+    
+    .stats-button {
+        width: 40px;
+        height: 40px;
+        font-size: var(--text-base);
+        top: var(--space-3);
+        right: var(--space-3);
+        z-index: 1001;
+        position: fixed !important;
     }
 }
 
-/* Modo escuro */
-.dark-mode .stats-content {
-    background: var(--dark-color-2);
-}
-
-.dark-mode .stat-card {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.dark-mode .history-list {
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.dark-mode .history-item {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-/* Animações específicas */
+/* === ANIMAÇÕES FUTURISTAS === */
 @keyframes statCountUp {
     from {
-        transform: scale(0.5);
+        transform: scale(0.5) rotateY(180deg);
         opacity: 0;
+        filter: blur(4px);
     }
     to {
-        transform: scale(1);
+        transform: scale(1) rotateY(0deg);
         opacity: 1;
+        filter: blur(0px);
     }
 }
 
 .stat-value.animate {
-    animation: statCountUp 0.6s ease-out;
+    animation: statCountUp var(--transition-slow) var(--ease-out);
 }
 
 @keyframes achievementUnlock {
     0% {
-        transform: scale(0.5) rotate(-180deg);
+        transform: scale(0.3) rotate(-180deg);
         opacity: 0;
+        filter: blur(4px);
     }
     50% {
-        transform: scale(1.2) rotate(0deg);
+        transform: scale(1.3) rotate(0deg);
         opacity: 1;
+        filter: blur(0px);
     }
     100% {
         transform: scale(1) rotate(0deg);
         opacity: 1;
+        filter: blur(0px);
     }
 }
 
 .achievement-badge.unlock-animation {
-    animation: achievementUnlock 0.8s ease-out;
+    animation: achievementUnlock var(--transition-slow) var(--ease-out);
 }
 
+@keyframes modalSlideInGlass {
+    from {
+        transform: scale(0.8) translateY(50px);
+        opacity: 0;
+        filter: blur(4px);
+    }
+    to {
+        transform: scale(1) translateY(0px);
+        opacity: 1;
+        filter: blur(0px);
+    }
+}
+
+@keyframes iconGlow {
+    from {
+        text-shadow: 0 0 10px rgba(6, 255, 165, 0.5);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(6, 255, 165, 0.8), 0 0 30px rgba(0, 212, 255, 0.3);
+    }
+}
+
+@keyframes progressShimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* === ESTILOS ESPECÍFICOS DE ESTATÍSTICAS === */
 .stat-item.total-games .stat-value {
-    color: var(--accent-color);
+    color: var(--accent-primary);
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
 }
 
 .stat-item.total-wins .stat-value {
-    color: var(--green-correct);
+    color: var(--accent-secondary);
+    text-shadow: 0 0 15px rgba(6, 255, 165, 0.4);
 }
 
 .stat-item.win-percentage .stat-value {
-    color: var(--cyan-main);
+    color: var(--accent-primary);
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
 }
 
 .stat-item.favorite-category .stat-value {
-    color: var(--yellow-accent);
+    color: var(--accent-secondary);
+    text-shadow: 0 0 15px rgba(6, 255, 165, 0.4);
 }
 
-.progress-bar-fill {
-    background-color: var(--green-correct);
-    height: 100%;
-}
+/* === BADGES DE RANKING FUTURISTAS === */
+.rank-badge {
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-md);
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 
-.progress-bar-background {
-    width: 100%;
-    height: 12px;
-    background-color: var(--dark-color-3);
-    border-radius: 6px;
-    overflow: hidden;
-}
-
-.progress-bar-shimmer {
-    display: none;
 }
 
 .rank-badge.gold {
-    background-color: var(--yellow-accent);
-    color: var(--dark-color-1);
+    background: #2d3748;
+    color: #ffffff;
+
 }
 
 .rank-badge.silver {
-    background-color: var(--dark-color-5);
-    color: var(--dark-color-1);
+    background: #4a5568;
+    color: #ffffff;
+
 }
 
 .rank-badge.bronze {
-    background-color: #cd7f32; /* Bronze color */
-    color: var(--dark-color-1);
+    background: #2d3748;
+    color: #ffffff;
+    
 }
 
-
-.history-item:nth-child(even) {
-    background-color: var(--dark-color-2);
-}
-
-.history-item:nth-child(odd) {
-    background-color: var(--dark-color-3);
-}
-
-.history-item:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateX(5px);
-}
-
-.history-date {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 12px;
-}
-
-.history-score {
-    color: #ffd700;
-    font-weight: bold;
-}
-
-.history-category {
-    color: white;
-    font-size: 14px;
+/* Box shadow apenas no hover para desktop */
+@media (min-width: 1024px) {
+    .stats-content {
+        box-shadow: var(--shadow-2xl), var(--glow-primary);
+    }
+    
+    .stat-card:hover {
+        box-shadow: var(--shadow-xl), var(--glow-primary);
+    }
+    
+    .progress-bar {
+        box-shadow: 0 0 10px rgba(6, 255, 165, 0.3);
+    }
+    
+    .history-item:hover {
+        box-shadow: var(--shadow-lg), var(--glow-accent);
+    }
+    
+    .achievement-badge.unlocked {
+        box-shadow: var(--shadow-lg), var(--glow-secondary);
+    }
+    
+    .achievement-badge:hover {
+        box-shadow: var(--shadow-xl), var(--glow-primary);
+    }
+    
+    .stats-button {
+        box-shadow: var(--shadow-lg), var(--glow-primary);
+    }
+    
+    .stats-button:hover {
+        box-shadow: var(--shadow-xl), var(--glow-accent);
+    }
+    
+    .achievement-tooltip {
+        box-shadow: var(--shadow-lg), var(--glow-primary);
+    }
+    
+    .rank-badge {
+        box-shadow: var(--shadow-md);
+    }
+    
+    .rank-badge.gold {
+        box-shadow: var(--shadow-lg), 0 0 15px rgba(45, 55, 72, 0.4);
+    }
+    
+    .rank-badge.silver {
+        box-shadow: var(--shadow-lg), 0 0 15px rgba(74, 85, 104, 0.4);
+    }
+    
+    .rank-badge.bronze {
+        box-shadow: var(--shadow-lg), 0 0 15px rgba(45, 55, 72, 0.4);
+    }
 }

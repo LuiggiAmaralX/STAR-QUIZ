@@ -210,7 +210,7 @@
 /* Loading para cards de categoria */
 .category-card.loading {
     pointer-events: none;
-    opacity: 0.6;
+    opacity: 0.75;
     position: relative;
 }
 

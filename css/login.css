@@ -1,62 +1,238 @@
 /* ==========================================================================
-   LOGIN.CSS - Estilos específicos da página de Login (index.html)
-   Contém: Logo, formulário de login, registro e elementos específicos
+   LOGIN.CSS - Estilos Futuristas da página de Login (index.html)
+   Design minimalista com glassmorphism e microanimações
    ========================================================================== */
 
-/* --- CONTAINER DO LOGO --- */
+/* === CONTAINER DO LOGO FUTURISTA === */
 .logo-container {
-    margin-bottom: 25px;
+    margin-bottom: var(--space-8);
+    position: relative;
 }
 
 .logo-icon {
     font-size: 5rem;
-    color: var(--accent-color);
+    color: var(--accent-primary);
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    animation: glowPulse 3s var(--ease-in-out) infinite;
+    transition: all var(--transition-normal) var(--ease-out);
 }
 
-/* --- SUBTÍTULO DA PÁGINA DE LOGIN --- */
+.logo-icon:hover {
+    transform: scale(1.05) rotate(5deg);
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
+}
+
+/* === SUBTÍTULO FUTURISTA === */
 .subtitle {
-    font-size: 1.5rem;
-    margin-top: -15px;
-    margin-bottom: 30px;
-    color: var(--text-light);
-    font-weight: 700;
+    font-size: var(--text-xl);
+    margin-top: calc(-1 * var(--space-4));
+    margin-bottom: var(--space-8);
+    color: var(--text-secondary);
+    font-weight: var(--font-bold);
+    text-align: center;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.05em;
 }
 
-/* --- TELA DE LOGIN ESPECÍFICA --- */
+/* === TELA DE LOGIN FUTURISTA === */
 #login-screen {
     max-width: 500px;
-    background-color: var(--dark-color-2);
+    background: var(--surface-glass);
+    backdrop-filter: var(--blur-lg);
+    -webkit-backdrop-filter: var(--blur-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 
-/* --- BOTÃO DE LOGIN ESPECÍFICO --- */
+#login-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 212, 255, 0.05) 0%,
+        rgba(124, 58, 237, 0.05) 100%
+    );
+    pointer-events: none;
+}
+
+/* === BOTÃO DE LOGIN ESPECÍFICO === */
 #login-button {
-    margin-top: 20px;
+    margin-top: var(--space-6);
+    position: relative;
+    z-index: 1;
 }
 
-/* --- LINK DE REGISTRO --- */
+/* === LINK DE REGISTRO FUTURISTA === */
 .register-link {
-    margin-top: 20px;
-    color: var(--dark-color-5);
-    font-size: 1rem;
+    margin-top: var(--space-6);
+    color: var(--text-tertiary);
+    font-size: var(--text-base);
+    text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 .register-link a {
-    color: var(--accent-color);
+    color: var(--accent-primary);
     text-decoration: none;
-    font-weight: 600;
-    transition: color var(--transition-fast);
+    font-weight: var(--font-semibold);
+    transition: all var(--transition-normal) var(--ease-out);
+    position: relative;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+}
+
+.register-link a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 212, 255, 0.1);
+    border-radius: var(--radius-sm);
+    opacity: 0;
+    transition: opacity var(--transition-normal) var(--ease-out);
+}
+
+.register-link a:hover::before {
+    opacity: 1;
 }
 
 .register-link a:hover {
-    color: var(--text-light);
+    color: var(--text-primary);
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    transform: translateY(-1px);
 }
 
-/* --- TELA DE REGISTRO --- */
+/* === TELA DE REGISTRO FUTURISTA === */
 #register-screen {
     max-width: 500px;
-    background-color: var(--dark-color-2);
+    background: var(--surface-glass);
+    backdrop-filter: var(--blur-lg);
+    -webkit-backdrop-filter: var(--blur-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    position: relative;
+    overflow: hidden;
+}
+
+#register-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(6, 255, 165, 0.05) 0%,
+        rgba(0, 212, 255, 0.05) 100%
+    );
+    pointer-events: none;
+}
+
+/* === ANIMAÇÕES DE ENTRADA === */
+#login-screen.active {
+    animation: slideInUpGlass var(--transition-slow) var(--ease-out) forwards;
+}
+
+#register-screen.active {
+    animation: slideInDownGlass var(--transition-slow) var(--ease-out) forwards;
+}
+
+/* === RESPONSIVIDADE === */
+@media (max-width: 768px) {
+    .logo-icon {
+        font-size: 3.5rem;
+    }
+    
+    .subtitle {
+        font-size: var(--text-base);
+        margin-bottom: var(--space-6);
+    }
+    
+    #login-screen,
+    #register-screen {
+        max-width: 100%;
+        width: calc(100vw - var(--space-4));
+        margin: var(--space-2);
+        padding: var(--space-6) var(--space-8);
+    }
+    
+    .input-group {
+        margin-bottom: var(--space-4);
+    }
+    
+    #login-button {
+        width: 100%;
+        margin-top: var(--space-4);
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-icon {
+        font-size: 3rem;
+    }
+    
+    .subtitle {
+        font-size: var(--text-sm);
+        margin-bottom: var(--space-4);
+    }
+    
+    #login-screen,
+    #register-screen {
+        width: calc(100vw - var(--space-2));
+        margin: var(--space-1);
+        padding: var(--space-4) var(--space-6);
+    }
+    
+    .input-group {
+        margin-bottom: var(--space-3);
+    }
+    
+    .input-group input {
+        font-size: var(--text-sm);
+        padding: var(--space-3);
+    }
+    
+    #login-button {
+        padding: var(--space-3) var(--space-6);
+        font-size: var(--text-sm);
+    }
+}
+
+@media (max-width: 360px) {
+    .logo-icon {
+        font-size: 2.5rem;
+    }
+    
+    #login-screen,
+    #register-screen {
+        padding: var(--space-3) var(--space-4);
+    }
+}
+
+/* Box shadow apenas no hover para desktop */
+@media (min-width: 1024px) {
+    #login-screen {
+        box-shadow: var(--shadow-xl), var(--glow-primary);
+    }
+    
+    #register-screen {
+        box-shadow: var(--shadow-xl), var(--glow-secondary);
+    }
 }
