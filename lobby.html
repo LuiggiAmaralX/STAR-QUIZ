@@ -26,25 +26,75 @@
     <div id="particles-js"></div>
 
     <div id="lobby-screen" class="screen active">
-
-        
-        <h2>Bem-vindo(a), <span id="lobby-nickname"></span>!</h2>
-        <p class="subtitle">Crie uma sala ou junte-se a uma amigo.</p>
-        
-        <button id="create-room-button" class="main-button">
-            <i class="fas fa-plus-circle"></i> Criar Sala
-        </button>
-
-        <div class="divider">ou</div>
-
-        <div class="join-room-section">
-            <div class="input-group">
-                <i class="fas fa-hashtag icon"></i>
-                <input type="text" id="join-room-input" placeholder="Código da Sala">
+        <!-- Header Section -->
+        <div class="lobby-header">
+            <div class="welcome-card">
+                <div class="avatar-section">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-info">
+                        <h2 class="welcome-title">Olá, <span id="lobby-nickname"></span>!</h2>
+                        <p class="welcome-subtitle">Pronto para o desafio?</p>
+                    </div>
+                </div>
             </div>
-            <button id="join-room-button" class="secondary-button">
-                <i class="fas fa-arrow-right-to-bracket"></i> Entrar na Sala
-            </button>
+        </div>
+
+        <!-- Action Cards Section -->
+        <div class="action-cards-container">
+            <div class="action-card create-room-card">
+                <div class="card-icon">
+                    <i class="fas fa-plus-circle"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Criar Nova Sala</h3>
+                    <p>Inicie um novo jogo e convide seus amigos</p>
+                </div>
+                <button id="create-room-button" class="card-action-btn">
+                    <span>Criar Sala</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div class="divider-modern">
+                <span class="divider-text">ou</span>
+                <div class="divider-line"></div>
+            </div>
+
+            <div class="action-card join-room-card">
+                <div class="card-icon">
+                    <i class="fas fa-door-open"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Entrar em Sala</h3>
+                    <p>Digite o código da sala para participar</p>
+                </div>
+                <div class="join-room-form">
+                    <div class="input-modern">
+                        <input type="text" id="join-room-input" placeholder="Digite o código da sala">
+                        <div class="input-border"></div>
+                    </div>
+                    <button id="join-room-button" class="card-action-btn">
+                        <span>Entrar</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats Section -->
+        <div class="quick-stats">
+            <div class="stat-item">
+                <i class="fas fa-trophy"></i>
+                <span>Salas Ativas</span>
+                <span class="stat-number">12</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-users"></i>
+                <span>Jogadores Online</span>
+                <span class="stat-number">48</span>
+            </div>
         </div>
     </div>
 
