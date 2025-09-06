@@ -561,4 +561,6 @@ function syncPlayersList() {
 }
 
 // --- INICIALIZAÇÃO DO JOGO ---
+// Garantir que apenas a tela de waiting lobby seja exibida inicialmente
+showScreen(allScreens.waiting);
 syncPlayersList();

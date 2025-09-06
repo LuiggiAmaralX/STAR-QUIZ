@@ -1,0 +1,199 @@
+/* ==========================================================================
+   BASE.CSS - Estilos Base e Variáveis CSS
+   Contém: Variáveis CSS, Reset, Fontes e Estilos Gerais
+   ========================================================================== */
+
+/* --- IMPORTAÇÃO DE FONTES --- */
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:wght@400;600;700;900&display=swap');
+
+/* --- VARIÁVEIS CSS --- */
+:root {
+    /* Cores de Fundo (Nova Paleta Azul) */
+    --blue-dark-bg: #0d1a26;   /* Azul muito escuro, quase preto */
+    --blue-medium-bg: #1a2a42;  /* Azul escuro para os cards */
+    --blue-light-accent: #3a506b; /* Azul médio para bordas e hover */
+    --gradient-main: linear-gradient(160deg, #0a141e 0%, var(--blue-dark-bg) 100%);
+    --gradient-screen: linear-gradient(145deg, var(--blue-light-accent), var(--blue-medium-bg));
+
+    /* Cores de Destaque (Cartoon) */
+    --cyan-main: #14b8a6;      /* Verde-água/Ciano principal */
+    --cyan-light: #2dd4bf;     /* Verde-água/Ciano claro */
+    --cyan-dark-border: #0f766e; /* Verde-água/Ciano escuro para borda */
+    --yellow-accent: #f59e0b;  /* Amarelo/Laranja para destaque */
+    
+    /* Cores de Feedback */
+    --green-correct: #10b981;
+    --red-incorrect: #ef4444;
+
+    /* Cores de Texto */
+    --text-light: #f8fafc;
+    --text-dark-subtle: #cbd5e1;
+    
+    /* Fontes */
+    --font-family-headings: 'Luckiest Guy', cursive;
+    --font-family-body: 'Poppins', sans-serif;
+
+    /* Sombras */
+    --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    --shadow-button: 0 6px 0px rgba(0,0,0,0.2);
+    --shadow-hover: 0 8px 0px rgba(0,0,0,0.2);
+    --shadow-active: 0 4px 0px rgba(0,0,0,0.2);
+
+    /* Bordas */
+    --border-radius-card: 28px;
+    --border-radius-button: 50px;
+    --border-radius-input: 15px;
+    --border-width-card: 2px;
+    --border-width-button: 4px;
+
+    /* Transições */
+    --transition-fast: 0.15s ease-out;
+    --transition-medium: 0.3s ease;
+    --transition-slow: 0.6s ease-out;
+}
+
+/* --- RESET CSS --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- ESTILOS GERAIS DO BODY --- */
+body {
+    font-family: var(--font-family-body);
+    background: var(--gradient-main);
+    color: var(--text-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* --- TIPOGRAFIA GERAL --- */
+h1, h2 {
+    font-family: var(--font-family-headings);
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+    margin-bottom: 15px;
+    line-height: 1.1;
+}
+
+h1 {
+    font-size: 3.5rem;
+    color: var(--yellow-accent);
+}
+
+h2 {
+    font-size: 2.8rem;
+}
+
+h3 {
+    font-weight: 900;
+}
+
+p {
+    color: var(--text-dark-subtle);
+    line-height: 1.6;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+/* --- ESTRUTURA DAS TELAS --- */
+.screen {
+    display: none;
+    background: var(--gradient-screen);
+    padding: 30px 40px;
+    border-radius: var(--border-radius-card);
+    box-shadow: var(--shadow-card);
+    text-align: center;
+    width: 100%;
+    max-width: 1400px;
+    border: var(--border-width-card) solid var(--blue-light-accent);
+    animation: slideInUp var(--transition-slow) forwards;
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.screen.active {
+    display: block;
+}
+
+/* --- CLASSES UTILITÁRIAS --- */
+.hidden {
+    display: none !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.gap-10 {
+    gap: 10px;
+}
+
+.gap-15 {
+    gap: 15px;
+}
+
+.gap-20 {
+    gap: 20px;
+}
+
+/* --- RESPONSIVIDADE GERAL --- */
+@media (max-width: 992px) {
+    .screen {
+        padding: 25px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.8rem;
+    }
+    
+    h2 {
+        font-size: 2.2rem;
+    }
+    
+    body {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    .screen {
+        padding: 20px 15px;
+    }
+}

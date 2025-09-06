@@ -1,0 +1,550 @@
+/* ==========================================================================
+   LOBBY.CSS - Estilos específicos da página de Lobby (lobby.html)
+   Contém: Lobby principal, salas, seleção de categorias e waiting lobby
+   ========================================================================== */
+
+/* --- LOBBY PRINCIPAL --- */
+#lobby-screen {
+    max-width: 800px;
+    animation: lobbySlideIn 0.8s ease-out forwards;
+}
+
+@keyframes lobbySlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* --- SEÇÕES DO LOBBY --- */
+.lobby-section {
+    margin: 30px 0;
+    padding: 25px;
+    background: rgba(26, 42, 66, 0.6);
+    border-radius: 20px;
+    border: var(--border-width-card) solid var(--blue-light-accent);
+    backdrop-filter: blur(10px);
+    animation: sectionFadeIn 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.lobby-section:nth-child(2) { animation-delay: 0.2s; }
+.lobby-section:nth-child(3) { animation-delay: 0.4s; }
+.lobby-section:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes sectionFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- DIVISORES --- */
+.divider {
+    font-family: var(--font-family-headings);
+    color: var(--cyan-light);
+    font-size: 1.5rem;
+    margin: 15px 0;
+    text-transform: lowercase;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+    animation: dividerGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes dividerGlow {
+    from {
+        text-shadow: 2px 2px 0px rgba(0,0,0,0.2), 0 0 10px rgba(45, 212, 191, 0.3);
+    }
+    to {
+        text-shadow: 2px 2px 0px rgba(0,0,0,0.2), 0 0 20px rgba(45, 212, 191, 0.6);
+    }
+}
+
+/* --- SEÇÃO DE CRIAR/ENTRAR EM SALA --- */
+.join-room-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.room-code-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(20, 184, 166, 0.1);
+    border-radius: 15px;
+    border: 2px solid var(--cyan-main);
+    animation: codeDisplayPulse 3s ease-in-out infinite;
+}
+
+@keyframes codeDisplayPulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(20, 184, 166, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(20, 184, 166, 0.4);
+    }
+}
+
+.copy-code-btn {
+    background: var(--cyan-main);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    font-size: 1rem;
+}
+
+.copy-code-btn:hover {
+    background: var(--cyan-light);
+    transform: scale(1.1);
+}
+
+.copy-code-btn:active {
+    transform: scale(0.95);
+}
+
+/* --- SEÇÃO DE JOGADORES --- */
+.players-section {
+    margin-top: 25px;
+}
+
+.players-section h3 {
+    color: var(--cyan-light);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* --- WAITING LOBBY SCREEN --- */
+#waiting-lobby-screen {
+    max-width: 900px;
+    animation: waitingLobbySlideIn 0.8s ease-out forwards;
+}
+
+@keyframes waitingLobbySlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* --- CATEGORY SCREEN (SELEÇÃO DE CATEGORIAS) --- */
+#category-screen {
+    max-width: 1200px;
+    animation: categoryScreenSlideIn 0.8s ease-out forwards;
+}
+
+@keyframes categoryScreenSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    width: 100%;
+    margin: 20px auto 0;
+}
+
+.category-card {
+    background-color: var(--card-color, #cccccc);
+    border-radius: 12px;
+    border: 3px solid #1e293b;
+    box-shadow: 4px 4px 0px #1e293b;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+
+.category-card:hover {
+    transform: translateY(-2px) translateX(-2px);
+    box-shadow: 6px 6px 0px #1e293b;
+}
+
+.category-card:active {
+    transform: translateY(2px) translateX(2px);
+    box-shadow: 4px 4px 0px #1e293b;
+}
+
+.category-card.selected {
+    transform: translateY(-3px) translateX(-3px);
+    box-shadow: 7px 7px 0px #1e293b;
+    border-color: var(--cyan-main);
+}
+
+.category-title {
+    background-color: white;
+    color: #1e293b;
+    font-family: var(--font-family-headings);
+    font-size: 1.1rem;
+    padding: 8px 0;
+    width: 95%;
+    border-radius: 10px;
+    border: 4px solid #1e293b;
+    text-align: center;
+    margin: 0;
+    letter-spacing: 1px;
+    text-shadow: none;
+    transition: all var(--transition-medium);
+}
+
+.category-card:hover .category-title {
+    background-color: var(--cyan-light);
+    color: white;
+    border-color: var(--cyan-main);
+    transform: scale(1.05);
+}
+
+/* --- VERSUS SCREEN --- */
+#versus-screen {
+    max-width: 1000px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px;
+    animation: versusScreenSlideIn 0.8s ease-out forwards;
+}
+
+#versus-screen.active {
+    display: flex;
+}
+
+@keyframes versusScreenSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.vs-separator {
+    font-family: var(--font-family-headings);
+    font-size: 7rem;
+    color: var(--yellow-accent);
+    text-shadow: 5px 5px 0px rgba(0,0,0,0.2);
+    animation: vsGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes vsGlow {
+    from {
+        text-shadow: 5px 5px 0px rgba(0,0,0,0.2), 0 0 20px rgba(245, 158, 11, 0.5);
+    }
+    to {
+        text-shadow: 5px 5px 0px rgba(0,0,0,0.2), 0 0 40px rgba(245, 158, 11, 0.8);
+    }
+}
+
+#versus-screen.active .vs-separator {
+    animation: zoomIn 0.5s ease-out 0.5s forwards, vsGlow 2s ease-in-out infinite alternate 1s;
+}
+
+#versus-screen.active .player-card.left {
+    animation: slideInFromLeft 0.7s ease-out forwards;
+}
+
+#versus-screen.active .player-card.right {
+    animation: slideInFromRight 0.7s ease-out forwards;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+@keyframes slideInFromLeft {
+    from { transform: translateX(-150%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+    from { transform: translateX(150%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* --- ROUND INFO SCREEN --- */
+#round-info-screen.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+}
+
+.round-info-container {
+    text-align: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    border: var(--border-width-card) solid var(--cyan-main);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    max-width: 500px;
+    width: 100%;
+}
+
+.round-icon {
+    font-size: 4rem;
+    color: var(--cyan-main);
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.round-title {
+    font-family: var(--font-family-headings);
+    font-size: 3rem;
+    color: var(--yellow-accent);
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+    margin-bottom: 15px;
+    letter-spacing: 3px;
+}
+
+.round-counter {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--cyan-light);
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+.round-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-dark-subtle);
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.round-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.round-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--cyan-main), var(--cyan-light));
+    border-radius: 4px;
+    transition: width var(--transition-medium);
+    width: 0%;
+}
+
+/* Animações específicas do round info */
+#round-info-screen.active .round-info-container {
+    animation: bounceIn 0.8s ease-out forwards;
+}
+
+#round-info-screen.active .round-icon {
+    animation: bounceIn 0.8s ease-out 0.2s forwards, pulse 2s infinite 1s;
+}
+
+#round-info-screen.active .round-title {
+    animation: slideInUp 0.6s ease-out 0.4s forwards;
+}
+
+#round-info-screen.active .round-counter {
+    animation: slideInUp 0.6s ease-out 0.6s forwards;
+}
+
+#round-info-screen.active .round-subtitle {
+    animation: slideInUp 0.6s ease-out 0.8s forwards;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.1); opacity: 0; }
+    60% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- RESPONSIVIDADE PARA LOBBY --- */
+@media (max-width: 1200px) {
+    .category-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    #lobby-screen, #waiting-lobby-screen {
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 768px) {
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .category-title {
+        font-size: 1rem;
+    }
+    
+    #lobby-screen, #waiting-lobby-screen {
+        max-width: 600px;
+    }
+    
+    .lobby-section {
+        padding: 20px;
+        margin: 20px 0;
+    }
+    
+    .vs-separator {
+        font-size: 5rem;
+    }
+    
+    #versus-screen {
+        flex-direction: column;
+        gap: 30px;
+        padding: 30px;
+    }
+    
+    .round-title {
+        font-size: 2.5rem;
+    }
+    
+    .round-counter {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    #lobby-screen, #waiting-lobby-screen {
+        max-width: 500px;
+    }
+    
+    .room-code-display {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .vs-separator {
+        font-size: 4rem;
+    }
+    
+    .round-info-container {
+        padding: 30px 20px;
+    }
+    
+    .round-title {
+        font-size: 2rem;
+    }
+    
+    .round-counter {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-grid {
+        margin: 20px auto 0;
+    }
+    
+    .category-card {
+        aspect-ratio: 3 / 1;
+        padding: 10px;
+    }
+    
+    .category-title {
+        font-size: 0.9rem;
+    }
+    
+    .divider {
+        font-size: 1.3rem;
+    }
+    
+    .round-icon {
+        font-size: 3rem;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .lobby-section {
+        padding: 15px;
+    }
+    
+    .vs-separator {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .lobby-section {
+        padding: 10px;
+    }
+}
