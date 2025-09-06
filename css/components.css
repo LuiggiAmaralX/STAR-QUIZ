@@ -247,6 +247,9 @@
 .input-group {
     position: relative;
     margin-bottom: var(--space-6);
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .input-group .icon {
@@ -270,19 +273,21 @@ input[type="text"],
 input[type="password"],
 .form-input {
     width: 100%;
-    padding: var(--space-4) var(--space-4) var(--space-4) calc(var(--space-10) + var(--space-2));
+    max-width: 320px;
+    padding: var(--space-5) var(--space-4) var(--space-5) calc(var(--space-10) + var(--space-2));
     border-radius: var(--radius-lg);
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     color: var(--text-primary);
-    font-size: var(--text-base);
+    font-size: var(--text-lg);
     font-family: var(--font-family-primary);
     font-weight: var(--font-normal);
     transition: all var(--transition-normal) var(--ease-out);
     position: relative;
     border: none;
     outline: none;
+    box-sizing: border-box;
 }
 
 input[type="text"]:focus,

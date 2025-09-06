@@ -171,11 +171,18 @@
     .input-group input {
         font-size: var(--text-sm);
         padding: var(--space-3) var(--space-3) var(--space-3) calc(var(--space-8) + var(--space-2));
+        max-width: 100%;
+    }
+    
+    .input-group .icon {
+        left: var(--space-3);
+        font-size: var(--text-base);
     }
     
     #login-button {
         padding: var(--space-3) var(--space-6);
         font-size: var(--text-sm);
+        max-width: 100%;
     }
 }
 
@@ -188,4 +195,9 @@
     #register-screen {
         padding: var(--space-3) var(--space-2);
     }
+    
+    .input-group .icon {
+         left: var(--space-2);
+         font-size: var(--text-sm);
+     }
 }
