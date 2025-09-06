@@ -29,7 +29,6 @@
 
 .stats-content {
     background: rgba(0, 71, 95, 0.95);
-    border: 1px solid rgba(0, 224, 255, 0.2);
     border-radius: var(--radius-2xl);
     padding: var(--space-8);
     max-width: 600px;
@@ -71,7 +70,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: var(--space-6);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
     position: relative;
     z-index: 1;
 }
@@ -90,7 +89,8 @@
 
 .stats-close {
     background: rgba(0, 71, 95, 0.8);
-    border: 1px solid rgba(0, 224, 255, 0.3);
+    border: none;
+    outline: none;
     color: var(--text-primary);
     font-size: var(--text-xl);
     cursor: pointer;
@@ -106,7 +106,7 @@
 
 .stats-close:hover {
     background: rgba(0, 71, 95, 1);
-    border-color: rgba(0, 224, 255, 0.6);
+    
     transform: rotate(90deg) scale(1.1);
     box-shadow: 0 0 20px rgba(0, 224, 255, 0.4);
 }
@@ -146,7 +146,6 @@
 
 .stat-card {
     background: rgba(0, 71, 95, 0.7);
-    border: 1px solid rgba(0, 224, 255, 0.15);
     border-radius: var(--radius-xl);
     padding: var(--space-5);
     text-align: center;
@@ -174,7 +173,7 @@
 
 .stat-card:hover {
     transform: translateY(-8px) scale(1.02);
-    border-color: rgba(0, 224, 255, 0.4);
+    
     box-shadow: 0 12px 24px rgba(0, 15, 20, 0.6), 0 0 20px rgba(0, 224, 255, 0.2);
 }
 
@@ -225,7 +224,6 @@
 
 .progress-bar-container {
     background: rgba(0, 15, 20, 0.6);
-    border: 1px solid rgba(0, 224, 255, 0.2);
     border-radius: var(--radius-full);
     height: 12px;
     overflow: hidden;
@@ -268,7 +266,6 @@
     background: var(--surface-glass-light);
     backdrop-filter: var(--blur-md);
     -webkit-backdrop-filter: var(--blur-md);
-    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: var(--radius-lg);
     padding: var(--space-3);
     position: relative;
@@ -283,7 +280,6 @@
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: var(--blur-sm);
     -webkit-backdrop-filter: var(--blur-sm);
-    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: var(--radius-md);
     transition: all var(--transition-normal) var(--ease-out);
     position: relative;
@@ -309,7 +305,7 @@
 .history-item:hover {
     background: rgba(255, 255, 255, 0.08);
     transform: translateX(8px) scale(1.02);
-    border-color: rgba(0, 212, 255, 0.2);
+    
 }
 
 .history-item:hover::before {
@@ -351,7 +347,6 @@
     background: var(--surface-glass-light);
     backdrop-filter: var(--blur-md);
     -webkit-backdrop-filter: var(--blur-md);
-    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-lg);
     padding: var(--space-4) var(--space-3);
     text-align: center;
@@ -385,7 +380,7 @@
     );
     color: var(--surface-dark);
 
-    border-color: rgba(6, 255, 165, 0.3);
+    
 }
 
 .achievement-badge:hover {
@@ -424,11 +419,10 @@
     position: fixed !important;
     top: var(--space-5) !important;
     right: var(--space-5) !important;
-    background: var(--surface-glass);
-    backdrop-filter: var(--blur-lg);
-    -webkit-backdrop-filter: var(--blur-lg);
+    background: var(--btn-secondary-bg);
     color: var(--text-primary);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: none;
+    outline: none;
     border-radius: var(--radius-full);
     width: 50px;
     height: 50px;
@@ -446,8 +440,8 @@
 }
 
 .stats-button:hover {
+    background: var(--btn-secondary-hover);
     transform: scale(1.1) rotate(5deg);
-    border-color: rgba(0, 212, 255, 0.3);
 }
 
 /* === TOOLTIP PARA CONQUISTAS FUTURISTA === */
@@ -459,7 +453,7 @@
     background: var(--surface-glass);
     backdrop-filter: var(--blur-lg);
     -webkit-backdrop-filter: var(--blur-lg);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+
     color: var(--text-primary);
     padding: var(--space-2) var(--space-3);
     border-radius: var(--radius-md);

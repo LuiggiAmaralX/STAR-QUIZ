@@ -354,6 +354,7 @@
     transition: all var(--transition-normal) var(--ease-out);
     position: relative;
     overflow: hidden;
+    outline: none;
 }
 
 .btn:hover, button:hover {
@@ -448,6 +449,7 @@
 /* Animações para inputs */
 input, select, textarea {
     transition: all 0.2s ease;
+    outline: none;
 }
 
 input:focus, select:focus, textarea:focus {

@@ -6,7 +6,6 @@
 /* === SISTEMA DE CARDS === */
 .card.screen {
     background: var(--surface-glass);
-    border: 1px solid rgba(0, 224, 255, 0.2);
     border-radius: var(--radius-xl);
     padding: var(--space-6);
     transition: all var(--transition-normal) var(--ease-out);
@@ -31,7 +30,7 @@
     .card:hover {
         transform: translateY(-2px);
         box-shadow: 0 12px 24px rgba(0, 15, 20, 0.6), 0 0 20px rgba(0, 224, 255, 0.3);
-        border-color: rgba(0, 224, 255, 0.4);
+
     }
 }
 
@@ -53,7 +52,7 @@
 
 .card-interactive:hover {
     background: var(--surface-interactive);
-    border-color: rgba(0, 224, 255, 0.3);
+
 }
 
 /* === SISTEMA DE BOTÕES FUTURISTA === */
@@ -76,6 +75,7 @@
     gap: var(--space-2);
     transition: all var(--transition-normal) var(--ease-out);
     overflow: hidden;
+    outline: none;
 
     width: 100%;
     max-width: 400px;
@@ -98,29 +98,28 @@
 }
 
 .btn-primary {
-    background: var(--gradient-primary);
+    background: var(--btn-primary-bg);
     color: #ffffff;
 }
 
 /* Box shadow apenas no hover para desktop */
 @media (min-width: 1024px) {
     .btn-primary:hover {
+        background: var(--btn-primary-hover);
         transform: translateY(-1px);
         box-shadow: var(--shadow-lg), var(--glow-primary);
     }
 }
 
 .btn-secondary {
-    background: var(--surface-glass);
+    background: var(--btn-secondary-bg);
     color: #ffffff;
-    border: 1px solid rgba(0, 224, 255, 0.2);
 }
 
 /* Box shadow apenas no hover para desktop */
 @media (min-width: 1024px) {
     .btn-secondary:hover {
-        background: var(--surface-elevated);
-        border-color: rgba(0, 224, 255, 0.4);
+        background: var(--btn-secondary-hover);
         box-shadow: 0 4px 8px rgba(0, 15, 20, 0.4), 0 0 16px rgba(0, 224, 255, 0.2);
     }
 }
@@ -152,7 +151,6 @@
 /* Legacy button classes for compatibility */
 .main-button {
     position: relative;
-    border: none;
     padding: var(--space-5) var(--space-8);
     border-radius: var(--radius-lg);
     cursor: pointer;
@@ -170,8 +168,9 @@
     gap: var(--space-2);
     transition: all var(--transition-normal) var(--ease-out);
     overflow: hidden;
+    outline: none;
 
-    background: var(--gradient-primary);
+    background: var(--btn-primary-bg);
     color: #ffffff;
 }
 
@@ -182,7 +181,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, #475569, transparent);
+    background: linear-gradient(90deg, transparent, rgba(0, 224, 255, 0.3), transparent);
     transition: left var(--transition-slow) var(--ease-out);
 }
 
@@ -190,12 +189,10 @@
     left: 100%;
 }
 
-/* Box shadow apenas no hover para desktop */
-@media (min-width: 1024px) {
-    .main-button:hover {
-        transform: translateY(-1px);
-        box-shadow: var(--shadow-lg), var(--glow-primary);
-    }
+.main-button:hover {
+    transform: translateY(-2px);
+    background: var(--btn-primary-hover);
+    box-shadow: 0 8px 25px rgba(0, 224, 255, 0.25);
 }
 
 .secondary-button {
@@ -218,9 +215,9 @@
     gap: var(--space-2);
     transition: all var(--transition-normal) var(--ease-out);
     overflow: hidden;
-    background: var(--surface-glass);
+    outline: none;
+    background: var(--btn-secondary-bg);
     color: #ffffff;
-    border: 1px solid rgba(0, 224, 255, 0.2);
 }
 
 .secondary-button::before {
@@ -241,8 +238,7 @@
 /* Box shadow apenas no hover para desktop */
 @media (min-width: 1024px) {
     .secondary-button:hover {
-        background: var(--surface-elevated);
-        border-color: rgba(0, 224, 255, 0.4);
+        background: var(--btn-secondary-hover);
         box-shadow: 0 4px 8px rgba(0, 15, 20, 0.4), 0 0 16px rgba(0, 224, 255, 0.2);
     }
 }
@@ -258,15 +254,16 @@
     left: var(--space-4);
     top: 50%;
     transform: translateY(-50%);
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.7);
     font-size: var(--text-lg);
     z-index: 2;
     transition: all var(--transition-normal) var(--ease-out);
 }
 
 .input-group:focus-within .icon {
-    color: #ffffff;
+    color: var(--accent-primary);
     transform: translateY(-50%) scale(1.1);
+    text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
 }
 
 input[type="text"],
@@ -274,34 +271,37 @@ input[type="password"],
 .form-input {
     width: 100%;
     padding: var(--space-4) var(--space-4) var(--space-4) calc(var(--space-10) + var(--space-2));
-    border: 1px solid rgba(0, 224, 255, 0.2);
     border-radius: var(--radius-lg);
-    background: var(--surface-glass);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: var(--text-primary);
     font-size: var(--text-base);
     font-family: var(--font-family-primary);
     font-weight: var(--font-normal);
     transition: all var(--transition-normal) var(--ease-out);
     position: relative;
+    border: none;
+    outline: none;
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus,
 .form-input:focus {
     outline: none;
-    border-color: var(--accent-primary);
-    background: var(--surface-elevated);
-    transform: translateY(-1px);
 }
 
-/* Box shadow apenas no hover para desktop */
-@media (min-width: 1024px) {
-    input[type="text"]:focus,
-    input[type="password"]:focus,
-    .form-input:focus {
-        box-shadow: var(--shadow-lg), var(--glow-primary);
-    }
+input[type="text"]:focus,
+input[type="password"]:focus,
+.form-input:focus {
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 224, 255, 0.15);
 }
+
+
 
 input[type="text"]::placeholder,
 input[type="password"]::placeholder,
@@ -360,7 +360,7 @@ input[type="password"]::placeholder,
     transition: all var(--transition-normal) var(--ease-out);
     backdrop-filter: var(--blur-sm);
     -webkit-backdrop-filter: var(--blur-sm);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+
     position: relative;
     overflow: hidden;
 }
@@ -430,7 +430,7 @@ input[type="password"]::placeholder,
     font-weight: var(--font-bold);
     font-size: var(--text-lg);
     letter-spacing: 0.1em;
-    border: 1px solid #475569;
+
     text-shadow: 0 0 10px #00ffff;
 }
 
@@ -450,8 +450,7 @@ input[type="password"]::placeholder,
     margin-bottom: var(--space-3);
     background: #1e293b;
     border-radius: var(--radius-lg);
-    border: 1px solid #334155;
-    border-left: 3px solid var(--accent-primary);
+
     transition: all var(--transition-normal) var(--ease-out);
     position: relative;
     overflow: hidden;
@@ -478,7 +477,7 @@ input[type="password"]::placeholder,
     .player-list-item:hover {
         transform: translateX(var(--space-2)) translateY(-1px);
         box-shadow: var(--shadow-lg), var(--glow-primary);
-        border-left-color: var(--accent-secondary);
+    
         background: var(--surface-elevated);
     }
 }
@@ -509,7 +508,7 @@ input[type="password"]::placeholder,
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid #334155;
+
     transition: all var(--transition-normal) var(--ease-out);
 }
 
@@ -544,7 +543,7 @@ input[type="password"]::placeholder,
     -webkit-backdrop-filter: blur(15px);
     border-radius: var(--radius-xl);
     padding: var(--space-5) var(--space-6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
@@ -572,7 +571,7 @@ input[type="password"]::placeholder,
     #leaderboard-list li:hover {
         transform: translateY(-3px) scale(1.02);
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 224, 255, 0.2);
-        border-color: rgba(0, 224, 255, 0.4);
+    
     }
     
     #leaderboard-list li:hover::before {
@@ -592,7 +591,7 @@ input[type="password"]::placeholder,
     font-weight: var(--font-bold);
     font-size: var(--text-xl);
     background: var(--surface-elevated);
-    border: 2px solid rgba(255, 255, 255, 0.2);
+
     position: relative;
     z-index: 2;
 }
@@ -652,12 +651,12 @@ input[type="password"]::placeholder,
 /* === ESTILOS POR POSIÇÃO === */
 .winner-position {
     background: linear-gradient(135deg, #ffd700, #ffed4e);
-    border: 3px solid #ffd700;
+
 }
 
 .winner-position .player-position {
     background: linear-gradient(135deg, #ffd700, #ffed4e);
-    border-color: #ffd700;
+    
     color: #1a1a1a;
 }
 
@@ -673,12 +672,12 @@ input[type="password"]::placeholder,
 
 .second-position {
     background: linear-gradient(135deg, rgba(192, 192, 192, 0.2), rgba(169, 169, 169, 0.1));
-    border: 2px solid #c0c0c0;
+
 }
 
 .second-position .player-position {
     background: linear-gradient(135deg, #c0c0c0, #a9a9a9);
-    border-color: #c0c0c0;
+    
     color: #1a1a1a;
 }
 
@@ -689,12 +688,12 @@ input[type="password"]::placeholder,
 
 .third-position {
     background: linear-gradient(135deg, rgba(205, 127, 50, 0.2), rgba(184, 115, 51, 0.1));
-    border: 2px solid #cd7f32;
+
 }
 
 .third-position .player-position {
     background: linear-gradient(135deg, #cd7f32, #b87333);
-    border-color: #cd7f32;
+    
     color: #1a1a1a;
 }
 
@@ -705,12 +704,12 @@ input[type="password"]::placeholder,
 
 .tie-position {
     background: linear-gradient(135deg, rgba(0, 224, 255, 0.2), rgba(124, 58, 237, 0.1));
-    border: 2px solid var(--primary-400);
+
 }
 
 .tie-position .player-position {
     background: var(--gradient-primary);
-    border-color: var(--primary-400);
+    
     color: var(--text-primary);
 }
 

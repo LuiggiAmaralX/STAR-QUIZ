@@ -35,6 +35,12 @@
     --gradient-danger: linear-gradient(135deg, #FF6B6B 0%, #00475F 100%);
     --gradient-accent: linear-gradient(135deg, #00E0FF 0%, #00475F 100%);
     
+    /* Button Hierarchy - Cores para botões principais e secundários */
+    --btn-primary-bg: linear-gradient(135deg, #00E0FF 0%, #00A8CC 100%);     /* Azul elétrico destacado */
+    --btn-primary-hover: linear-gradient(135deg, #00A8CC 0%, #0077B6 100%);  /* Hover mais escuro */
+    --btn-secondary-bg: linear-gradient(135deg, #0077B6 0%, #00475F 100%);   /* Azul petróleo sutil */
+    --btn-secondary-hover: linear-gradient(135deg, #00A8CC 0%, #0077B6 100%); /* Hover intermediário */
+    
     /* Text Colors */
     --text-primary: #ffffff;      /* High contrast */
     --text-secondary: #d1d5db;    /* Improved medium contrast */
@@ -122,6 +128,20 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+/* Remove outline padrão de todos os elementos focáveis */
+*:focus {
+    outline: none;
+}
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+a:focus,
+[tabindex]:focus {
+    outline: none;
 }
 
 /* --- ESTILOS GERAIS DO BODY --- */
@@ -214,8 +234,6 @@ p {
 .screen {
     display: none;
     background: var(--surface-glass);
-
-    border: 1px solid #334155;
     padding: var(--space-10) var(--space-12);
     border-radius: var(--radius-2xl);
     text-align: center;

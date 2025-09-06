@@ -37,35 +37,17 @@
     letter-spacing: 0.05em;
 }
 
-/* === TELA DE LOGIN FUTURISTA === */
+/* === TELA DE LOGIN MODERNA === */
 #login-screen {
     max-width: 500px;
-    background: var(--surface-glass);
-    backdrop-filter: var(--blur-lg);
-    -webkit-backdrop-filter: var(--blur-lg);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-xl);
+    background: transparent !important;
+    border: none !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
-    overflow: hidden;
-}
-
-#login-screen::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(0, 224, 255, 0.05) 0%,
-        rgba(0, 15, 20, 0.1) 100%
-    );
-    pointer-events: none;
+    padding: var(--space-12) var(--space-8);
 }
 
 /* === BOTÃO DE LOGIN ESPECÍFICO === */
@@ -73,6 +55,8 @@
     margin-top: var(--space-6);
     position: relative;
     z-index: 1;
+    border: none;
+    outline: none;
 }
 
 /* === LINK DE REGISTRO FUTURISTA === */
@@ -118,31 +102,13 @@
     transform: translateY(-1px);
 }
 
-/* === TELA DE REGISTRO FUTURISTA === */
+/* === TELA DE REGISTRO MODERNA === */
 #register-screen {
     max-width: 500px;
-    background: var(--surface-glass);
-    backdrop-filter: var(--blur-lg);
-    -webkit-backdrop-filter: var(--blur-lg);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-xl);
+    background: transparent !important;
+    border: none !important;
     position: relative;
-    overflow: hidden;
-}
-
-#register-screen::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(0, 224, 255, 0.05) 0%,
-        rgba(0, 15, 20, 0.1) 100%
-    );
-    pointer-events: none;
+    padding: var(--space-12) var(--space-8);
 }
 
 /* === ANIMAÇÕES DE ENTRADA === */
@@ -168,9 +134,8 @@
     #login-screen,
     #register-screen {
         max-width: 100%;
-        width: calc(100vw - var(--space-4));
-        margin: var(--space-2);
-        padding: var(--space-6) var(--space-8);
+        width: 100%;
+        padding: var(--space-6) var(--space-4);
     }
     
     .input-group {
@@ -195,9 +160,8 @@
     
     #login-screen,
     #register-screen {
-        width: calc(100vw - var(--space-2));
-        margin: var(--space-1);
-        padding: var(--space-4) var(--space-6);
+        width: 100%;
+        padding: var(--space-4) var(--space-3);
     }
     
     .input-group {
@@ -222,17 +186,6 @@
     
     #login-screen,
     #register-screen {
-        padding: var(--space-3) var(--space-4);
-    }
-}
-
-/* Box shadow apenas no hover para desktop */
-@media (min-width: 1024px) {
-    #login-screen {
-        box-shadow: 0 20px 40px rgba(0, 15, 20, 0.6), 0 0 30px rgba(0, 224, 255, 0.2);
-    }
-    
-    #register-screen {
-        box-shadow: 0 20px 40px rgba(0, 15, 20, 0.6), 0 0 30px rgba(0, 224, 255, 0.2);
+        padding: var(--space-3) var(--space-2);
     }
 }
