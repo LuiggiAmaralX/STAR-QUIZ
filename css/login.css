@@ -12,14 +12,14 @@
 .logo-icon {
     font-size: 5rem;
     color: var(--accent-primary);
-    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    text-shadow: 0 0 20px rgba(0, 224, 255, 0.5);
     animation: glowPulse 3s var(--ease-in-out) infinite;
     transition: all var(--transition-normal) var(--ease-out);
 }
 
 .logo-icon:hover {
     transform: scale(1.05) rotate(5deg);
-    text-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
+    text-shadow: 0 0 30px rgba(0, 224, 255, 0.8);
 }
 
 /* === SUBTÍTULO FUTURISTA === */
@@ -62,8 +62,8 @@
     bottom: 0;
     background: linear-gradient(
         135deg,
-        rgba(0, 212, 255, 0.05) 0%,
-        rgba(124, 58, 237, 0.05) 100%
+        rgba(0, 224, 255, 0.05) 0%,
+        rgba(0, 15, 20, 0.1) 100%
     );
     pointer-events: none;
 }
@@ -102,7 +102,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 212, 255, 0.1);
+    background: rgba(0, 224, 255, 0.1);
     border-radius: var(--radius-sm);
     opacity: 0;
     transition: opacity var(--transition-normal) var(--ease-out);
@@ -114,7 +114,7 @@
 
 .register-link a:hover {
     color: var(--text-primary);
-    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
     transform: translateY(-1px);
 }
 
@@ -139,8 +139,8 @@
     bottom: 0;
     background: linear-gradient(
         135deg,
-        rgba(6, 255, 165, 0.05) 0%,
-        rgba(0, 212, 255, 0.05) 100%
+        rgba(0, 224, 255, 0.05) 0%,
+        rgba(0, 15, 20, 0.1) 100%
     );
     pointer-events: none;
 }
@@ -229,10 +229,10 @@
 /* Box shadow apenas no hover para desktop */
 @media (min-width: 1024px) {
     #login-screen {
-        box-shadow: var(--shadow-xl), var(--glow-primary);
+        box-shadow: 0 20px 40px rgba(0, 15, 20, 0.6), 0 0 30px rgba(0, 224, 255, 0.2);
     }
     
     #register-screen {
-        box-shadow: var(--shadow-xl), var(--glow-secondary);
+        box-shadow: 0 20px 40px rgba(0, 15, 20, 0.6), 0 0 30px rgba(0, 224, 255, 0.2);
     }
 }

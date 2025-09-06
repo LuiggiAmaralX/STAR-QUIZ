@@ -24,10 +24,10 @@
 .lobby-section {
     margin: 30px 0;
     padding: 25px;
-    background: #1a2a42;
+    background: var(--surface-glass);
     border-radius: 20px;
-    border: var(--border-width-card) solid var(--blue-light-accent);
-
+    border: 1px solid rgba(0, 224, 255, 0.2);
+    box-shadow: 0 8px 16px rgba(0, 15, 20, 0.4);
     animation: sectionFadeIn 0.6s ease-out forwards;
     opacity: 0;
 }
@@ -86,9 +86,9 @@
     gap: 15px;
     margin: 20px 0;
     padding: 20px;
-    background: #14b8a6;
+    background: rgba(0, 71, 95, 0.8);
     border-radius: 15px;
-    border: 2px solid var(--cyan-main);
+    border: 2px solid rgba(0, 224, 255, 0.3);
     animation: codeDisplayPulse 3s ease-in-out infinite;
 }
 
@@ -104,12 +104,12 @@
 /* Box shadow apenas no hover para desktop */
 @media (min-width: 1024px) {
     .room-code-display:hover {
-        box-shadow: 0 0 30px #14b8a6;
+        box-shadow: 0 0 30px rgba(0, 224, 255, 0.4);
     }
 }
 
 .copy-code-btn {
-    background: var(--cyan-main);
+    background: var(--accent-primary);
     color: white;
     border: none;
     padding: 8px 12px;
@@ -120,8 +120,9 @@
 }
 
 .copy-code-btn:hover {
-    background: var(--cyan-light);
+    background: rgba(0, 224, 255, 0.8);
     transform: scale(1.1);
+    box-shadow: 0 0 16px rgba(0, 224, 255, 0.3);
 }
 
 .copy-code-btn:active {
@@ -183,9 +184,9 @@
 }
 
 .category-card {
-    background-color: var(--card-color, #cccccc);
+    background-color: var(--card-color, var(--surface-glass));
     border-radius: 12px;
-    border: 3px solid #1e293b;
+    border: 2px solid rgba(0, 224, 255, 0.2);
     aspect-ratio: 4 / 3;
     display: flex;
     justify-content: center;
@@ -193,6 +194,7 @@
     padding: 15px;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 15, 20, 0.3);
 }
 
 /* Box shadow apenas no hover para desktop */

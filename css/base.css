@@ -4,7 +4,7 @@
    ========================================================================== */
 
 /* --- IMPORTAÇÃO DE FONTES --- */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap');
 
 /* --- VARIÁVEIS CSS - DESIGN SYSTEM FUTURISTA --- */
 :root {
@@ -15,25 +15,25 @@
     --bg-tertiary: #16213e;       /* Elevated surfaces */
     --bg-quaternary: #0f3460;     /* Interactive elements */
     
-    /* Surface Colors */
-    --surface-glass: #1e293b;  /* Solid surface */
-    --surface-elevated: #334155;
-    --surface-interactive: #475569;
+    /* Surface Colors - Harmonizadas com background radial */
+    --surface-glass: rgba(0, 71, 95, 0.8);  /* Azul petróleo transparente */
+    --surface-elevated: rgba(0, 71, 95, 0.9);
+    --surface-interactive: rgba(0, 71, 95, 1);
     
-    /* Accent Colors - Neon Palette */
-    --accent-primary: #00d4ff;    /* Cyan electric */
-    --accent-secondary: #7c3aed;  /* Purple electric */
-    --accent-tertiary: #06ffa5;   /* Green electric */
-    --accent-warm: #ff6b35;       /* Orange electric */
+    /* Accent Colors - Paleta azul harmonizada */
+    --accent-primary: #00E0FF;    /* Azul elétrico claro */
+    --accent-secondary: #00A8CC;  /* Azul médio */
+    --accent-tertiary: #0077B6;   /* Azul petróleo */
+    --accent-warm: #00475F;       /* Azul escuro petróleo */
     
-    /* Gradient Accents - Agora cores sólidas azul escuro acinzentado */
-    --gradient-primary: #2d3748;
-    --gradient-secondary: #4a5568;
-    --gradient-warm: #2d3748;
-    --gradient-text: #2d3748;
-    --gradient-success: #2d3748;
-    --gradient-danger: #2d3748;
-    --gradient-accent: #4a5568;
+    /* Gradient Accents - Harmonizados com background radial */
+    --gradient-primary: linear-gradient(135deg, #00475F 0%, #000F14 100%);
+    --gradient-secondary: linear-gradient(135deg, #0077B6 0%, #00475F 100%);
+    --gradient-warm: linear-gradient(135deg, #00A8CC 0%, #0077B6 100%);
+    --gradient-text: linear-gradient(135deg, #00E0FF 0%, #00A8CC 100%);
+    --gradient-success: linear-gradient(135deg, #00E0FF 0%, #0077B6 100%);
+    --gradient-danger: linear-gradient(135deg, #FF6B6B 0%, #00475F 100%);
+    --gradient-accent: linear-gradient(135deg, #00E0FF 0%, #00475F 100%);
     
     /* Text Colors */
     --text-primary: #ffffff;      /* High contrast */
@@ -41,15 +41,17 @@
     --text-tertiary: #9ca3af;     /* Improved low contrast */
     --text-accent: var(--accent-primary);
     
-    /* Semantic Colors */
-    --success: #06ffa5;
-    --error: #ff4757;
-    --warning: #ffa726;
+    /* Semantic Colors - Harmonizadas */
+    --success: #00E0FF;
+    --error: #FF6B6B;
+    --warning: #FFB366;
     --info: var(--accent-primary);
     
     /* === TIPOGRAFIA === */
-    --font-family-primary: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-family-display: 'Poppins', sans-serif;
+    --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-family-display: 'Nunito Sans', sans-serif;
+    --font-family-headings: 'Nunito Sans', sans-serif;
+    --font-heading: 'Nunito Sans', sans-serif;
     
     /* Font Sizes - Modular Scale */
     --text-xs: 0.75rem;     /* 12px */
