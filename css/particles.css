@@ -1,8 +1,7 @@
 ---- Reset para o Body e Canvas ----
-/* Remove a margem e define a cor de fundo principal para o efeito de partículas */
+/* Remove a margem - background definido no base.css */
 body {
   margin: 0;
-  background-color: #070825;
 }
 
 canvas {

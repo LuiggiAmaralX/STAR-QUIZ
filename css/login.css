@@ -206,7 +206,7 @@
     
     .input-group input {
         font-size: var(--text-sm);
-        padding: var(--space-3);
+        padding: var(--space-3) var(--space-3) var(--space-3) calc(var(--space-8) + var(--space-2));
     }
     
     #login-button {

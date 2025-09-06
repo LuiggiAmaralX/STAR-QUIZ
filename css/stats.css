@@ -28,16 +28,15 @@
 }
 
 .stats-content {
-    background: var(--surface-glass);
-    backdrop-filter: var(--blur-xl);
-    -webkit-backdrop-filter: var(--blur-xl);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 71, 95, 0.95);
+    border: 1px solid rgba(0, 224, 255, 0.2);
     border-radius: var(--radius-2xl);
     padding: var(--space-8);
     max-width: 600px;
     width: 90%;
     max-height: 80vh;
     overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0, 15, 20, 0.8);
 
     transform: scale(0.8);
     transition: transform var(--transition-normal) var(--ease-out);
@@ -53,8 +52,8 @@
     bottom: 0;
     background: linear-gradient(
         135deg,
-        rgba(0, 212, 255, 0.03) 0%,
-        rgba(124, 58, 237, 0.03) 100%
+        rgba(0, 224, 255, 0.05) 0%,
+        rgba(0, 15, 20, 0.1) 100%
     );
     border-radius: var(--radius-2xl);
     pointer-events: none;
@@ -90,10 +89,8 @@
 }
 
 .stats-close {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: var(--blur-sm);
-    -webkit-backdrop-filter: var(--blur-sm);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 71, 95, 0.8);
+    border: 1px solid rgba(0, 224, 255, 0.3);
     color: var(--text-primary);
     font-size: var(--text-xl);
     cursor: pointer;
@@ -108,9 +105,10 @@
 }
 
 .stats-close:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 71, 95, 1);
+    border-color: rgba(0, 224, 255, 0.6);
     transform: rotate(90deg) scale(1.1);
-    box-shadow: var(--glow-accent);
+    box-shadow: 0 0 20px rgba(0, 224, 255, 0.4);
 }
 
 /* === SEÇÕES DE ESTATÍSTICAS FUTURISTAS === */
@@ -147,16 +145,15 @@
 }
 
 .stat-card {
-    background: var(--surface-glass-light);
-    backdrop-filter: var(--blur-md);
-    -webkit-backdrop-filter: var(--blur-md);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 71, 95, 0.7);
+    border: 1px solid rgba(0, 224, 255, 0.15);
     border-radius: var(--radius-xl);
     padding: var(--space-5);
     text-align: center;
     transition: all var(--transition-normal) var(--ease-out);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 15, 20, 0.4);
 }
 
 .stat-card::before {
@@ -168,8 +165,8 @@
     bottom: 0;
     background: linear-gradient(
         135deg,
-        rgba(0, 212, 255, 0.05) 0%,
-        rgba(6, 255, 165, 0.05) 100%
+        rgba(0, 224, 255, 0.1) 0%,
+        rgba(0, 15, 20, 0.2) 100%
     );
     opacity: 0;
     transition: opacity var(--transition-normal) var(--ease-out);
@@ -177,7 +174,8 @@
 
 .stat-card:hover {
     transform: translateY(-8px) scale(1.02);
-    border-color: rgba(0, 212, 255, 0.3);
+    border-color: rgba(0, 224, 255, 0.4);
+    box-shadow: 0 12px 24px rgba(0, 15, 20, 0.6), 0 0 20px rgba(0, 224, 255, 0.2);
 }
 
 .stat-card:hover::before {
@@ -187,10 +185,10 @@
 .stat-value {
     font-size: var(--text-4xl);
     font-weight: var(--font-bold);
-    color: var(--accent-secondary);
+    color: #00E0FF;
     margin-bottom: var(--space-1);
     display: block;
-    text-shadow: 0 0 15px rgba(6, 255, 165, 0.4);
+    text-shadow: 0 0 15px rgba(0, 224, 255, 0.5);
     position: relative;
     z-index: 1;
 }
@@ -226,10 +224,8 @@
 }
 
 .progress-bar-container {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: var(--blur-sm);
-    -webkit-backdrop-filter: var(--blur-sm);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 15, 20, 0.6);
+    border: 1px solid rgba(0, 224, 255, 0.2);
     border-radius: var(--radius-full);
     height: 12px;
     overflow: hidden;
@@ -240,13 +236,13 @@
     height: 100%;
     background: linear-gradient(
         90deg,
-        var(--accent-secondary) 0%,
-        var(--accent-primary) 100%
+        #00475F 0%,
+        #00E0FF 100%
     );
     border-radius: var(--radius-full);
     transition: width var(--transition-slow) var(--ease-out);
     position: relative;
-
+    box-shadow: 0 0 10px rgba(0, 224, 255, 0.3);
 }
 
 .progress-bar::after {

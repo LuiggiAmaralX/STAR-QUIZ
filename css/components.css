@@ -4,11 +4,9 @@
    ========================================================================== */
 
 /* === SISTEMA DE CARDS === */
-.card {
-    background: var(--surface-glass);
-    backdrop-filter: var(--blur-md);
-    -webkit-backdrop-filter: var(--blur-md);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+.card.screen {
+    background: #1a2332;
+    border: 1px solid #334155;
     border-radius: var(--radius-xl);
     padding: var(--space-6);
     transition: all var(--transition-normal) var(--ease-out);
@@ -53,7 +51,7 @@
 }
 
 .card-interactive:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: #475569;
 }
 
 /* === SISTEMA DE BOTÕES FUTURISTA === */
@@ -76,8 +74,7 @@
     gap: var(--space-2);
     transition: all var(--transition-normal) var(--ease-out);
     overflow: hidden;
-    backdrop-filter: var(--blur-sm);
-    -webkit-backdrop-filter: var(--blur-sm);
+
     width: 100%;
     max-width: 400px;
     box-sizing: border-box;
@@ -90,7 +87,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, #475569, transparent);
     transition: left var(--transition-slow) var(--ease-out);
 }
 
@@ -112,9 +109,9 @@
 }
 
 .btn-secondary {
-    background: var(--surface-glass);
+    background: #1e293b;
     color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid #475569;
 }
 
 /* Box shadow apenas no hover para desktop */
@@ -171,8 +168,7 @@
     gap: var(--space-2);
     transition: all var(--transition-normal) var(--ease-out);
     overflow: hidden;
-    backdrop-filter: var(--blur-sm);
-    -webkit-backdrop-filter: var(--blur-sm);
+
     background: var(--gradient-primary);
     color: #ffffff;
 }
@@ -184,7 +180,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, #475569, transparent);
     transition: left var(--transition-slow) var(--ease-out);
 }
 
@@ -220,11 +216,9 @@
     gap: var(--space-2);
     transition: all var(--transition-normal) var(--ease-out);
     overflow: hidden;
-    backdrop-filter: var(--blur-sm);
-    -webkit-backdrop-filter: var(--blur-sm);
-    background: var(--surface-glass);
+    background: #1e293b;
     color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid #475569;
 }
 
 .secondary-button::before {
@@ -278,11 +272,9 @@ input[type="password"],
 .form-input {
     width: 100%;
     padding: var(--space-4) var(--space-4) var(--space-4) calc(var(--space-10) + var(--space-2));
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid #334155;
     border-radius: var(--radius-lg);
-    background: var(--surface-glass);
-    backdrop-filter: var(--blur-sm);
-    -webkit-backdrop-filter: var(--blur-sm);
+    background: #1e293b;
     color: var(--text-primary);
     font-size: var(--text-base);
     font-family: var(--font-family-primary);
@@ -436,10 +428,8 @@ input[type="password"]::placeholder,
     font-weight: var(--font-bold);
     font-size: var(--text-lg);
     letter-spacing: 0.1em;
-    backdrop-filter: var(--blur-sm);
-    -webkit-backdrop-filter: var(--blur-sm);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    border: 1px solid #475569;
+    text-shadow: 0 0 10px #00ffff;
 }
 
 /* Box shadow apenas no hover para desktop */
@@ -456,11 +446,9 @@ input[type="password"]::placeholder,
     justify-content: space-between;
     padding: var(--space-4) var(--space-6);
     margin-bottom: var(--space-3);
-    background: var(--surface-glass);
-    backdrop-filter: var(--blur-md);
-    -webkit-backdrop-filter: var(--blur-md);
+    background: #1e293b;
     border-radius: var(--radius-lg);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid #334155;
     border-left: 3px solid var(--accent-primary);
     transition: all var(--transition-normal) var(--ease-out);
     position: relative;
@@ -474,7 +462,7 @@ input[type="password"]::placeholder,
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
+    background: linear-gradient(135deg, #334155, transparent);
     opacity: 0;
     transition: opacity var(--transition-normal) var(--ease-out);
 }
@@ -507,21 +495,19 @@ input[type="password"]::placeholder,
     color: var(--accent-primary);
     position: relative;
     z-index: 1;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    text-shadow: 0 0 10px #00ffff;
 }
 
 /* --- LISTAS DE JOGADORES E LEADERBOARD --- */
 #players-list li {
-    background: var(--surface-glass);
-    backdrop-filter: var(--blur-md);
-    -webkit-backdrop-filter: var(--blur-md);
+    background: #1e293b;
     border-radius: var(--radius-lg);
     padding: var(--space-4) var(--space-5);
     margin: var(--space-3) 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid #334155;
     transition: all var(--transition-normal) var(--ease-out);
 }
 
@@ -535,9 +521,7 @@ input[type="password"]::placeholder,
 }
 
 #leaderboard-list {
-    background: var(--surface-glass);
-    backdrop-filter: var(--blur-md);
-    -webkit-backdrop-filter: var(--blur-md);
+    background: #1e293b;
     border-radius: var(--radius-xl);
     padding: var(--space-8);
     margin: var(--space-8) 0;
@@ -570,7 +554,7 @@ input[type="password"]::placeholder,
     #leaderboard-list li:hover {
         transform: translateY(-2px);
         box-shadow: var(--shadow-xl), var(--glow-primary);
-        border-color: rgba(0, 212, 255, 0.3);
+        border-color: #00d4ff;
     }
 }
 
@@ -589,7 +573,7 @@ input[type="password"]::placeholder,
     
     .input-group input {
         font-size: var(--text-sm);
-        padding: var(--space-3);
+        padding: var(--space-3) var(--space-3) var(--space-3) calc(var(--space-8) + var(--space-2));
     }
     
     .card {
@@ -614,7 +598,7 @@ input[type="password"]::placeholder,
     
     .input-group input {
         font-size: var(--text-xs);
-        padding: var(--space-2);
+        padding: var(--space-2) var(--space-2) var(--space-2) calc(var(--space-6) + var(--space-2));
     }
     
     .card {

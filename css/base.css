@@ -16,9 +16,9 @@
     --bg-quaternary: #0f3460;     /* Interactive elements */
     
     /* Surface Colors */
-    --surface-glass: rgba(255, 255, 255, 0.05);  /* Glassmorphism */
-    --surface-elevated: rgba(255, 255, 255, 0.08);
-    --surface-interactive: rgba(255, 255, 255, 0.12);
+    --surface-glass: #1e293b;  /* Solid surface */
+    --surface-elevated: #334155;
+    --surface-interactive: #475569;
     
     /* Accent Colors - Neon Palette */
     --accent-primary: #00d4ff;    /* Cyan electric */
@@ -113,10 +113,6 @@
     --ease-in: cubic-bezier(0.4, 0, 1, 1);
     
     /* === BACKDROP FILTERS === */
-    --blur-sm: blur(4px);
-    --blur-md: blur(8px);
-    --blur-lg: blur(16px);
-    --blur-xl: blur(24px);
 }
 
 /* --- RESET CSS --- */
@@ -130,8 +126,8 @@
 body {
     position: relative;
     font-family: var(--font-family-primary);
-    background: var(--bg-primary) url('../background.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background: #00475F;
+    background: radial-gradient(circle, rgba(0, 71, 95, 1) 1%, rgba(0, 15, 20, 1) 70%);
     color: var(--text-primary);
     display: flex;
     justify-content: center;
@@ -144,18 +140,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Overlay escuro sobre o background */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: -1;
-    pointer-events: none;
-}
+/* Overlay removido para mostrar o background gradiente */
 
 /* --- TIPOGRAFIA HIERÁRQUICA --- */
 h1, h2, h3, h4, h5, h6 {
@@ -227,14 +212,13 @@ p {
 .screen {
     display: none;
     background: var(--surface-glass);
-    backdrop-filter: var(--blur-lg);
-    -webkit-backdrop-filter: var(--blur-lg);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    border: 1px solid #334155;
     padding: var(--space-10) var(--space-12);
     border-radius: var(--radius-2xl);
     text-align: center;
     width: 100%;
-    max-width: 1400px;
+    max-width: 500px;
     position: relative;
     z-index: 1;
     transition: all var(--transition-normal) var(--ease-out);
