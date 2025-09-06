@@ -548,3 +548,82 @@
         padding: 10px;
     }
 }
+/* ==========================================================================
+   LOBBY.CSS - Estilos da Tela de Lobby
+   ========================================================================== */
+
+#lobby-screen {
+    text-align: center;
+}
+
+.lobby-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.lobby-header p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.lobby-sections {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.room-code-display {
+    margin-bottom: 30px;
+}
+
+.room-code-display h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.players-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.waiting-lobby p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.category-screen h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.category-card {
+    background-color: var(--dark-color-2);
+    border-radius: var(--border-radius-card);
+    padding: 20px;
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    border: var(--border-width) solid var(--dark-color-3);
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+.category-card .icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+}
+
+.category-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+}

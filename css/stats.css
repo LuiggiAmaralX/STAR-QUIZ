@@ -23,7 +23,7 @@
 }
 
 .stats-content {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--dark-color-2);
     border-radius: 20px;
     padding: 30px;
     max-width: 600px;
@@ -40,6 +40,8 @@
 }
 
 .stats-header {
+    background-color: var(--dark-color-2);
+    padding: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -156,7 +158,7 @@
 
 .progress-bar {
     height: 100%;
-    background: linear-gradient(90deg, #4CAF50, #45a049);
+    background: var(--green-correct);
     border-radius: 10px;
     transition: width 0.8s ease;
     position: relative;
@@ -169,8 +171,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    animation: shimmer 2s infinite;
+    background: transparent;
+    animation: none;
 }
 
 /* Histórico de jogos */
@@ -231,8 +233,8 @@
 }
 
 .achievement-badge.unlocked {
-    background: linear-gradient(135deg, #ffd700, #ffed4e);
-    color: #333;
+    background: var(--yellow-accent);
+    color: var(--dark-color-1);
     box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
 }
 
@@ -263,7 +265,7 @@
     position: fixed;
     top: 20px;
     right: 20px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: var(--dark-color-3);
     color: white;
     border: none;
     border-radius: 50%;
@@ -349,7 +351,7 @@
 
 /* Modo escuro */
 .dark-mode .stats-content {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    background: var(--dark-color-2);
 }
 
 .dark-mode .stat-card {
@@ -397,4 +399,81 @@
 
 .achievement-badge.unlock-animation {
     animation: achievementUnlock 0.8s ease-out;
+}
+
+.stat-item.total-games .stat-value {
+    color: var(--accent-color);
+}
+
+.stat-item.total-wins .stat-value {
+    color: var(--green-correct);
+}
+
+.stat-item.win-percentage .stat-value {
+    color: var(--cyan-main);
+}
+
+.stat-item.favorite-category .stat-value {
+    color: var(--yellow-accent);
+}
+
+.progress-bar-fill {
+    background-color: var(--green-correct);
+    height: 100%;
+}
+
+.progress-bar-background {
+    width: 100%;
+    height: 12px;
+    background-color: var(--dark-color-3);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.progress-bar-shimmer {
+    display: none;
+}
+
+.rank-badge.gold {
+    background-color: var(--yellow-accent);
+    color: var(--dark-color-1);
+}
+
+.rank-badge.silver {
+    background-color: var(--dark-color-5);
+    color: var(--dark-color-1);
+}
+
+.rank-badge.bronze {
+    background-color: #cd7f32; /* Bronze color */
+    color: var(--dark-color-1);
+}
+
+
+.history-item:nth-child(even) {
+    background-color: var(--dark-color-2);
+}
+
+.history-item:nth-child(odd) {
+    background-color: var(--dark-color-3);
+}
+
+.history-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(5px);
+}
+
+.history-date {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+}
+
+.history-score {
+    color: #ffd700;
+    font-weight: bold;
+}
+
+.history-category {
+    color: white;
+    font-size: 14px;
 }

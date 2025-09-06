@@ -5,7 +5,7 @@
 
 /* --- QUIZ SCREEN MODERNIZADO --- */
 #quiz-screen {
-    background: var(--gradient-screen);
+    background: var(--dark-color-1);
     padding: 20px;
     max-width: 1000px;
     position: relative;
@@ -42,7 +42,7 @@
 
 /* Timer com pouco tempo */
 #timer-container.warning {
-    background: linear-gradient(45deg, var(--red-incorrect), #dc2626);
+    background: var(--red-incorrect);
     color: white;
     animation: timerWarning 0.5s infinite;
 }
@@ -204,7 +204,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    background: linear-gradient(45deg, var(--yellow-accent), #fbbf24);
+    background: var(--yellow-accent);
     padding: 12px 20px;
     border-radius: 25px;
     color: var(--blue-dark-bg);
@@ -224,7 +224,7 @@
 }
 
 #next-question-btn {
-    background: linear-gradient(45deg, var(--cyan-main), var(--cyan-light));
+    background: var(--cyan-main);
     border: none;
     padding: 15px 25px;
     border-radius: 25px;
@@ -242,7 +242,7 @@
 #next-question-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(20, 184, 166, 0.4);
-    background: linear-gradient(45deg, var(--cyan-light), var(--cyan-main));
+    background: var(--cyan-light);
 }
 
 #next-question-btn:active {
@@ -455,87 +455,88 @@
     left: 100%;
 }
 
-/* --- RESPONSIVIDADE PARA JOGO --- */
-@media (max-width: 500px) {
-    .answer-grid {
-        grid-template-columns: 1fr;
-    }
+/* ==========================================================================
+   GAME.CSS - Estilos da Tela de Jogo (Quiz)
+   ========================================================================== */
+
+#quiz-screen {
+    max-width: 1000px;
 }
 
-@media (max-width: 768px) {
-    #quiz-screen {
-        padding: 15px;
-    }
-    
-    .quiz-header {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-    
-    .question-area {
-        padding: 30px 20px;
-    }
-    
-    #question-text {
-        font-size: 1.5rem;
-    }
-    
-    .answer-button {
-        padding: 20px 15px;
-        font-size: 1.1rem;
-        min-height: 75px;
-    }
-    
-    .quiz-footer {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    #timer-container,
-    #player-score-container {
-        font-size: 1rem;
-        padding: 10px 15px;
-    }
-    
-    #result-screen {
-        padding: 25px 20px;
-    }
-    
-    #result-screen h2 {
-        font-size: 2.8rem;
-    }
-    
-    .trophy-icon {
-        font-size: 6rem;
-    }
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-@media (max-width: 480px) {
-    .question-area {
-        padding: 25px 15px;
-    }
-    
-    #question-text {
-        font-size: 1.3rem;
-    }
-    
-    .answer-button {
-        padding: 18px 12px;
-        font-size: 1rem;
-        min-height: 65px;
-    }
-    
-    #result-screen h2 {
-        font-size: 2.2rem;
-    }
-    
-    .trophy-icon {
-        font-size: 5rem;
-    }
-    
-    #restart-button, #back-to-lobby-btn {
-        font-size: 1.1rem;
-        padding: 15px 25px;
-    }
+.quiz-timer {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.quiz-timer.warning {
+    color: var(--accent-color);
+}
+
+.quiz-question-area {
+    margin-bottom: 30px;
+}
+
+#question-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+#question-category {
+    font-size: 1.1rem;
+    color: var(--dark-color-5);
+}
+
+.quiz-answers-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.answer-btn {
+    background-color: var(--dark-color-2);
+    border: var(--border-width) solid var(--dark-color-3);
+    border-radius: var(--border-radius-card);
+    padding: 20px;
+    font-size: 1.2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-medium);
+}
+
+.answer-btn:hover {
+    background-color: var(--dark-color-3);
+    transform: translateY(-3px);
+}
+
+.answer-btn.correct {
+    background-color: #28a745; /* Verde para resposta correta */
+    color: white;
+    border-color: #28a745;
+}
+
+.answer-btn.incorrect {
+    background-color: #dc3545; /* Vermelho para resposta incorreta */
+    color: white;
+    border-color: #dc3545;
+}
+
+.quiz-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+#score-display,
+#round-display {
+    font-size: 1.2rem;
+    font-weight: 600;
 }
