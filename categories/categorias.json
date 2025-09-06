@@ -499,6 +499,31 @@
         "q19": { "text": "Qual é o nome da terapia que usa técnicas de relaxamento e exposição?", "options": ["Terapia Comportamental", "Dessensibilização Sistemática", "Ambas estão corretas", "Terapia de Exposição"], "answer": 2 },
         "q20": { "text": "Qual é o nome do fenômeno onde mudamos nosso comportamento devido à presença de outros?", "options": ["Conformidade", "Facilitação Social", "Inibição Social", "Todas as anteriores"], "answer": 3 }
       }
+    },
+    "bandeiras": {
+      "totalQuestions": 20,
+      "questions": {
+        "q1": { "text": "Qual país esta bandeira representa? 🇧🇷", "options": ["Argentina", "Brasil", "Uruguai", "Paraguai"], "answer": 1 },
+        "q2": { "text": "Qual país esta bandeira representa? 🇺🇸", "options": ["Canadá", "Estados Unidos", "Reino Unido", "Austrália"], "answer": 1 },
+        "q3": { "text": "Qual país esta bandeira representa? 🇫🇷", "options": ["Bélgica", "Holanda", "França", "Luxemburgo"], "answer": 2 },
+        "q4": { "text": "Qual país esta bandeira representa? 🇯🇵", "options": ["China", "Coreia do Sul", "Japão", "Tailândia"], "answer": 2 },
+        "q5": { "text": "Qual país esta bandeira representa? 🇩🇪", "options": ["Áustria", "Alemanha", "Suíça", "Bélgica"], "answer": 1 },
+        "q6": { "text": "Qual país esta bandeira representa? 🇮🇹", "options": ["França", "Espanha", "Itália", "Portugal"], "answer": 2 },
+        "q7": { "text": "Qual país esta bandeira representa? 🇪🇸", "options": ["Portugal", "Espanha", "México", "Colômbia"], "answer": 1 },
+        "q8": { "text": "Qual país esta bandeira representa? 🇬🇧", "options": ["Irlanda", "Escócia", "Reino Unido", "País de Gales"], "answer": 2 },
+        "q9": { "text": "Qual país esta bandeira representa? 🇨🇦", "options": ["Estados Unidos", "Canadá", "Reino Unido", "Austrália"], "answer": 1 },
+        "q10": { "text": "Qual país esta bandeira representa? 🇦🇺", "options": ["Nova Zelândia", "Reino Unido", "Austrália", "Fiji"], "answer": 2 },
+        "q11": { "text": "Qual país esta bandeira representa? 🇷🇺", "options": ["Sérvia", "Eslováquia", "Rússia", "República Tcheca"], "answer": 2 },
+        "q12": { "text": "Qual país esta bandeira representa? 🇨🇳", "options": ["China", "Vietnã", "Coreia do Norte", "Laos"], "answer": 0 },
+        "q13": { "text": "Qual país esta bandeira representa? 🇮🇳", "options": ["Bangladesh", "Paquistão", "Índia", "Sri Lanka"], "answer": 2 },
+        "q14": { "text": "Qual país esta bandeira representa? 🇲🇽", "options": ["México", "Itália", "Irã", "Hungria"], "answer": 0 },
+        "q15": { "text": "Qual país esta bandeira representa? 🇦🇷", "options": ["Uruguai", "Argentina", "Guatemala", "Honduras"], "answer": 1 },
+        "q16": { "text": "Qual país esta bandeira representa? 🇿🇦", "options": ["Namíbia", "Botswana", "África do Sul", "Zimbábue"], "answer": 2 },
+        "q17": { "text": "Qual país esta bandeira representa? 🇰🇷", "options": ["Coreia do Norte", "Coreia do Sul", "Japão", "Taiwan"], "answer": 1 },
+        "q18": { "text": "Qual país esta bandeira representa? 🇳🇱", "options": ["Luxemburgo", "França", "Holanda", "Bélgica"], "answer": 2 },
+        "q19": { "text": "Qual país esta bandeira representa? 🇸🇪", "options": ["Noruega", "Suécia", "Dinamarca", "Finlândia"], "answer": 1 },
+        "q20": { "text": "Qual país esta bandeira representa? 🇨🇭", "options": ["Áustria", "Dinamarca", "Suíça", "Polônia"], "answer": 2 }
+      }
     }
   }
 }
