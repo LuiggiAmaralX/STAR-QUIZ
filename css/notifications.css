@@ -24,7 +24,7 @@
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     font-weight: 500;
-    color: #374151;
+    color: var(--text-light);
     pointer-events: auto;
     transform: translateX(100%);
     opacity: 0;

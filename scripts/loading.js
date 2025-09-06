@@ -34,7 +34,6 @@ class LoadingManager {
      * @param {string} subtext - Texto secundário
      */
     showGlobal(text = 'Carregando...', subtext = 'Aguarde um momento') {
-        if (!this.overlay) this.init();
         
         const textElement = this.overlay.querySelector('.loading-text');
         const subtextElement = this.overlay.querySelector('.loading-subtext');
@@ -74,7 +73,7 @@ class LoadingManager {
         btn.disabled = true;
 
         if (loadingText) {
-            btn.innerHTML = `<span class="spinner-small"></span>${loadingText}`;
+            btn.innerHTML = loadingText;
         }
 
         this.activeLoadings.add(btn);
@@ -320,11 +319,5 @@ if (typeof window !== 'undefined') {
     window.hideCardLoading = hideCardLoading;
 }
 
-// Auto-inicialização
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        loading.init();
-    });
-} else {
-    loading.init();
-}
+// Auto-inicialização removida para evitar duplicação
+// A inicialização já ocorre no constructor da classe

@@ -6,43 +6,20 @@
 class AudioManager {
     constructor() {
         this.sounds = {};
-        this.volume = 0.7;
-        this.muted = false;
+
         this.audioContext = null;
         this.soundsLoaded = false;
         this.init();
     }
 
     init() {
-        this.createAudioControls();
+
         this.loadSounds();
         this.setupEventListeners();
-        this.loadSettings();
+
     }
 
-    /**
-     * Cria os controles de áudio na interface
-     */
-    createAudioControls() {
-        const controlsHTML = `
-            <div class="audio-controls">
-                <button class="audio-toggle" id="audioToggle" title="Ativar/Desativar Som">
-                    <i class="fas fa-volume-up"></i>
-                </button>
-                <input type="range" class="volume-slider" id="volumeSlider" 
-                       min="0" max="100" value="70" title="Volume">
-            </div>
 
-            <div class="muted-indicator" id="mutedIndicator">
-                <i class="fas fa-volume-mute"></i> Som desativado
-            </div>
-        `;
-
-        // Adiciona os controles ao body se não existirem
-        if (!document.querySelector('.audio-controls')) {
-            document.body.insertAdjacentHTML('beforeend', controlsHTML);
-        }
-    }
 
     /**
      * Carrega os sons usando Web Audio API ou fallback para HTML5 Audio
@@ -79,25 +56,7 @@ class AudioManager {
      * Configura os event listeners
      */
     setupEventListeners() {
-        const audioToggle = document.getElementById('audioToggle');
-        const volumeSlider = document.getElementById('volumeSlider');
 
-        if (audioToggle) {
-            audioToggle.addEventListener('click', () => {
-                this.toggleMute();
-                this.playSound('click');
-            });
-        }
-
-        if (volumeSlider) {
-            volumeSlider.addEventListener('input', (e) => {
-                this.setVolume(e.target.value / 100);
-            });
-
-            volumeSlider.addEventListener('change', () => {
-                this.playSound('click');
-            });
-        }
 
         // Adiciona sons de hover aos elementos clicáveis
         this.addHoverSounds();
@@ -145,7 +104,7 @@ class AudioManager {
                 this.playHTMLAudioSound(soundName, options);
             }
 
-            // Feedback visual removido
+
         } catch (error) {
             console.warn('Erro ao reproduzir som:', error);
         }
@@ -225,143 +184,11 @@ class AudioManager {
         beep(sound.frequency, sound.duration);
     }
 
-    /**
-     * Mostra feedback visual do som
-     */
-    showSoundFeedback(soundName) {
-        const feedback = document.getElementById('soundFeedback');
-        if (!feedback) return;
 
-        const icon = feedback.querySelector('i');
-        
-        // Remove classes anteriores
-        feedback.className = 'sound-feedback';
-        
-        // Define ícone e classe baseado no tipo de som
-        switch (soundName) {
-            case 'success':
-            case 'victory':
-                icon.className = 'fas fa-check';
-                feedback.classList.add('success');
-                break;
-            case 'error':
-                icon.className = 'fas fa-times';
-                feedback.classList.add('error');
-                break;
-            case 'click':
-            case 'hover':
-                icon.className = 'fas fa-mouse-pointer';
-                feedback.classList.add('click');
-                break;
-            case 'notification':
-                icon.className = 'fas fa-bell';
-                feedback.classList.add('click');
-                break;
-            case 'countdown':
-                icon.className = 'fas fa-clock';
-                feedback.classList.add('click');
-                break;
-            default:
-                icon.className = 'fas fa-volume-up';
-                feedback.classList.add('click');
-        }
-        
-        // Mostra o feedback
-        feedback.classList.add('show');
-        
-        // Remove após a animação
-        setTimeout(() => {
-            feedback.classList.remove('show');
-        }, 600);
-    }
 
-    /**
-     * Define o volume
-     * @param {number} volume - Volume de 0 a 1
-     */
-    setVolume(volume) {
-        this.volume = Math.max(0, Math.min(1, volume));
-        this.saveSettings();
-        
-        const volumeSlider = document.getElementById('volumeSlider');
-        if (volumeSlider) {
-            volumeSlider.value = this.volume * 100;
-        }
-    }
 
-    /**
-     * Alterna entre mudo e som
-     */
-    toggleMute() {
-        this.muted = !this.muted;
-        this.updateAudioToggle();
-        this.showMutedIndicator();
-        this.saveSettings();
-    }
 
-    /**
-     * Atualiza o botão de áudio
-     */
-    updateAudioToggle() {
-        const audioToggle = document.getElementById('audioToggle');
-        if (!audioToggle) return;
 
-        const icon = audioToggle.querySelector('i');
-        if (this.muted) {
-            icon.className = 'fas fa-volume-mute';
-            audioToggle.classList.add('muted');
-            audioToggle.title = 'Ativar Som';
-        } else {
-            icon.className = 'fas fa-volume-up';
-            audioToggle.classList.remove('muted');
-            audioToggle.title = 'Desativar Som';
-        }
-    }
-
-    /**
-     * Mostra indicador de som mutado
-     */
-    showMutedIndicator() {
-        const indicator = document.getElementById('mutedIndicator');
-        if (!indicator) return;
-
-        if (this.muted) {
-            indicator.classList.add('show');
-        } else {
-            indicator.classList.remove('show');
-        }
-    }
-
-    /**
-     * Salva configurações no localStorage
-     */
-    saveSettings() {
-        localStorage.setItem('audioSettings', JSON.stringify({
-            volume: this.volume,
-            muted: this.muted
-        }));
-    }
-
-    /**
-     * Carrega configurações do localStorage
-     */
-    loadSettings() {
-        try {
-            const settings = JSON.parse(localStorage.getItem('audioSettings') || '{}');
-            
-            if (settings.volume !== undefined) {
-                this.setVolume(settings.volume);
-            }
-            
-            if (settings.muted !== undefined) {
-                this.muted = settings.muted;
-                this.updateAudioToggle();
-                this.showMutedIndicator();
-            }
-        } catch (error) {
-            console.warn('Erro ao carregar configurações de áudio:', error);
-        }
-    }
 
     /**
      * Reproduz sequência de sons
@@ -408,70 +235,4 @@ class AudioManager {
             this.playSound('success');
         }, 1000);
     }
-}
-
-// Cria instância global
-const audioManager = new AudioManager();
-
-// Funções de conveniência globais
-function playSound(soundName, options) {
-    audioManager.playSound(soundName, options);
-}
-
-function toggleAudio() {
-    audioManager.toggleMute();
-}
-
-function setVolume(volume) {
-    audioManager.setVolume(volume);
-}
-
-function playSuccessSound() {
-    audioManager.playSound('success');
-}
-
-function playErrorSound() {
-    audioManager.playSound('error');
-}
-
-function playClickSound() {
-    audioManager.playSound('click');
-}
-
-function playNotificationSound() {
-    audioManager.playSound('notification');
-}
-
-function playVictorySound() {
-    audioManager.playSound('victory');
-}
-
-function playCountdownSound(count) {
-    audioManager.playCountdown(count);
-}
-
-// Exporta para uso global
-if (typeof window !== 'undefined') {
-    window.audioManager = audioManager;
-    window.playSound = playSound;
-    window.toggleAudio = toggleAudio;
-    window.setVolume = setVolume;
-    window.playSuccessSound = playSuccessSound;
-    window.playErrorSound = playErrorSound;
-    window.playClickSound = playClickSound;
-    window.playNotificationSound = playNotificationSound;
-    window.playVictorySound = playVictorySound;
-    window.playCountdownSound = playCountdownSound;
-}
-
-// Auto-inicialização
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        audioManager.init();
-    });
-} else {
-    // Aguarda um pouco para garantir que outros scripts carregaram
-    setTimeout(() => {
-        audioManager.addHoverSounds();
-    }, 500);
 }

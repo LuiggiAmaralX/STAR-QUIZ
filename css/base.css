@@ -18,6 +18,17 @@
 
     /* Cores de Destaque */
     --accent-color: var(--dark-color-5);
+    --cyan-main: #14b8a6;
+    --cyan-light: #5eead4;
+    --yellow-accent: #fbbf24;
+    --blue-light-accent: #60a5fa;
+    --blue-medium-bg: #1e40af;
+    --blue-dark-bg: #1e293b;
+    --card-color: #374151;
+    --text-dark-subtle: #6b7280;
+    --font-family-headings: 'Poppins', sans-serif;
+    --border-width-card: 2px;
+    --transition-slow: 0.6s;
 
     /* Cores de Feedback */
     --green-correct: #10b981;

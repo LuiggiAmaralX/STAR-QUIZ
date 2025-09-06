@@ -289,7 +289,7 @@
 
 /* Loading para modo escuro */
 .dark-mode .skeleton {
-    background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+    background: #4b5563;
     background-size: 200% 100%;
 }
 

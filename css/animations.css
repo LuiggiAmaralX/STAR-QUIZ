@@ -314,19 +314,7 @@ input:focus, select:focus, textarea:focus {
     animation: slideOutUp 0.3s ease-in;
 }
 
-/* Animações para loading */
-.loading-overlay {
-    animation: fadeIn 0.3s ease-out;
-}
-
-.loading-spinner {
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
+/* Animações de loading removidas - usar loading.css */
 
 /* Animações para progresso */
 .progress-bar {
