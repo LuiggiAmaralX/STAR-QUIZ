@@ -375,11 +375,15 @@ function syncLeaderboard() {
 					li.classList.add('third-position');
 				}
 				
+				// Adiciona delay de animação escalonado
+				li.style.animationDelay = `${index * 0.1}s`;
+				
 				li.innerHTML = `
+					<div class="player-position">${index + 1}</div>
 					<div class="player-info">
 						<span class="player-name">${player.nickname}</span>
-						${isWinner && isTie ? '<span class="tie-badge">EMPATE</span>' : ''}
-						${isWinner && !isTie ? '<span class="winner-badge">VENCEDOR</span>' : ''}
+						${isWinner && isTie ? '<span class="player-badge tie-badge">EMPATE</span>' : ''}
+						${isWinner && !isTie ? '<span class="player-badge winner-badge">VENCEDOR</span>' : ''}
 					</div>
 					<div class="score-info">
 						<span class="score">${player.score}</span>

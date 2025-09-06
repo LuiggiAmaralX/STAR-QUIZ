@@ -11,8 +11,8 @@
 
 .logo-icon {
     font-size: 5rem;
-    color: var(--accent-primary);
-    text-shadow: 0 0 20px rgba(0, 224, 255, 0.5);
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
     animation: glowPulse 3s var(--ease-in-out) infinite;
     transition: all var(--transition-normal) var(--ease-out);
 }
@@ -86,7 +86,7 @@
 }
 
 .register-link a {
-    color: var(--accent-primary);
+    color: #ffffff;
     text-decoration: none;
     font-weight: var(--font-semibold);
     transition: all var(--transition-normal) var(--ease-out);

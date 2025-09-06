@@ -77,19 +77,19 @@
 }
 
 .notification.success .notification-icon {
-    color: #10b981;
+    color: #ffffff;
 }
 
 .notification.error .notification-icon {
-    color: #ef4444;
+    color: #ffffff;
 }
 
 .notification.warning .notification-icon {
-    color: #f59e0b;
+    color: #ffffff;
 }
 
 .notification.info .notification-icon {
-    color: #3b82f6;
+    color: #ffffff;
 }
 
 /* Conteúdo da notificação */

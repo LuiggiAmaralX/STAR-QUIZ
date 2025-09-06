@@ -45,9 +45,19 @@ class StatsManager {
 
     init() {
         this.loadStats();
-        this.createStatsButton();
-        this.createStatsModal();
-        this.setupEventListeners();
+        
+        // Garante que o DOM esteja carregado antes de criar elementos
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                this.createStatsButton();
+                this.createStatsModal();
+                this.setupEventListeners();
+            });
+        } else {
+            this.createStatsButton();
+            this.createStatsModal();
+            this.setupEventListeners();
+        }
     }
 
     // Carrega estatísticas do localStorage
@@ -76,6 +86,12 @@ class StatsManager {
 
     // Cria botão de estatísticas
     createStatsButton() {
+        // Remove botão existente se houver
+        const existingButton = document.querySelector('.stats-button');
+        if (existingButton) {
+            existingButton.remove();
+        }
+        
         const button = document.createElement('button');
         button.className = 'stats-button';
         button.innerHTML = '<i class="fas fa-chart-bar"></i>';
@@ -161,6 +177,18 @@ class StatsManager {
         // Escuta eventos de resposta
         document.addEventListener('answerSelected', (e) => {
             this.recordAnswer(e.detail);
+        });
+        
+        // Listener para redimensionamento da janela
+        window.addEventListener('resize', () => {
+            this.ensureButtonPosition();
+        });
+        
+        // Listener para mudanças de orientação em dispositivos móveis
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                this.ensureButtonPosition();
+            }, 100);
         });
     }
 
@@ -316,6 +344,9 @@ class StatsManager {
         const modal = document.getElementById('stats-modal');
         modal.classList.add('active');
         
+        // Garante que o botão mantenha sua posição
+        this.ensureButtonPosition();
+        
         // Reproduz som se disponível
         if (typeof window.playSound === 'function') {
             window.playSound('click');
@@ -326,6 +357,38 @@ class StatsManager {
     hideStats() {
         const modal = document.getElementById('stats-modal');
         modal.classList.remove('active');
+        
+        // Garante que o botão mantenha sua posição após fechar o modal
+        this.ensureButtonPosition();
+    }
+    
+    // Garante que o botão de estatísticas mantenha sua posição correta
+    ensureButtonPosition() {
+        const button = document.querySelector('.stats-button');
+        if (button) {
+            // Força o reposicionamento do botão
+            button.style.position = 'fixed';
+            button.style.zIndex = '10001';
+            button.style.pointerEvents = 'auto';
+            
+            // Aplica as posições baseadas na media query atual
+            if (window.innerWidth <= 480) {
+                button.style.top = 'var(--space-3)';
+                button.style.right = 'var(--space-3)';
+                button.style.width = '40px';
+                button.style.height = '40px';
+            } else if (window.innerWidth <= 768) {
+                button.style.top = 'var(--space-4)';
+                button.style.right = 'var(--space-4)';
+                button.style.width = '45px';
+                button.style.height = '45px';
+            } else {
+                button.style.top = 'var(--space-5)';
+                button.style.right = 'var(--space-5)';
+                button.style.width = '50px';
+                button.style.height = '50px';
+            }
+        }
     }
 
     // Atualiza exibição das estatísticas
